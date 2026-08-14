@@ -1,0 +1,48 @@
+name: Execute design workflow command
+
+on:
+  push:
+    branches:
+      - 'agent/**'
+    paths:
+      - '.workflow-command.json'
+
+concurrency:
+  group: design-workflow-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Execute allowlisted workflow command
+        run: node .github/scripts/run-design-workflow-command.mjs
+
+      - name: Commit workflow state changes
+        shell: bash
+        run: |
+          if [[ -z "$(git status --porcelain)" ]]; then
+            echo "No workflow state changes to commit."
+            exit 0
+          fi
+
+          command_id="$(node -e "const fs=require('fs'); const r=JSON.parse(fs.readFileSync('.workflow-command.json','utf8')); process.stdout.write(r.id)")"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Run design workflow command: ${command_id}"
+          git push
