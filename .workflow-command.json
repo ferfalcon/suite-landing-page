@@ -1,0 +1,16 @@
+{
+  "id": "initialize-suite-workflow-2026-08-14",
+  "argv": [
+    "init",
+    "--name",
+    "Suite landing page",
+    "--profile",
+    "Standard",
+    "--mode",
+    "Gated",
+    "--design",
+    "https://www.figma.com/design/EVFb3Lb4Y5iKn762QYva4y/suite-landing-page?node-id=2140-147",
+    "--repository",
+    "."
+  ]
+}
