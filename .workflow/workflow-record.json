@@ -102,6 +102,14 @@
       "method": "Pinned commit inspection and current-main implementation subtree comparison",
       "evidence": "Inspected immutable commit 69b2949ace42bc06b61806755abdb9a2f95f5a96 and current main. The Astro implementation entry, layout, package manifest, starter component/assets, and frontend structure remain unchanged from the pinned implementation baseline; main contains workflow/documentation changes but no landing-page implementation.",
       "checkedAt": "2026-08-15T02:20:03.800Z"
+    },
+    {
+      "id": "VER-009",
+      "snapshot": "SRC-DS-001",
+      "result": "Unchanged",
+      "method": "Connected Figma metadata inspection for Stage 7 planning",
+      "evidence": "Re-inspected Workflow page 2140:147 before planning. Product Screens still contain desktop 2140:148 at 1440x1716, tablet 2140:330 at 768x1904, and mobile 2140:289 at 375x2399. Components still contain Site Header 2176:1216, Hero 2159:699, Metrics 2156:483, Testimonial 2160:742, Footer 2157:513, CTA state families, approved imagery, logo, social icons, and decorations; Design System Documentation remains present. No material source drift was detected.",
+      "checkedAt": "2026-08-15T02:20:30.897Z"
     }
   ],
   "artifacts": [
