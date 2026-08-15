@@ -1,10 +1,7 @@
 {
-  "id": "review-stage-7-plan-2026-08-14",
+  "id": "check-stage-7-plan-2026-08-14",
   "argv": [
-    "artifact",
-    "review",
-    "ART-PLAN",
-    "--evidence",
-    "Stage 7 two-pass review completed in PLAN.md. Pass 1 confirms repository feasibility, complete scope/order/dependencies/validation, and coherent plan-item sizing. Pass 2 confirms approved requirement/spec mapping, refreshed source integrity, architecture-skip consistency, integrated accessibility/responsive work, and explicit ownership of asset provenance, browser support, responsive interpolation, and runtime evidence risks."
+    "stage",
+    "check"
   ]
 }
