@@ -7,7 +7,7 @@
   },
   "state": {
     "stage": 5,
-    "status": "In progress",
+    "status": "Ready",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -318,6 +318,33 @@
       ],
       "evidence": "Project owner approved ART-SPEC. Stage 4 canonical preflight recommends Passed with no findings after ART-SPEC approval; VER-006 confirms the time-bound Figma baseline remains Unchanged and the workflow record/generated views are valid and current.",
       "recordedAt": "2026-08-15T01:29:59.346Z",
+      "approvedBy": "Fernando Falcon"
+    },
+    {
+      "id": "GATE-006",
+      "stage": 5,
+      "status": "Active",
+      "result": "Passed",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ],
+      "verifications": [
+        "VER-007",
+        "VER-002"
+      ],
+      "artifacts": [
+        "ART-SOURCE-BASELINE",
+        "ART-PROJECT-CONTEXT",
+        "ART-WORKFLOW-STATE",
+        "ART-DESIGN-AUDIT",
+        "ART-REQUIREMENTS",
+        "ART-DESIGN",
+        "ART-SPEC",
+        "ART-DOCUMENT-REVIEW"
+      ],
+      "evidence": "Project owner approved ART-DOCUMENT-REVIEW. Stage 5 preflight recommends Passed with no findings; VER-007 confirms the active Figma source remains Unchanged; the two-pass cross-document review is complete and all identified inconsistencies were corrected in their owning documents.",
+      "recordedAt": "2026-08-15T01:47:35.651Z",
       "approvedBy": "Fernando Falcon"
     }
   ],
