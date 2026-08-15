@@ -69,11 +69,13 @@
       "id": "ART-PROJECT-CONTEXT",
       "type": "PROJECT-CONTEXT",
       "path": "PROJECT-CONTEXT.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T00:11:10.875Z",
+      "statusEvidence": "Pass 1 confirmed project goal, static-page scope, Standard profile rationale, Figma and repository boundaries, and evidence-based quality expectations. Pass 2 confirmed exclusions, deferred stages, constraints, risks, and authority relationships are consistent with the repository contract and active source baseline."
     },
     {
       "id": "ART-WORKFLOW-STATE",
