@@ -1,7 +1,14 @@
 {
-  "id": "advance-to-stage-8-2026-08-14",
+  "id": "verify-stage-8-design-2026-08-14",
   "argv": [
-    "stage",
-    "advance"
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma metadata inspection for Stage 8 plan challenge",
+    "--evidence",
+    "Re-inspected Figma Workflow page 2140:147 during Stage 8. Product Screens still contain desktop 2140:148 at 1440x1716, tablet 2140:330 at 768x1904, and mobile 2140:289 at 375x2399; Components still contain Site Header 2176:1216, Hero 2159:699, Metrics 2156:483, Testimonial 2160:742, Footer 2157:513, CTA state families, logo, social icons, hero assets, portrait, and decorations; Design System Documentation remains present. No material source drift was detected."
   ]
 }
