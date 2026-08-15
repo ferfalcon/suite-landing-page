@@ -672,7 +672,22 @@
       ],
       "output": null,
       "blocker": null,
-      "validation": []
+      "validation": [
+        {
+          "name": "Integrated implementation acceptance",
+          "kind": "Visual",
+          "required": true,
+          "status": "Not executed",
+          "expected": "The build succeeds; current Figma is reverified; the complete page has zero material unexplained visual/responsive drift at approved and required intermediate/extreme widths; keyboard/focus/names/image semantics/reduced motion/reflow pass; the documented SPEC-ACC-004 contrast/distinguishability and five-link target-area checks pass; no relevant runtime/console failures occur; and the Vercel PR preview loads the intended page with canonical runtime evidence recorded.",
+          "command": "pnpm --dir frontend build",
+          "environment": "repository root, stable Chromium rendered inspection, current SRC-DS-001, and Vercel PR preview",
+          "evidence": [],
+          "reason": "Stage 10 implementation and runtime preview do not exist yet.",
+          "references": [
+            "PLAN-004"
+          ]
+        }
+      ]
     }
   ],
   "profileTransitions": [],
