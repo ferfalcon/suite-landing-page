@@ -1,0 +1,176 @@
+name: P02-T02 Browser Acceptance
+
+on:
+  push:
+    branches:
+      - agent/p02-t02-lower-page
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/p02-t02-browser-acceptance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  browser-acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable pnpm
+        run: corepack enable pnpm
+
+      - name: Install and build frontend
+        run: |
+          pnpm --dir frontend install --frozen-lockfile
+          pnpm --dir frontend build
+
+      - name: Start Astro preview
+        run: |
+          pnpm --dir frontend preview --host 127.0.0.1 > /tmp/suite-preview.log 2>&1 &
+          for i in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/suite-preview.log
+          exit 1
+
+      - name: Install browser harness
+        run: npm install --prefix /tmp/suite-validator playwright-core@1.55.0
+
+      - name: Validate responsive and accessible behavior
+        env:
+          NODE_PATH: /tmp/suite-validator/node_modules
+        run: |
+          cat > /tmp/suite-validator/validate.mjs <<'EOF'
+          import { chromium } from '/tmp/suite-validator/node_modules/playwright-core/index.mjs';
+          import fs from 'node:fs';
+
+          const candidates = ['/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium'];
+          const executablePath = candidates.find((candidate) => fs.existsSync(candidate));
+          if (!executablePath) throw new Error('No preinstalled Chromium-compatible browser found');
+
+          const browser = await chromium.launch({ executablePath, headless: true, args: ['--no-sandbox'] });
+          const widths = [1440, 1121, 1120, 1041, 1040, 768, 620, 619, 375, 320];
+          const expectedY = new Map([
+            [1440, { testimonial: 972, footer: 1252 }],
+            [768, { testimonial: 1076, footer: 1440 }],
+            [375, { testimonial: 1426, footer: 1935 }],
+          ]);
+
+          for (const width of widths) {
+            const page = await browser.newPage({ viewport: { width, height: 2600 } });
+            await page.goto('http://127.0.0.1:4321/', { waitUntil: 'networkidle' });
+
+            const result = await page.evaluate(() => {
+              const rect = (selector) => {
+                const box = document.querySelector(selector)?.getBoundingClientRect();
+                if (!box) throw new Error(`Missing ${selector}`);
+                return { x: box.x, y: box.y, width: box.width, height: box.height, right: box.right, bottom: box.bottom };
+              };
+
+              const socials = [...document.querySelectorAll('.site-footer__social-link')];
+              const links = socials.map((link) => ({
+                name: link.textContent.trim(),
+                href: link.getAttribute('href'),
+                rect: (() => { const box = link.getBoundingClientRect(); return { x: box.x, y: box.y, width: box.width, height: box.height, right: box.right, bottom: box.bottom }; })(),
+              }));
+
+              const socialGaps = links.slice(1).map((link, index) => {
+                const previous = links[index];
+                const horizontal = Math.max(0, link.rect.x - previous.rect.right);
+                const vertical = Math.max(0, link.rect.y - previous.rect.bottom);
+                return Math.max(horizontal, vertical);
+              });
+
+              return {
+                scrollWidth: document.documentElement.scrollWidth,
+                innerWidth: window.innerWidth,
+                testimonial: rect('.testimonial'),
+                footer: rect('.site-footer'),
+                portrait: rect('.testimonial__portrait'),
+                testimonialContent: rect('.testimonial__content'),
+                footerLogo: rect('.site-footer__logo'),
+                footerCopyright: rect('.site-footer__copyright'),
+                socialNav: rect('.site-footer__social'),
+                links,
+                socialGaps,
+                h1Count: document.querySelectorAll('h1').length,
+                h2Text: document.querySelector('h2')?.textContent.replace(/\s+/g, ' ').trim(),
+                quote: document.querySelector('.testimonial__body')?.textContent.replace(/\s+/g, ' ').trim(),
+                author: document.querySelector('.testimonial__author')?.textContent.trim(),
+                role: document.querySelector('.testimonial__role')?.textContent.trim(),
+                copyright: document.querySelector('.site-footer__copyright')?.textContent.trim(),
+                landmarkCounts: {
+                  main: document.querySelectorAll('main').length,
+                  footer: document.querySelectorAll('footer').length,
+                },
+                decorativeImagesValid: [...document.querySelectorAll('.testimonial img, .site-footer img')].every((img) => img.getAttribute('alt') === ''),
+              };
+            });
+
+            const assert = (condition, message) => {
+              if (!condition) throw new Error(`${width}px: ${message}`);
+            };
+
+            assert(result.scrollWidth <= result.innerWidth, `horizontal overflow ${result.scrollWidth} > ${result.innerWidth}`);
+            assert(result.h1Count === 1, `expected exactly one h1, found ${result.h1Count}`);
+            assert(result.h2Text === 'It just works.', `unexpected testimonial heading: ${result.h2Text}`);
+            assert(result.quote === '“I really like how it is an all-in-one solution that handle many of the tasks that you would normally need separate tools to do the same job. This thing is a miracle worker.”', 'testimonial quote mismatch');
+            assert(result.author === 'JEREMY ROBINSON' && result.role === 'CMO, FYLO', 'testimonial attribution mismatch');
+            assert(result.copyright === 'Copyright - Suite', 'footer copyright mismatch');
+            assert(result.landmarkCounts.main === 1 && result.landmarkCounts.footer === 1, 'landmark count mismatch');
+            assert(result.decorativeImagesValid, 'testimonial/footer decorative image alt semantics mismatch');
+            assert(JSON.stringify(result.links.map(({ name, href }) => ({ name, href }))) === JSON.stringify([
+              { name: 'Facebook', href: '#' },
+              { name: 'Twitter', href: '#' },
+              { name: 'Instagram', href: '#' },
+            ]), 'social link names or destinations mismatch');
+            assert(result.links.every((link) => link.rect.width >= 44 && link.rect.height >= 44), 'social target below 44x44');
+            assert(result.socialGaps.every((gap) => gap >= 8), `social targets collide; gaps=${result.socialGaps.join(',')}`);
+
+            const shouldStackTestimonial = width <= 1120;
+            if (shouldStackTestimonial) {
+              assert(result.portrait.bottom <= result.testimonialContent.y + 1, 'stacked portrait/content ordering overlaps unexpectedly');
+            } else {
+              assert(result.portrait.x < result.testimonialContent.x, 'wide testimonial is not side-by-side');
+            }
+
+            if (width <= 619) {
+              assert(result.footerLogo.y < result.footerCopyright.y && result.footerCopyright.y < result.socialNav.y, 'mobile footer is not stacked in logical visual order');
+            } else {
+              assert(Math.abs(result.footerLogo.y - result.footerCopyright.y) < 20, 'desktop/tablet footer is not horizontal');
+            }
+
+            const expected = expectedY.get(width);
+            if (expected) {
+              assert(Math.abs(result.testimonial.y - expected.testimonial) <= 2, `testimonial y ${result.testimonial.y} != ${expected.testimonial}`);
+              assert(Math.abs(result.footer.y - expected.footer) <= 2, `footer y ${result.footer.y} != ${expected.footer}`);
+            }
+
+            for (const index of [0, 1, 2]) {
+              const focus = await page.locator('.site-footer__social-link').nth(index).evaluate((link) => {
+                link.focus();
+                const style = getComputedStyle(link);
+                return { active: document.activeElement === link, outlineStyle: style.outlineStyle, outlineWidth: style.outlineWidth };
+              });
+              assert(focus.active, `social link ${index + 1} is not keyboard-focusable`);
+              assert(focus.outlineStyle !== 'none' && parseFloat(focus.outlineWidth) >= 3, `social link ${index + 1} lacks visible focus outline`);
+            }
+
+            console.log(`${width}px PASS`, JSON.stringify({ testimonial: result.testimonial, footer: result.footer, socialGaps: result.socialGaps }));
+            await page.close();
+          }
+
+          await browser.close();
+          console.log('P02-T02 browser acceptance PASS');
+          EOF
+          node /tmp/suite-validator/validate.mjs
