@@ -1,8 +1,7 @@
 {
-  "id": "preflight-stage-11-after-verification-2026-08-15",
+  "id": "context-stage-11-final-approval-2026-08-15",
   "argv": [
-    "stage",
-    "check",
+    "context",
     "--json"
   ]
 }
