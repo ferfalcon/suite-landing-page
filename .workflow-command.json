@@ -1,15 +1,15 @@
 {
-  "id": "create-p02-t01-2026-08-15",
+  "id": "create-p02-t02-2026-08-15",
   "argv": [
     "task",
     "create",
     "--id",
-    "P02-T01",
+    "P02-T02",
     "--title",
-    "Implement the header, hero, and metrics sections",
+    "Implement the testimonial and footer sections",
     "--prerequisites",
-    "P01-T01",
+    "P02-T01",
     "--references",
-    "PLAN-002"
+    "PLAN-003"
   ]
 }
