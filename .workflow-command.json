@@ -1,13 +1,10 @@
 {
-  "id": "pass-stage-2-gate-2026-08-14",
+  "id": "review-stage-3-design-2026-08-14",
   "argv": [
-    "stage",
+    "artifact",
     "review",
-    "--result",
-    "Passed",
+    "ART-DESIGN",
     "--evidence",
-    "Project owner approved ART-REQUIREMENTS. Stage 2 preflight recommends Passed with no findings; the requirements are approved, VER-004 remains Unchanged, the href=# placeholder behavior is explicitly resolved, and no Stage 2 blocking product question remains.",
-    "--approved-by",
-    "Fernando Falcon"
+    "Both required Stage 3 review passes completed in DESIGN.md. The artifact covers structure, visual roles, responsive transformations, CTA and social interaction intent, accessibility intent, assets, risks, and uncertainty; maps DES/DES-RWD/DES-INT decisions to approved EVD and REQ evidence; VER-005 confirms the time-bound Figma source remains Unchanged; no implementation architecture or arbitrary breakpoints were introduced."
   ]
 }
