@@ -263,11 +263,13 @@
       "id": "ART-TASKS-INDEX",
       "type": "TASKS-INDEX",
       "path": "TASKS-INDEX.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T03:05:14.592Z",
+      "statusEvidence": "Stage 9 two-pass review confirms complete PLAN-001 through PLAN-004 coverage, coherent prerequisite ordering, canonical Ready task IDs, explicit validation ownership, source/rebaseline rules, accessibility/responsive/security integration, and documented asset/browser/Vercel/workflow-renderer risks without implementation scope leakage."
     },
     {
       "id": "ART-TASK-P01-T01",
