@@ -1,16 +1,14 @@
 {
-  "id": "initialize-suite-workflow-2026-08-14",
+  "id": "verify-stage-0-figma-source-2026-08-14",
   "argv": [
-    "init",
-    "--name",
-    "Suite landing page",
-    "--profile",
-    "Standard",
-    "--mode",
-    "Gated",
-    "--design",
-    "https://www.figma.com/design/EVFb3Lb4Y5iKn762QYva4y/suite-landing-page?node-id=2140-147",
-    "--repository",
-    "."
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma metadata and scoped page inspection",
+    "--evidence",
+    "Resolved file EVFb3Lb4Y5iKn762QYva4y page 2140:147 with Product Screens, Components, and Design System Documentation; no material mismatch established against the registered design reference."
   ]
 }
