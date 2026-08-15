@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 1,
-    "status": "Ready",
+    "stage": 2,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -112,6 +112,16 @@
       "statusChangedAt": "2026-08-15T00:31:41.440Z",
       "statusEvidence": "Project owner explicitly approved the Stage 1 design audit and authorized progression on 2026-08-14.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-REQUIREMENTS",
+      "type": "REQUIREMENTS",
+      "path": "REQUIREMENTS.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
