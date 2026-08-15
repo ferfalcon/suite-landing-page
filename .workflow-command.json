@@ -1,14 +1,10 @@
 {
-  "id": "reverify-stage-2-figma-source-2026-08-14",
+  "id": "review-stage-2-requirements-2026-08-14",
   "argv": [
-    "snapshot",
-    "verify",
-    "SRC-DS-001",
-    "--result",
-    "Unchanged",
-    "--method",
-    "Connected Figma metadata re-verification for Stage 2 requirements",
+    "artifact",
+    "review",
+    "ART-REQUIREMENTS",
     "--evidence",
-    "Re-inspected Workflow page 2140:147 before deriving requirements. Product Screens still contain Home desktop 2140:148, tablet 2140:330, and mobile 2140:289; Components still contain the responsive Header, Hero, Metrics, Testimonial, Footer and CTA state families; Design System Documentation remains present. No material structural change was detected against the approved Stage 1 evidence baseline."
+    "Pass 1 confirmed complete coverage of scope, users, functional outcomes, data boundaries, accessibility, quality, security scope, constraints, dependencies, risks, assumptions, acceptance criteria and Definition of Done without unsupported business rules or thresholds. Pass 2 confirmed stable identifiers, approved evidence traceability, Stage 2 source verification VER-004 as Unchanged, preserved Stage 0 constraint identifier history, and explicit unresolved CTA/social behavior without invented destinations or breakpoint rules."
   ]
 }
