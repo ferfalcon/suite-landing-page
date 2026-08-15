@@ -1,9 +1,9 @@
 {
-  "id": "approve-stage-0-source-baseline-2026-08-14",
+  "id": "approve-stage-0-project-context-2026-08-14",
   "argv": [
     "artifact",
     "approve",
-    "ART-SOURCE-BASELINE",
+    "ART-PROJECT-CONTEXT",
     "--evidence",
     "Project owner explicitly approved Stage 0 and authorized progression on 2026-08-14.",
     "--approved-by",
