@@ -1,7 +1,9 @@
 ---
 import Hero from '../components/Hero.astro';
 import Metrics from '../components/Metrics.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
+import Testimonial from '../components/Testimonial.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -12,7 +14,9 @@ import Layout from '../layouts/Layout.astro';
 			<Hero />
 			<Metrics />
 		</div>
+		<Testimonial />
 	</main>
+	<SiteFooter />
 </Layout>
 
 <style>
@@ -35,6 +39,14 @@ import Layout from '../layouts/Layout.astro';
 		margin-block-start: -8px;
 	}
 
+	.page-content > :global(.testimonial) {
+		margin-block-start: 110px;
+	}
+
+	:global(.site-footer) {
+		margin-block-start: -255px;
+	}
+
 	@media (max-width: 1040px) {
 		.page-content {
 			padding-block-start: var(--space-32);
@@ -49,6 +61,20 @@ import Layout from '../layouts/Layout.astro';
 		.upper-page :global(.metrics) {
 			margin-block-start: 0;
 		}
+
+		.page-content > :global(.testimonial) {
+			margin-block-start: 186px;
+		}
+
+		:global(.site-footer) {
+			margin-block-start: -320px;
+		}
+	}
+
+	@media (max-width: 900px) and (min-width: 620px) {
+		.page-content > :global(.testimonial) {
+			margin-block-start: 186px;
+		}
 	}
 
 	@media (max-width: 619px) {
@@ -60,6 +86,16 @@ import Layout from '../layouts/Layout.astro';
 
 		.upper-page {
 			gap: var(--space-64);
+		}
+
+		.page-content > :global(.testimonial) {
+			inline-size: 100vw;
+			margin-block-start: 221px;
+			margin-inline-start: calc(50% - 50vw);
+		}
+
+		:global(.site-footer) {
+			margin-block-start: -235px;
 		}
 	}
 
