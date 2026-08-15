@@ -1,27 +1,27 @@
 {
-  "id": "validation-p01-t01-2026-08-15",
+  "id": "validation-p02-t01-2026-08-15",
   "argv": [
     "task",
     "validation",
     "set",
-    "P01-T01",
+    "P02-T01",
     "--name",
-    "Foundation acceptance",
+    "Upper-page acceptance",
     "--kind",
-    "Build",
+    "Responsive",
     "--required",
     "true",
     "--status",
     "Not executed",
     "--expected",
-    "The Astro production build succeeds; every consumed asset has authoritative mapping/provenance/use evidence; the foundation introduces no unsupported metadata, dependency, client runtime, tracking, or data behavior; shared document/focus/reduced-motion defaults remain accessible and static.",
+    "The build succeeds and Header, Hero, and Metrics match approved content and visual relationships at 1440, 768, 375 and required intermediate/beyond widths; both beta anchors remain href=#; keyboard focus, image semantics, reflow, target usability, and reduced-motion behavior meet the approved specification with no page-level overflow.",
     "--command",
     "pnpm --dir frontend build",
     "--environment",
-    "repository root and rendered foundation inspection",
+    "repository root plus rendered browser comparison to SRC-DS-001",
     "--reason",
     "Stage 10 implementation has not started.",
     "--references",
-    "PLAN-001"
+    "PLAN-002"
   ]
 }
