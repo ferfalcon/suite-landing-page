@@ -237,13 +237,13 @@
       "id": "ART-PLAN",
       "type": "PLAN",
       "path": "PLAN.md",
-      "status": "Reviewed",
+      "status": "Draft",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
       ],
-      "statusChangedAt": "2026-08-15T02:22:16.209Z",
-      "statusEvidence": "Stage 7 two-pass review completed in PLAN.md. Pass 1 confirms repository feasibility, complete scope/order/dependencies/validation, and coherent plan-item sizing. Pass 2 confirms approved requirement/spec mapping, refreshed source integrity, architecture-skip consistency, integrated accessibility/responsive work, and explicit ownership of asset provenance, browser support, responsive interpolation, and runtime evidence risks."
+      "statusChangedAt": "2026-08-15T02:39:23.048Z",
+      "statusEvidence": "Stage 8 adversarial review identified source-traceability, metadata-scope, accessibility-validation, image-semantics, and asset-readiness corrections. PLAN.md was corrected before Stage 8 approval."
     },
     {
       "id": "ART-PLAN-REVIEW",
