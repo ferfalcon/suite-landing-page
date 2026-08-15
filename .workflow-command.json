@@ -1,7 +1,12 @@
 {
-  "id": "read-stage-4-context-after-spec-approval-2026-08-14",
+  "id": "approve-stage-4-spec-2026-08-14",
   "argv": [
-    "context",
-    "--json"
+    "artifact",
+    "approve",
+    "ART-SPEC",
+    "--evidence",
+    "Project owner approved ART-SPEC and authorized continuation after reviewing PR #8, which is merged on main at 7e851285b55d27d34f23b8fa39eeb22dbcfa0f28.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
