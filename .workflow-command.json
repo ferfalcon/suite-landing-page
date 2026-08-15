@@ -1,14 +1,10 @@
 {
-  "id": "verify-stage-5-design-source-2026-08-14",
+  "id": "review-stage-5-documentation-2026-08-14",
   "argv": [
-    "snapshot",
-    "verify",
-    "SRC-DS-001",
-    "--result",
-    "Unchanged",
-    "--method",
-    "Connected Figma Stage 5 metadata inspection of the scoped Workflow page, product screens, component families, and design-system documentation",
+    "artifact",
+    "review",
+    "ART-DOCUMENT-REVIEW",
     "--evidence",
-    "Re-inspected Figma page 2140:147 during Stage 5 consistency review. Product Screens 2140:1361 still contains desktop 2140:148 at 1440x1716, tablet 2140:330 at 768x1904, and mobile 2140:289 at 375x2399. Components 2140:1310 still contains Site Header 2176:1216, Hero 2159:699, Metrics 2156:483, Testimonial 2160:742, Footer 2157:513, CTA sets 3:960 and 3:978, approved imagery, logo, social icons, and decorations. Design System Documentation 2140:1363 remains present with typography, spacing, radius, and color documentation. No material source drift was detected against the Stage 4 baseline."
+    "Stage 5 completed two-pass cross-document review. Corrected stale Stage 0 source/context/workflow narratives, refreshed REQUIREMENTS and DESIGN downstream traceability to approved Stage 3/4 outputs, resolved stable constraint ownership, removed the scaffolded nonexistent SRC-DOC-001, and confirmed VER-007 plus the unchanged immutable repository implementation baseline. No blocking inconsistency remains; only explicit non-blocking asset, content-variability, browser-matrix, and pre-runtime risks remain."
   ]
 }
