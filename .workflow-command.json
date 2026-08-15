@@ -1,7 +1,13 @@
 {
-  "id": "check-stage-1-after-approval-2026-08-14",
+  "id": "pass-stage-1-gate-2026-08-14",
   "argv": [
     "stage",
-    "check"
+    "review",
+    "--result",
+    "Passed",
+    "--evidence",
+    "Project owner approved ART-DESIGN-AUDIT. Stage 1 preflight recommends Passed with no findings; the active Figma source is verified Unchanged, the design audit is approved, and unresolved evidence is explicitly recorded without invented behavior.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
