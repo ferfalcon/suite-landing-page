@@ -1,23 +1,4 @@
 {
-  "id": "record-p02-t01-upper-page-validation-blocked-2026-08-15-v3",
-  "argv": [
-    "task",
-    "validation",
-    "set",
-    "P02-T01",
-    "--name",
-    "Upper-page acceptance",
-    "--kind",
-    "Visual",
-    "--required",
-    "true",
-    "--status",
-    "Blocked",
-    "--expected",
-    "Header, Hero, and Metrics materially match the approved design at supplied and representative responsive widths without overlap, clipping, or layout-caused horizontal scrolling",
-    "--reason",
-    "Required viewport-capable rendered visual comparison cannot be executed with the available environment; no browser/screenshot viewport runner is available and the repository defines no browser-validation command that can be invoked without inventing new tooling.",
-    "--references",
-    "PLAN-001"
-  ]
+  "id": "context-before-p02-t01-approval-2026-08-15",
+  "argv": ["context", "--json"]
 }
