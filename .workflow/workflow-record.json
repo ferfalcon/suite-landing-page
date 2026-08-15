@@ -7,7 +7,7 @@
   },
   "state": {
     "stage": 0,
-    "status": "In progress",
+    "status": "Ready",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -94,7 +94,30 @@
     }
   ],
   "traceItems": [],
-  "gates": [],
+  "gates": [
+    {
+      "id": "GATE-001",
+      "stage": 0,
+      "status": "Active",
+      "result": "Passed",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ],
+      "verifications": [
+        "VER-001",
+        "VER-002"
+      ],
+      "artifacts": [
+        "ART-SOURCE-BASELINE",
+        "ART-PROJECT-CONTEXT",
+        "ART-WORKFLOW-STATE"
+      ],
+      "evidence": "Project owner approved Stage 0. Active Figma and repository inputs are verified, all Stage 0 control artifacts are reviewed and approved, scope and limitations are recorded, and the workflow record and generated views validate cleanly.",
+      "recordedAt": "2026-08-15T00:20:20.019Z",
+      "approvedBy": "Fernando Falcon"
+    }
+  ],
   "tasks": [],
   "profileTransitions": [],
   "implementationReviews": []
