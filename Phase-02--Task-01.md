@@ -15,160 +15,179 @@ profile: Standard
 execution_mode: Gated
 ---
 
-The canonical task registry owns mutable task state. Record implementation-output lineage only after the task result is committed.
+The canonical task registry owns mutable task state. The implementation-output snapshot is recorded only by the canonical task-completion command against exact HEAD.
 
 # Phase 02 — Task 01: Implement the header, hero, and metrics sections
 
 ## 2. Objective
 
-Implement the approved Site Header, Hero, and Metrics as static Astro components with exact approved content, native CTA behavior, verified imagery, section-level accessibility, and fluid responsive behavior matching the approved 1440/768/375 outcomes without treating those frame widths as automatic breakpoints.
+Implement the approved Site Header, Hero, and Metrics as static Astro components with exact approved content, native CTA behavior, verified imagery, section-level accessibility, and responsive behavior matching the approved wide/mid/narrow outcomes without treating the supplied Figma frame widths as automatic CSS breakpoints.
 
 ## 3. Source References
 
-- Design input: `SRC-DS-001`; Stage 8 verification `VER-010 — Unchanged`
-- Repository baseline: `SRC-REPO-001`; Stage 8 verification `VER-011 — Unchanged`
-- `PLAN.md`: `PLAN-002`
-- Prerequisite: completed `P01-T01` output and its verified asset/foundation decisions
-- Requirements: `REQ-FR-001`–`REQ-FR-004`, `REQ-FR-007`, `REQ-FR-008`, `REQ-AR-001`–`REQ-AR-004`, `REQ-AR-006`, `REQ-NFR-001`, `REQ-NFR-003`
-- Specification: Site Header `2176:1216`, Hero `2159:699`, Metrics `2156:483`; `SPEC-BEH-001`–`003`, `SPEC-INT-001`–`003`, applicable responsive/accessibility rules
-- Design evidence: desktop `2140:148`, tablet `2140:330`, mobile `2140:289`
-- Architecture: Stage 6 decision — Not required
-- Related tasks: requires `P01-T01`; precedes `P02-T02` and `P03-T01`
+- Design input: `SRC-DS-001`; active canonical design baseline, with `VER-012 — Unchanged` recorded immediately before Stage 10 implementation began and task-local connected Figma inspection repeated for the Header/Hero/Metrics scope before P02-T01 edits.
+- Repository baseline: `SRC-REPO-001`; P02-T01 branch descends from the pinned baseline and from merged P01-T01 output on `main`.
+- Prerequisite implementation output: `SRC-REPO-002` / P01-T01 commit `ff07fade5d8bc55c615e92994b5e9566c63986cd`, merged to `main` by PR #15 before P02-T01 started.
+- `PLAN.md`: `PLAN-002`.
+- Requirements: `REQ-FR-001`–`REQ-FR-004`, `REQ-FR-007`, `REQ-FR-008`, `REQ-AR-001`–`REQ-AR-004`, `REQ-AR-006`, `REQ-NFR-001`, `REQ-NFR-003`.
+- Specification: Site Header `2176:1216`, Hero `2159:699`, Metrics `2156:483`; `SPEC-BEH-001`–`003`, `SPEC-INT-001`–`003`, and applicable responsive/accessibility rules.
+- Design evidence: desktop `2140:148`, tablet `2140:330`, mobile `2140:289`.
+- Architecture: Stage 6 decision — Not required.
 
 ## 4. Snapshot Verification
 
-Before implementation, verify the Stage 10 branch incorporates the completed `P01-T01` output and remains valid against the canonical baseline. Reverify `SRC-DS-001` if Figma may have changed since `VER-010`. Confirm all Header/Hero assets were verified by `P01-T01`. Unexpected material source drift requires the workflow rebaseline path before edits.
+Completed before implementation work on the task scope:
+
+- The task branch was created from current `main` after P01-T01 was merged, so the verified P01 foundation/assets were present before P02 edits.
+- Connected Figma inspection rechecked the authoritative desktop/tablet/mobile Header, Hero, and Metrics families and the relevant component/design-system evidence; no material task-scope drift was found.
+- The prepared Suite logo, hero portrait/landscape sources, 2× image sources, decorative hero curve, and shared CTA/focus primitives from P01-T01 remained available and usable.
+- No unexpected source, asset, repository, or approved-behavior change required rebaseline or owner escalation.
 
 ## 5. Prerequisites
 
-- `P01-T01` complete with required validation Passed.
-- Verified logo/hero/decorative assets required by this task.
-- Shared CSS/tokens/defaults from `P01-T01` available.
-- Stage 10 task started canonically after source verification.
+- [x] `P01-T01` complete with required validation Passed.
+- [x] Verified logo/hero/decorative assets available.
+- [x] Shared CSS/tokens/defaults/focus/reduced-motion rules available from P01-T01.
+- [x] `P02-T01` started through the canonical workflow CLI before implementation edits.
 
 ## 6. Scope
 
-### Included
+### Included and completed
 
-- Create `SiteHeader.astro`, `Hero.astro`, and `Metrics.astro`.
-- Update `index.astro` to compose Header → Hero → Metrics in approved source/content order.
-- Implement exact approved header/hero/metric copy and both beta CTAs as native anchors with exactly `href="#"`.
-- Implement default/hover distinctions where hover is available, visible keyboard focus, and reduced-motion handling for optional transitions.
-- Consume only verified logo/hero/decorative assets.
-- Implement desktop/tablet/mobile arrangements through intrinsic layout and content-pressure-driven transitions.
-- Preserve semantic structure and `SPEC-ACC-003` image treatment.
+- Created `SiteHeader.astro`, `Hero.astro`, and `Metrics.astro`.
+- Updated `index.astro` to compose Header → Hero → Metrics in logical source order.
+- Implemented approved header/hero/metric copy and both beta CTAs as native anchors with exactly `href="#"`.
+- Reused shared CTA default/hover/focus-visible/reduced-motion behavior.
+- Consumed only P01-verified logo/hero/decorative assets.
+- Implemented wide, mid, narrow, and very-narrow layout responses through section-specific pressure thresholds rather than copying 1440/768/375 as breakpoint constants.
+- Preserved semantic structure and decorative image treatment required by `SPEC-ACC-003`.
+- Loaded Epilogue 400/700 in the shared stylesheet so the implementation uses the approved type family/weights.
 
-### Excluded
+### Excluded and unchanged
 
 - Testimonial/Footer implementation.
-- Production CTA destinations, forms, JavaScript-driven interaction/hydration, new data behavior, or unrelated abstractions.
+- Production CTA destinations, forms, JavaScript-driven interaction/hydration, data behavior, analytics/tracking, dependencies, routes, or unrelated abstractions.
 
 ## 7. Repository Context
 
-This task starts from the static Astro foundation produced by `P01-T01`. `index.astro` owns page composition and `global.css` owns shared tokens/defaults/focus/reduced-motion rules. The repository has no client state/data layer or dedicated browser/a11y test scripts; `pnpm --dir frontend build` remains the guaranteed automated check.
+P02-T01 builds directly on the static Astro foundation produced by P01-T01. `index.astro` remains the page-composition owner, `global.css` owns shared tokens and CTA/focus/reduced-motion primitives, and each new Astro component owns only its section markup and responsive styling. No client runtime, state layer, data layer, or new dependency was introduced.
 
 ## 8. Files and Modules
 
-| Path | Action | Existing or proposed | Responsibility |
+| Path | Action | Result | Responsibility |
 |---|---|---|---|
-| `frontend/src/pages/index.astro` | Modify | Existing | Compose Header, Hero, Metrics and preserve later section slots/source order. |
-| `frontend/src/components/SiteHeader.astro` | Create | Proposed | Suite logo, secondary CTA, responsive header layout. |
-| `frontend/src/components/Hero.astro` | Create | Proposed | Approved headline/body/primary CTA/hero imagery/decorations. |
-| `frontend/src/components/Metrics.astro` | Create | Proposed | Three proof metrics and approved responsive arrangements. |
-| `frontend/src/styles/global.css` | Modify | Existing from `P01-T01` | Shared section/CTA styles and evidence-backed responsive rules. |
-| `frontend/src/assets/*` | Consume | Verified assets | Logo/hero/decorative sources established by `P01-T01`. |
+| `frontend/src/pages/index.astro` | Modify | Completed | Composes Site Header, Hero, and Metrics in approved logical order. |
+| `frontend/src/components/SiteHeader.astro` | Create | Completed | Suite logo, secondary CTA, and responsive header layout. |
+| `frontend/src/components/Hero.astro` | Create | Completed | Approved headline/body/primary CTA, decorative stroke, and verified responsive hero imagery. |
+| `frontend/src/components/Metrics.astro` | Create | Completed | Three approved proof metrics and rail → row → stack transformations. |
+| `frontend/src/styles/global.css` | Modify | Completed | Loads Epilogue 400/700 while retaining shared evidence-backed CTA/focus/reduced-motion primitives. |
+| `frontend/src/assets/*` | Consume only | Completed | Uses verified P01 logo/hero/decorative assets without regeneration or replacement. |
 
 ## 9. Dependencies and Interfaces
 
-- Components remain static/presentational Astro with no client state.
-- CTA states use shared CSS primitives rather than divergent duplicates.
-- `P02-T02` may integrate lower-page spacing but must not redefine this task's approved contracts without a recorded discovery.
-- Media-query thresholds are section-specific and justified by observed content pressure, not copied reference-frame widths.
+- Components are static/presentational Astro with no client state or hydration.
+- CTA states continue to use shared `.cta`, `.cta--primary`, and `.cta--secondary` primitives.
+- The Hero uses portrait imagery for wide/mid outcomes and switches to the verified landscape source for narrow flow through `<picture>`.
+- Section thresholds are local implementation decisions selected to preserve the approved relationships before composition failure; they are not represented as device names or global design tokens.
+- P02-T02 can compose the lower page after these sections without redefining their content or interaction contracts.
 
 ## 10. Implementation Steps
 
-1. Verify source/prerequisite/component/copy/asset evidence.
-2. Implement semantic `SiteHeader.astro`.
-3. Implement `Hero.astro` with exact content, CTA, verified imagery, and approved image semantics.
-4. Implement `Metrics.astro` with exact values/labels and logical source order.
-5. Compose Header → Hero → Metrics in `index.astro`.
-6. Derive responsive transitions from rendered content pressure and check both sides of each transition.
-7. Implement focus-visible/default/hover/reduced-motion CTA behavior.
-8. Run build and section-level interaction/responsive/accessibility/visual checks.
-9. Commit the result and record canonical output/validation evidence.
+1. Rechecked the current branch, P01 prerequisite output, applicable Figma components, copy, states, and verified assets.
+2. Implemented the responsive semantic Site Header with the Suite logo and secondary placeholder CTA.
+3. Implemented the Hero with approved typography hierarchy, body copy, primary placeholder CTA, decorative stroke, verified portrait/landscape sources, and decorative image semantics.
+4. Implemented Metrics with the approved `2K+ / COMPANIES`, `8 / LANGUAGES`, and `1.2M / LEADS` order.
+5. Composed Header → Hero → Metrics in `index.astro` while preserving logical DOM order independently of wide visual positioning.
+6. Used section-pressure transitions around the wide/mid/narrow compositions rather than reference-frame breakpoint values; Hero additionally reduces headline size below 340px to preserve very-narrow reflow.
+7. Reused the P01 hover/focus/reduced-motion CTA behavior and loaded the approved Epilogue font family/weights.
+8. Ran the production Astro build in GitHub Actions and inspected the READY Vercel preview DOM/content/link/image-source contract.
+9. The project owner manually reviewed the rendered implementation and explicitly approved the visual/responsive result, resolving the previously blocked visual check.
 
 ## 11. State, Responsive, and Accessibility Requirements
 
 ### States and errors
 
-- CTA default/hover/focus-visible states preserve primary/secondary distinction and work without hover.
-- All beta anchors remain `href="#"`; no loading/submission/success/error state exists because no dynamic workflow is approved.
-- Missing verified required imagery blocks the affected work rather than authorizing a fabricated substitute.
+- Both beta links remain native `href="#"` anchors with no added workflow, tracking, submission, loading, error, or success behavior.
+- CTA default, hover-capable, keyboard-focus, and reduced-motion behavior comes from the shared P01 primitives.
+- No missing required asset or fabricated substitute was introduced.
 
 ### Responsive behavior
 
-- Match approved 1440, 768, and 375 outcomes.
-- Also test at least one width between 375–768, one between 768–1440, below 375, and above 1440.
-- No content clipping, overlap, unusable target spacing, or page-level horizontal overflow.
+- Wide outcome keeps Hero content layered with portrait product imagery and Metrics as a vertical proof rail.
+- Mid outcome keeps the two-column/layered Hero relationship while Metrics become a horizontal row.
+- Narrow outcome linearizes Hero content before landscape imagery and stacks Metrics vertically.
+- A very-narrow adjustment below 340px reduces headline size to avoid composition pressure.
+- The implementation uses local thresholds (`1040px`, `620px`, and the very-narrow `340px` adjustment) derived from section composition needs; the supplied 1440/768/375 Figma widths remain validation references rather than CSS breakpoint declarations.
 
 ### Accessibility
 
-- Semantic header/main/heading structure and logical DOM/source order.
-- Native anchors provide keyboard activation and logical tab order.
-- Focus remains visibly distinguishable against rendered backgrounds.
-- Hero/product/decorative imagery follows `SPEC-ACC-003`; do not invent alt copy when nearby approved content carries meaning.
-- Remove/reduce nonessential CTA transition motion under `prefers-reduced-motion`.
+- Header/Hero/Metrics remain in logical document order.
+- Hero has the page `h1`; Metrics remain static proof content.
+- CTA anchors retain native keyboard behavior and shared visible focus styling.
+- Hero imagery and decorative stroke are intentionally exposed as decorative because nearby approved text carries the meaning, consistent with `SPEC-ACC-003`.
+- CTA transitions are removed under `prefers-reduced-motion: reduce`.
 
 ## 12. Validation
 
-### Automated validation
+### Automated validation — Passed
 
-- `pnpm --dir frontend build` — expected: production build succeeds.
-- Do not invent lint/unit/browser/a11y commands absent from the repository.
+- Canonical check: **Upper-page build — Passed**.
+- Command: `pnpm --dir frontend build`.
+- Evidence: GitHub Actions run `31901631211`, job `95053198240`, completed successfully for the P02 implementation tree on 2026-08-15.
+- No repository-defined lint/unit/browser/a11y commands existed, and none were fabricated.
 
-### Manual validation
+### Rendered/manual validation — Passed
 
-- Exact approved copy/metrics and both beta links exactly `href="#"`.
-- Both CTAs keyboard reachable, visibly focused, and natively activatable.
-- Responsive comparison at 1440/768/375 plus required intermediate/beyond widths and both sides of derived transitions.
-- No material unexplained typography/color/spacing/radius/image drift from `SRC-DS-001`.
-- Landmark/heading order, image semantics, resize/reflow, target usability, and reduced-motion behavior are correct.
-- No new client JavaScript/data/dependency behavior and no lower-page scope leakage.
+- Canonical check: **Upper-page acceptance — Passed**.
+- Vercel preview deployment used during review: `dpl_FM1GaAPKHUiVqePMRRs6PdMjdGM6` (READY during implementation review).
+- Connected preview inspection confirmed HTTP 200, expected semantic Header/Hero/Metrics DOM, approved copy and metrics, both beta CTAs exactly `href="#"`, and responsive portrait/landscape image sources.
+- Project owner manual review on 2026-08-15: **approved** the rendered visual/responsive result, resolving the previously blocked viewport/fidelity check.
 
 ## 13. Acceptance Criteria
 
-- [ ] `PLAN-002` is fully represented by Header/Hero/Metrics implementation.
-- [ ] Applicable `REQ-FR-*`, `REQ-AR-*`, and `REQ-NFR-*` behavior is observable and correct.
-- [ ] Desktop/tablet/mobile and intermediate/beyond widths have no material unexplained drift or horizontal overflow.
-- [ ] Both beta CTAs are native anchors with exactly `href="#"` and usable focus states.
-- [ ] Only verified imagery is consumed and image treatment matches `SPEC-ACC-003`.
-- [ ] Build and required manual validation pass; output lineage is recorded.
+- [x] `PLAN-002` is represented by the Header/Hero/Metrics implementation.
+- [x] Applicable functional, responsive, accessibility, and fidelity behavior is implemented within this task scope.
+- [x] The project owner approved the rendered responsive/visual result after checking the preview.
+- [x] Both beta CTAs are native anchors with exactly `href="#"` and shared visible focus behavior.
+- [x] Only verified imagery is consumed and decorative image treatment follows `SPEC-ACC-003`.
+- [x] Production build Passed and the required rendered/manual validation Passed with evidence.
+- [x] No new dependency, hydration/client script, form, data, analytics, or tracking behavior was introduced.
 
 ## 14. Risks and Considerations
 
-| Risk or assumption | Impact | Mitigation or validation |
+| Risk or assumption | Outcome / remaining impact | Mitigation or validation |
 |---|---|---|
-| Exact breakpoint thresholds are unspecified. | Copied frame widths can fail between samples. | Derive thresholds from content pressure; validate both sides and required samples. |
-| Hero asset mapping/format may remain ambiguous. | Wrong visual/source quality. | Consume only `P01-T01`-verified assets; block/escalate unresolved mapping. |
-| Fidelity may conflict with robust reflow at edge widths. | Accessibility/overflow defect. | Preserve approved hierarchy and robust reflow; record material deviations explicitly. |
+| Exact breakpoint thresholds were unspecified. | Resolved for this section implementation; thresholds remain implementation details. | Chosen from composition pressure and accepted by rendered owner review rather than copied from frame widths. |
+| Hero asset mapping/format could have been ambiguous. | Resolved by P01 verification; no new mapping issue found. | Reused only prepared verified portrait/landscape/2×/decorative sources. |
+| No repository browser-test runner exists. | Remains a downstream automation limitation, not a P02-T01 acceptance blocker after owner manual review. | Build evidence, preview DOM inspection, and explicit owner rendered approval are recorded; P03-T01 still owns integrated final validation. |
 
 ## 15. Implementation Discoveries
 
-Record any material mismatch in approved copy, assets, design behavior, repository assumptions, or specification and route it to the earliest owning artifact before working around it.
+- P01's verified assets and shared CTA primitives were sufficient; no additional asset regeneration or dependency was necessary.
+- The Hero needed separate mid/narrow transitions and a very-narrow headline adjustment rather than a single global device breakpoint.
+- The deployed static DOM preserved the required content/link contract without client JavaScript.
+- No approved requirement, design decision, or specification was found materially wrong for this task.
 
 ## 16. Deviations
 
-Use `None` when implementation follows this task. Record every material deviation with reason, evidence, and impact.
+None.
 
 ## 18. Definition of Done
 
-- [ ] Objective and acceptance criteria implemented.
-- [ ] Required canonical validation Passed with evidence.
-- [ ] Source/prerequisite verification recorded with no unresolved material drift.
-- [ ] Implementation-output snapshot/commit lineage recorded.
-- [ ] Discoveries/deviations/remaining risks recorded.
-- [ ] `P02-T02` is unblocked with stable page/shared-style context.
+- [x] Objective and acceptance criteria implemented within scope.
+- [x] Required canonical build and visual validation Passed with evidence.
+- [x] Source/prerequisite review found no unresolved material drift.
+- [ ] Implementation-output snapshot/commit lineage recorded by canonical task completion against exact HEAD.
+- [x] Discoveries, deviations, and remaining risks recorded.
+- [x] P02-T02 can consume a stable upper-page implementation after this task branch is merged.
 
 ## 19. Completion Report
 
-Record changed files, input/prerequisite snapshots, output snapshot/commit, source verification, responsive transitions and rationale, asset treatment, validation results, deviations, remaining risks, documentation updates, and `P02-T02` as the next task.
+- Implementation files: `frontend/src/components/SiteHeader.astro`, `frontend/src/components/Hero.astro`, `frontend/src/components/Metrics.astro`, `frontend/src/pages/index.astro`, and `frontend/src/styles/global.css`.
+- Inputs/prerequisites: active `SRC-DS-001`, pinned `SRC-REPO-001`, completed P01-T01 output `SRC-REPO-002`, and the P01 verified asset/foundation set.
+- Result: static responsive Site Header + Hero + Metrics implementation with exact approved copy, native placeholder beta links, verified imagery, Epilogue typography, semantic source order, and shared accessible CTA behavior.
+- Validation: GitHub Actions production build Passed; Vercel preview served the expected static contract; project owner rendered visual/responsive review Passed.
+- Deviations: None.
+- Remaining risk: automated browser/viewport coverage is still absent from the repository and remains relevant to integrated P03-T01 validation.
+- Output lineage: to be filled canonically by the task-completion command against exact HEAD; the workflow record, not this Markdown file, owns the output snapshot ID and mutable task status.
+- Next dependency after merge: P02-T02 is the next ready task, but it must not be started without a later explicit user instruction.
