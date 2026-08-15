@@ -1,13 +1,7 @@
 {
-  "id": "pass-stage-3-gate-2026-08-14",
+  "id": "advance-stage-4-specification-2026-08-14",
   "argv": [
     "stage",
-    "review",
-    "--result",
-    "Passed",
-    "--evidence",
-    "Project owner approved ART-DESIGN. Stage 3 preflight recommends Passed with no findings; VER-005 confirms the active Figma source remains Unchanged, both required design review passes are complete, and no Stage 3 blocker remains.",
-    "--approved-by",
-    "Fernando Falcon"
+    "advance"
   ]
 }
