@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 4,
-    "status": "Ready",
+    "stage": 5,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -175,6 +175,16 @@
       "statusChangedAt": "2026-08-15T01:29:28.530Z",
       "statusEvidence": "Project owner approved ART-SPEC and authorized continuation after reviewing PR #8, which is merged on main at 7e851285b55d27d34f23b8fa39eeb22dbcfa0f28.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-DOCUMENT-REVIEW",
+      "type": "DOCUMENT-REVIEW",
+      "path": "DOCUMENT-REVIEW.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
