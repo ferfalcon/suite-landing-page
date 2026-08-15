@@ -1,7 +1,12 @@
 {
-  "id": "context-stage-11-final-approval-2026-08-15",
+  "id": "approve-stage-11-final-review-2026-08-15",
   "argv": [
-    "context",
-    "--json"
+    "artifact",
+    "approve",
+    "ART-IMPLEMENTATION-REVIEW",
+    "--evidence",
+    "Project owner explicitly approved the final implementation review in ChatGPT on 2026-08-15 with: Approve final review.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
