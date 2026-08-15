@@ -1,13 +1,7 @@
 {
-  "id": "pass-stage-0-gate-2026-08-14",
+  "id": "advance-to-stage-1-2026-08-14",
   "argv": [
     "stage",
-    "review",
-    "--result",
-    "Passed",
-    "--evidence",
-    "Project owner approved Stage 0. Active Figma and repository inputs are verified, all Stage 0 control artifacts are reviewed and approved, scope and limitations are recorded, and the workflow record and generated views validate cleanly.",
-    "--approved-by",
-    "Fernando Falcon"
+    "advance"
   ]
 }
