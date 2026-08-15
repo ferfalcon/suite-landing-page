@@ -1,9 +1,9 @@
 {
-  "id": "approve-stage-0-project-context-2026-08-14",
+  "id": "approve-stage-0-workflow-state-2026-08-14",
   "argv": [
     "artifact",
     "approve",
-    "ART-PROJECT-CONTEXT",
+    "ART-WORKFLOW-STATE",
     "--evidence",
     "Project owner explicitly approved Stage 0 and authorized progression on 2026-08-14.",
     "--approved-by",
