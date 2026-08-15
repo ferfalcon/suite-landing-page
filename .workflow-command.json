@@ -1,5 +1,5 @@
 {
-  "id": "pass-p02-t01-visual-validation-2026-08-15",
+  "id": "fix-p02-t01-visual-trace-2026-08-15",
   "argv": [
     "task",
     "validation",
@@ -22,6 +22,6 @@
     "--evidence",
     "Project owner confirmation in ChatGPT on 2026-08-15: 'I just checked, I approve.' This resolves the previously blocked rendered visual/responsive acceptance check for P02-T01. The reviewed implementation was available on the P02-T01 Vercel preview, with build validation already passed in GitHub Actions run 31901631211 job 95053198240.",
     "--references",
-    "PLAN-001"
+    "PLAN-002"
   ]
 }
