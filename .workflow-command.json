@@ -1,9 +1,9 @@
 {
-  "id": "trace-plan-001-2026-08-15",
+  "id": "trace-plan-002-2026-08-15",
   "argv": [
     "trace",
     "define",
-    "PLAN-001",
+    "PLAN-002",
     "--owner",
     "ART-PLAN",
     "--required",
