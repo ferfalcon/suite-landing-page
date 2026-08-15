@@ -1,15 +1,18 @@
 {
-  "id": "create-p03-t01-2026-08-15",
+  "id": "scaffold-p02-t01-artifact-2026-08-15",
   "argv": [
-    "task",
-    "create",
+    "artifact",
+    "scaffold",
+    "TASK",
+    "--control",
+    "cli-managed",
     "--id",
-    "P03-T01",
+    "ART-TASK-P02-T01",
+    "--task-id",
+    "P02-T01",
     "--title",
-    "Complete integrated responsive, accessibility, visual, and preview validation",
-    "--prerequisites",
-    "P02-T01,P02-T02",
-    "--references",
-    "PLAN-004"
+    "Implement the header, hero, and metrics sections",
+    "--path",
+    "Phase-02--Task-01.md"
   ]
 }
