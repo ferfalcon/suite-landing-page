@@ -694,10 +694,13 @@
           "name": "Upper-page acceptance",
           "kind": "Visual",
           "required": true,
-          "status": "Blocked",
+          "status": "Passed",
           "expected": "Header, Hero, and Metrics materially match the approved design at supplied and representative responsive widths without overlap, clipping, or layout-caused horizontal scrolling",
-          "evidence": [],
-          "reason": "Required viewport-capable rendered visual comparison cannot be executed with the available environment; no browser/screenshot viewport runner is available and the repository defines no browser-validation command that can be invoked without inventing new tooling.",
+          "actual": "The project owner manually reviewed the rendered P02-T01 implementation and approved the visual and responsive result after the Vercel preview was available.",
+          "executedAt": "2026-08-15T18:58:00Z",
+          "evidence": [
+            "Project owner confirmation in ChatGPT on 2026-08-15: 'I just checked, I approve.' This resolves the previously blocked rendered visual/responsive acceptance check for P02-T01. The reviewed implementation was available on the P02-T01 Vercel preview, with build validation already passed in GitHub Actions run 31901631211 job 95053198240."
+          ],
           "references": [
             "PLAN-001"
           ]
