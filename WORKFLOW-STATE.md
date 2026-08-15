@@ -25,10 +25,13 @@ No blocking product, design, repository, or source question was identified at St
 
 ## 4. Architecture Decision
 
-- Separate `ARCHITECTURE.md`: Not yet decided in this narrative artifact.
-- Reason: Architecture necessity is intentionally deferred to Stage 6 after design, requirements, specification, and documentation-consistency evidence exist.
-- Evidence and constraints: Current scope is a static Astro landing page, but the workflow requires the Stage 6 decision to be recorded canonically rather than inferred prematurely.
-- Recorded by: Stage 6 decision owner when reached.
+- Separate `ARCHITECTURE.md`: **Not required** for the approved Stage 6 scope.
+- Canonical decision: `.workflow/workflow-record.json` records `architectureDecision.result = "Not required"` through `design-workflow architecture decide not-required`.
+- Rationale: The approved product is one static Astro marketing page with fixed content and native placeholder anchors. `REQUIREMENTS.md` and `SPEC.md` explicitly exclude backend APIs, authentication, persistence, analytics/tracking, visitor-data collection, additional application routes, and dynamic loading/error workflows; `SPEC-BEH-006` also establishes that no client-side JavaScript is required for the approved interactions.
+- Repository evidence: `frontend/package.json` has Astro as its only dependency, `frontend/astro.config.mjs` uses the default configuration, and `frontend/vercel.json` only defines the already-established ignored-build policy for commits that do not affect the frontend project root.
+- Boundary assessment: There is no meaningful multi-runtime, service, data, identity, routing, integration, migration, security, reliability, observability, or deployment-architecture choice to resolve before planning. Responsive transition thresholds, component/file organization, asset export/provenance, and validation sequencing remain implementation-planning/readiness decisions constrained by the approved specification.
+- Consequence: Do not create a placeholder `ARCHITECTURE.md`. Carry behavioral structural constraints in `SPEC.md`, and defer repository/file/component mapping and implementation order to the later planning stage.
+- Remaining architecture blockers: None for the approved baseline scope. Any later expansion that introduces real routes, data collection, services, integrations, authentication, persistence, or materially different deployment/runtime boundaries must reopen the architecture assessment.
 
 ## 5. Source Verification, Outputs, and Rebaseline History
 
