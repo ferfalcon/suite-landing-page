@@ -1,7 +1,14 @@
 {
-  "id": "advance-stage-3-design-2026-08-14",
+  "id": "verify-stage-3-figma-2026-08-14",
   "argv": [
-    "stage",
-    "advance"
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma Stage 3 inspection of Workflow page structure, responsive screens, component families, styles, variables, and screenshots",
+    "--evidence",
+    "Re-inspected Figma page 2140:147 for Stage 3 design intent. Home desktop 2140:148, tablet 2140:330, and mobile 2140:289 remain present with the same major responsive compositions; Components 2140:1310 still contains Site Header, Hero, Metrics, Testimonial, Footer and CTA state families; Design System Documentation 2140:1363 and primitive/semantic variables remain present. No material mismatch was detected against the approved Stage 2 requirements baseline."
   ]
 }
