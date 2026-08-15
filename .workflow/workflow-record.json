@@ -15,7 +15,11 @@
     "currentTask": null,
     "latestOutput": null,
     "latestValidationRuntime": null,
-    "architectureDecision": null
+    "architectureDecision": {
+      "result": "Not required",
+      "reason": "Approved scope is one static Astro marketing page with fixed content and native placeholder links. Requirements and specification explicitly exclude backend APIs, authentication, persistence, analytics/tracking, visitor data, additional routes, dynamic loading/error workflows, and require no client-side JavaScript for approved interactions. The repository has one Astro dependency, default Astro configuration, and an existing Vercel project-root build policy; responsive thresholds, component/file organization, asset handling, and validation sequencing are implementation-planning concerns rather than meaningful cross-cutting system boundaries.",
+      "recordedAt": "2026-08-15T02:08:26.553Z"
+    }
   },
   "snapshots": [
     {
