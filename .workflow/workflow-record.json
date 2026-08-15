@@ -584,7 +584,22 @@
       ],
       "output": null,
       "blocker": null,
-      "validation": []
+      "validation": [
+        {
+          "name": "Foundation acceptance",
+          "kind": "Build",
+          "required": true,
+          "status": "Not executed",
+          "expected": "The Astro production build succeeds; every consumed asset has authoritative mapping/provenance/use evidence; the foundation introduces no unsupported metadata, dependency, client runtime, tracking, or data behavior; shared document/focus/reduced-motion defaults remain accessible and static.",
+          "command": "pnpm --dir frontend build",
+          "environment": "repository root and rendered foundation inspection",
+          "evidence": [],
+          "reason": "Stage 10 implementation has not started.",
+          "references": [
+            "PLAN-001"
+          ]
+        }
+      ]
     },
     {
       "id": "P02-T01",
