@@ -1,0 +1,64 @@
+name: P03-T01 Integrated Acceptance
+
+on:
+  push:
+    branches: [agent/p03-t01-final-validation]
+    paths: ['frontend/**', '.github/workflows/p03-t01-acceptance.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Build frontend
+        run: |
+          corepack enable pnpm
+          pnpm --dir frontend install --frozen-lockfile
+          pnpm --dir frontend build
+      - name: Start preview
+        run: |
+          pnpm --dir frontend preview --host 127.0.0.1 >/tmp/preview.log 2>&1 &
+          for i in {1..30}; do curl -fsS http://127.0.0.1:4321/ >/dev/null && exit 0; sleep 1; done
+          cat /tmp/preview.log; exit 1
+      - name: Install browser harness
+        run: npm install --prefix /tmp/validator playwright-core@1.55.0
+      - name: Browser acceptance
+        run: |
+          mkdir -p /tmp/screens
+          cat >/tmp/validator/check.mjs <<'EOF'
+          import { chromium } from '/tmp/validator/node_modules/playwright-core/index.mjs';
+          import fs from 'node:fs';
+          const executablePath=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(fs.existsSync);
+          const browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
+          const widths=[1600,1440,1121,1120,1041,1040,900,768,700,620,619,500,375,320];
+          const refs=new Map([[1440,{height:1716,header:[166,50,1110,52],hero:[166,182,1110,600],testimonial:[167,972,1109,535],footer:[0,1252,1440,464]}],[768,{height:1904,header:[32,32,704,52],hero:[32,164,704,480],metrics:[32,724,704,86],testimonial:[32,1076,704,684],footer:[0,1440,768,464]}],[375,{height:2399,header:[16,24,343,52],hero:[16,140,343,599],metrics:[16,803,343,338],testimonial:[0,1426,375,744],footer:[0,1935,375,464]}]]);
+          const ok=(v,m)=>{if(!v)throw new Error(m)}, near=(a,b)=>Math.abs(a-b)<=2;
+          const rgb=s=>{const m=s.match(/rgba?\((\d+(?:\.\d+)?)[, ]+\s*(\d+(?:\.\d+)?)[, ]+\s*(\d+(?:\.\d+)?)/);if(!m)throw new Error(`bad color ${s}`);return m.slice(1,4).map(Number)};
+          const lum=c=>{const v=rgb(c).map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return .2126*v[0]+.7152*v[1]+.0722*v[2]}, ratio=(a,b)=>{const x=[lum(a),lum(b)].sort((p,q)=>q-p);return(x[0]+.05)/(x[1]+.05)};
+          for(const width of widths){
+            const page=await browser.newPage({viewport:{width,height:1000}}), errors=[], requests=[];
+            page.on('console',m=>{if(m.type()==='error')errors.push(m.text())}); page.on('pageerror',e=>errors.push(e.message));
+            await page.goto('http://127.0.0.1:4321/',{waitUntil:'networkidle'}); page.on('request',r=>requests.push(r.url()));
+            const s=await page.evaluate(()=>{const rect=q=>{const r=document.querySelector(q).getBoundingClientRect();return[r.x,r.y,r.width,r.height]},css=q=>getComputedStyle(document.querySelector(q)),text=q=>document.querySelector(q)?.textContent.replace(/\s+/g,' ').trim();return{scrollWidth:document.documentElement.scrollWidth,innerWidth,bodyHeight:document.body.getBoundingClientRect().height,header:rect('.site-header'),hero:rect('.hero'),metricsRect:rect('.metrics'),testimonial:rect('.testimonial'),footer:rect('.site-footer'),links:[...document.querySelectorAll('a')].map(a=>{const r=a.getBoundingClientRect();return{text:a.textContent.trim(),href:a.getAttribute('href'),rect:[r.x,r.y,r.width,r.height]}}),h1:document.querySelectorAll('h1').length,main:document.querySelectorAll('main').length,headerCount:document.querySelectorAll('header').length,footerCount:document.querySelectorAll('footer').length,order:[...document.querySelectorAll('body header, body main > .upper-page > *, body main > .testimonial, body > footer')].map(e=>e.matches('header')?'Header':e.classList.contains('hero')?'Hero':e.classList.contains('metrics')?'Metrics':e.classList.contains('testimonial')?'Testimonial':'Footer'),heroLines:[...document.querySelectorAll('.hero__title-line')].map(e=>e.textContent.replace(/\s+/g,' ').trim()),testimonialTitle:text('.testimonial__title'),metricValues:[...document.querySelectorAll('.metric__value')].map(e=>e.textContent.trim()),metricLabels:[...document.querySelectorAll('.metric__label')].map(e=>e.textContent.trim()),decorative:[...document.querySelectorAll('img')].every(i=>i.alt===''),scripts:document.scripts.length,storage:[localStorage.length,sessionStorage.length,document.cookie],colors:{body:css('body').color,bg:css('body').backgroundColor,secondary:css('.hero__body').color,primaryText:css('.cta--primary').color,primaryBg:css('.cta--primary').backgroundColor,secondaryText:css('.cta--secondary').color,border:css('.cta--secondary').borderTopColor,testimonialText:css('.testimonial__body').color,testimonialTitle:css('.testimonial__title').color,testimonialBg:css('.testimonial').backgroundColor,footerBg:css('.site-footer').backgroundColor}}});
+            ok(s.scrollWidth<=s.innerWidth,`${width}: horizontal overflow`);ok(s.h1===1&&s.main===1&&s.headerCount===1&&s.footerCount===1,`${width}: semantic hierarchy`);ok(s.order.join('|')==='Header|Hero|Metrics|Testimonial|Footer',`${width}: section order ${s.order}`);ok(s.links.length===5&&s.links.every(l=>l.href==='#'),`${width}: link contract`);ok(s.links.map(l=>l.text).join('|')==='Request Beta Access|Request Beta Access|Facebook|Twitter|Instagram',`${width}: link names/order`);ok(s.links.every(l=>l.rect[2]>=24&&l.rect[3]>=24),`${width}: target size`);ok(s.decorative&&s.scripts===0&&s.storage[0]===0&&s.storage[1]===0&&s.storage[2]==='',`${width}: static/decorative boundary`);ok(s.heroLines.join('|')==='A super solution|for your business.'&&s.testimonialTitle==='It just works.',`${width}: heading content`);ok(s.metricValues.join('|')==='2K+|8|1.2M'&&s.metricLabels.join('|')==='Companies|Languages|Leads',`${width}: metric content`);
+            const c={body:ratio(s.colors.body,s.colors.bg),secondary:ratio(s.colors.secondary,s.colors.bg),primary:ratio(s.colors.primaryText,s.colors.primaryBg),secondaryCta:ratio(s.colors.secondaryText,s.colors.bg),inverse:ratio(s.colors.testimonialText,s.colors.testimonialBg),display:ratio(s.colors.testimonialTitle,s.colors.testimonialBg),boundary:ratio(s.colors.border,s.colors.bg),social:ratio('rgb(23, 35, 57)',s.colors.footerBg)};ok(c.body>=4.5&&c.secondary>=4.5&&c.primary>=4.5&&c.secondaryCta>=4.5&&c.inverse>=4.5,`${width}: normal text/label contrast ${JSON.stringify(c)}`);ok(c.display>=3&&c.boundary>=3&&c.social>=3,`${width}: display/non-text contrast ${JSON.stringify(c)}`);
+            const ref=refs.get(width);if(ref){const check=(n,a,e)=>e.forEach((v,i)=>ok(near(a[i],v),`${width}: ${n}[${i}] ${a[i]} != ${v}`));check('header',s.header,ref.header);check('hero',s.hero,ref.hero);if(ref.metrics)check('metrics',s.metricsRect,ref.metrics);check('testimonial',s.testimonial,ref.testimonial);check('footer',s.footer,ref.footer);ok(near(s.bodyHeight,ref.height),`${width}: height ${s.bodyHeight} != ${ref.height}`);await page.screenshot({path:`/tmp/screens/${width}.png`,fullPage:true})}
+            const focus=[];for(let i=0;i<5;i++){await page.keyboard.press('Tab');const f=await page.evaluate(()=>{const e=document.activeElement,s=getComputedStyle(e),r=e.getBoundingClientRect();return{name:e.textContent.trim(),outline:parseFloat(s.outlineWidth)||0,shadow:s.boxShadow,rect:[r.x,r.y,r.width,r.height]}});focus.push(f.name);ok(f.outline>=3||f.shadow!=='none',`${width}: focus style ${f.name}`);ok(f.rect[0]>=-1&&f.rect[0]+f.rect[2]<=width+1,`${width}: clipped focus ${f.name}`)}ok(focus.join('|')==='Request Beta Access|Request Beta Access|Facebook|Twitter|Instagram',`${width}: tab order ${focus}`);
+            const p0=await page.locator('.cta--primary').evaluate(e=>getComputedStyle(e).backgroundImage);await page.locator('.cta--primary').hover();const p1=await page.locator('.cta--primary').evaluate(e=>getComputedStyle(e).backgroundImage);ok(p0!==p1,`${width}: primary hover`);const q0=await page.locator('.cta--secondary').evaluate(e=>getComputedStyle(e).backgroundColor);await page.locator('.cta--secondary').hover();const q1=await page.locator('.cta--secondary').evaluate(e=>getComputedStyle(e).backgroundColor);ok(q0!==q1,`${width}: secondary hover`);await page.emulateMedia({reducedMotion:'reduce'});const motion=await page.locator('.cta').first().evaluate(e=>getComputedStyle(e).transitionDuration);ok(motion.split(',').every(v=>parseFloat(v)===0),`${width}: reduced motion ${motion}`);
+            const before=requests.length;for(const q of ['.site-header__cta','.hero .cta','.site-footer__social-link:nth-child(1)','.site-footer__social-link:nth-child(2)','.site-footer__social-link:nth-child(3)']){await page.locator(q).focus();await page.keyboard.press('Enter')}await page.waitForTimeout(50);ok(requests.length===before,`${width}: link activation network activity`);ok(errors.length===0,`${width}: runtime errors ${errors.join(' | ')}`);console.log(`${width}px PASS ${JSON.stringify({height:s.bodyHeight,contrast:c})}`);await page.close();
+          }
+          const z=await browser.newPage({viewport:{width:1280,height:900}});await z.goto('http://127.0.0.1:4321/',{waitUntil:'networkidle'});await z.evaluate(()=>document.documentElement.style.zoom='2');const zoom=await z.evaluate(()=>({visible:[...document.querySelectorAll('h1,p,a')].every(e=>{const r=e.getBoundingClientRect(),s=getComputedStyle(e);return r.width>0&&r.height>0&&s.display!=='none'&&s.visibility!=='hidden'}),links:[...document.querySelectorAll('a')].length}));ok(zoom.visible&&zoom.links===5,'200% zoom resilience');await z.close();await browser.close();console.log('P03-T01 PASS');
+          EOF
+          node /tmp/validator/check.mjs
+      - name: Upload source-width screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p03-source-width-screenshots
+          path: /tmp/screens/*.png
+          if-no-files-found: warn
