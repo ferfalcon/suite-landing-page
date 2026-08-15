@@ -18,7 +18,7 @@ execution_mode: Gated
 
 ## 1. Document Information
 
-- Version: 0.2
+- Version: 0.3
 - Scope: Single responsive Suite marketing landing page represented by the approved `🤖 Workflow` Figma page.
 - Last updated: 2026-08-15
 - Owner: Project owner / Suite landing page workflow
@@ -32,7 +32,7 @@ execution_mode: Gated
 
 The current frontend baseline is an Astro starter rather than the approved Suite landing page. The project must deliver one responsive static landing page that communicates Suite's marketing proposition, proof metrics, testimonial, and brand footer while preserving the approved design evidence, remaining usable between the supplied viewport examples, and providing implementation accessibility that the visual design alone cannot prove.
 
-This requirements artifact defines required outcomes and quality boundaries. It does not choose CSS breakpoints, component architecture, asset formats, CTA destinations, social URLs, or other implementation details that are not established by approved evidence.
+This requirements artifact defines required outcomes and quality boundaries. It does not choose CSS breakpoints, component architecture, asset formats, production CTA destinations, production social URLs, or other implementation details that are not established by approved evidence or an explicit owner decision. For the current implementation scope, the project owner explicitly selected `href="#"` as the placeholder destination for all “Request Beta Access” CTA links and all footer social links.
 
 ## 3. Goals and Non-goals
 
@@ -42,13 +42,14 @@ This requirements artifact defines required outcomes and quality boundaries. It 
 - Preserve the demonstrated desktop, tablet, and mobile transformations while remaining usable between and beyond the supplied examples.
 - Make the page understandable and operable with semantic structure, keyboard access, visible focus, accessible naming, appropriate image treatment, and responsive reflow.
 - Keep delivery appropriate for a static marketing page, avoiding unnecessary client-side behavior and dependencies.
-- Preserve traceability from approved design evidence through later design, specification, implementation, and validation stages.
+- Implement the approved placeholder-link behavior consistently: `href="#"` for both beta CTAs and all footer social links.
+- Preserve traceability from approved design evidence and owner decisions through later design, specification, implementation, and validation stages.
 
 ### Non-goals
 
 - Implement or modify any Figma page outside `🤖 Workflow`.
 - Add backend services, authentication, persistence, account features, or application workflows not established by the approved scope.
-- Invent a beta-request form, CTA destination, social-media URL, analytics behavior, tracking, or data collection.
+- Invent a beta-request form, production CTA destination, production social-media URL, analytics behavior, tracking, or data collection.
 - Add unrelated repository refactors or dependency changes.
 - Treat 375px, 768px, or 1440px as automatic CSS breakpoint thresholds merely because those are the supplied Figma frame widths.
 - Define detailed visual rules, repository structure, implementation order, or architecture in this artifact.
@@ -58,7 +59,7 @@ This requirements artifact defines required outcomes and quality boundaries. It 
 | User or actor | Need | Evidence or authority |
 |---|---|---|
 | Prospective Suite visitor | Understand the product proposition, supporting proof, and testimonial in a clear single-page hierarchy. | `EVD-001`, `EVD-002`, `EVD-003` |
-| Prospective visitor seeking beta access | Recognize the “Request Beta Access” calls to action; activation behavior must be defined before those controls are implementation-ready. | `EVD-002`, `EVD-007`, `AUD-003` |
+| Prospective visitor seeking beta access | Recognize the “Request Beta Access” links and receive the approved placeholder link behavior for the current scope. | `EVD-002`, `EVD-007`, owner decision 2026-08-14 |
 | Keyboard or assistive-technology visitor | Access the same content and interactive affordances in a meaningful order with perceivable focus and names. | `EVD-008`, `AUD-004`, approved `PROJECT-CONTEXT.md` |
 | Frontend maintainer | Work from stable, traceable requirements and reusable source patterns without silently inventing product behavior. | Approved `PROJECT-CONTEXT.md`, `EVD-004`–`EVD-006` |
 
@@ -77,18 +78,18 @@ This requirements artifact defines required outcomes and quality boundaries. It 
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The site header must present the Suite brand mark and a secondary “Request Beta Access” affordance.
-- **Rationale:** Both elements are present in every supplied responsive composition.
-- **Evidence:** `EVD-002`, `EVD-004`
+- **Description:** The site header must present the Suite brand mark and a secondary “Request Beta Access” link using `href="#"` for the current implementation scope.
+- **Rationale:** Both elements are present in every supplied responsive composition; the placeholder destination is an explicit owner decision.
+- **Evidence:** `EVD-002`, `EVD-004`, owner decision 2026-08-14
 - **Acceptance criteria:** `AC-003`
 
 ### REQ-FR-003 — Present the hero proposition
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The hero must present the approved headline “A super solution for your business.”, the approved supporting marketing copy, a primary “Request Beta Access” affordance, and the approved product visual.
-- **Rationale:** These are the primary proposition elements in the approved design.
-- **Evidence:** `EVD-002`
+- **Description:** The hero must present the approved headline “A super solution for your business.”, the approved supporting marketing copy, a primary “Request Beta Access” link using `href="#"`, and the approved product visual.
+- **Rationale:** These are the primary proposition elements in the approved design; the placeholder destination is an explicit owner decision.
+- **Evidence:** `EVD-002`, owner decision 2026-08-14
 - **Acceptance criteria:** `AC-004`, `AC-005`
 
 ### REQ-FR-004 — Present the proof metrics
@@ -109,13 +110,13 @@ This requirements artifact defines required outcomes and quality boundaries. It 
 - **Evidence:** `EVD-003`, `EVD-004`
 - **Acceptance criteria:** `AC-007`
 
-### REQ-FR-006 — Present the footer content
+### REQ-FR-006 — Present the footer content and placeholder social links
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The footer must present the Suite brand mark, approved copyright text, and Facebook, Twitter, and Instagram platform affordances. This requirement establishes their presence, not unverified destination URLs.
-- **Rationale:** These elements appear in all supplied footer variants.
-- **Evidence:** `EVD-003`, `EVD-004`
+- **Description:** The footer must present the Suite brand mark, approved copyright text, and Facebook, Twitter, and Instagram links. Each social link must use `href="#"` for the current implementation scope.
+- **Rationale:** These elements appear in all supplied footer variants; production social destinations are not supplied by Figma, and the owner selected a placeholder destination.
+- **Evidence:** `EVD-003`, `EVD-004`, owner decision 2026-08-14
 - **Acceptance criteria:** `AC-008`
 
 ### REQ-FR-007 — Preserve responsive usability and transformations
@@ -131,14 +132,14 @@ This requirements artifact defines required outcomes and quality boundaries. It 
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The primary and secondary CTA affordances must expose clearly distinguishable default, hover-capable, and keyboard-focus presentations when those interaction modes apply. This requirement does not define the activation destination.
+- **Description:** The primary and secondary CTA links must expose clearly distinguishable default, hover-capable, and keyboard-focus presentations when those interaction modes apply.
 - **Rationale:** The design explicitly supplies Default, Hover, and Focus variants for both CTA families.
 - **Evidence:** `EVD-007`, `EVD-008`, `AUD-002`
 - **Acceptance criteria:** `AC-013`, `AC-014`
 
 ## 6. Business Rules
 
-No standalone product-domain business rule is established by the approved sources at Stage 2. In particular, the label “Request Beta Access” does not establish eligibility rules, form fields, submission behavior, account creation, permissions, or fulfillment behavior. Those rules must not be invented from the visual label.
+No standalone product-domain business rule is established by the approved sources at Stage 2. The “Request Beta Access” label does not establish eligibility rules, form fields, submission behavior, account creation, permissions, or fulfillment behavior. For this implementation scope it is only a placeholder anchor with `href="#"`; no beta-request workflow may be inferred from the label.
 
 ## 7. Data Requirements
 
@@ -157,7 +158,7 @@ No standalone product-domain business rule is established by the approved source
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The current scope does not require visitor-data collection, form submission, persistence, analytics, or tracking. Any such behavior must be introduced only by a later explicit approved requirement and must not be inferred from the CTA label.
+- **Description:** The current scope does not require visitor-data collection, form submission, persistence, analytics, or tracking. The placeholder `#` links must not introduce any such behavior.
 - **Required and optional data:** None in the current approved scope.
 - **Validation or ownership:** Later product approval is required before adding a data boundary.
 - **Privacy or retention evidence:** Approved `PROJECT-CONTEXT.md` states that no application data or sensitive workflow is in scope and unnecessary tracking/data collection must not be added.
@@ -257,8 +258,8 @@ No standalone product-domain business rule is established by the approved source
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The current landing-page scope must not introduce authentication, authorization, sensitive-data handling, persistent visitor identity, or tracking behavior without an explicit approved expansion of requirements.
-- **Evidence:** Approved `PROJECT-CONTEXT.md`
+- **Description:** The current landing-page scope must not introduce authentication, authorization, sensitive-data handling, persistent visitor identity, or tracking behavior without an explicit approved expansion of requirements. Placeholder `#` links do not create an application-data boundary.
+- **Evidence:** Approved `PROJECT-CONTEXT.md`, owner decision 2026-08-14
 - **Affected boundaries:** CTA behavior, analytics/tracking, any future form or service integration.
 - **Acceptance criteria:** `AC-016`
 
@@ -270,8 +271,9 @@ No additional security policy, authentication rule, retention period, or threat-
 - The 768px source demonstrates a tablet arrangement with a two-column hero, horizontal metrics, stacked testimonial, and horizontal footer.
 - The 375px source demonstrates a mobile arrangement with vertically sequenced hero content, stacked metrics, stacked testimonial, and centered/vertical footer composition.
 - These are required outcome examples under `REQ-FR-007` and `REQ-NFR-001`; they are not automatic breakpoint declarations.
-- Baseline copy, metric values, testimonial attribution, and platform labels must remain consistent with approved source evidence unless an explicit later owner decision changes content.
-- Alternate localization, long-content behavior, or variable-content rules are not established and remain outside the baseline requirement unless later approved.
+- Baseline copy, metric values, testimonial attribution, copyright text, and platform labels must remain consistent with approved source evidence unless an explicit later owner decision changes content.
+- Both “Request Beta Access” links and all three footer social links use `href="#"` in the current implementation scope.
+- Alternate localization, long-content behavior, variable-content rules, and production link destinations are not established and remain outside the baseline requirement unless later approved.
 
 ## 12. Constraints
 
@@ -285,13 +287,13 @@ Referenced existing constraints:
 - `REQ-CON-004`: The pinned implementation baseline is the Astro starter and does not already implement Suite.
 - `REQ-CON-005`: Figma library subscription does not prove material dependency usage in scoped nodes.
 
-### REQ-CON-006 — Resolve CTA activation behavior before behavioral specification is implementation-ready
+### REQ-CON-006 — Use the approved CTA placeholder destination
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The destination or outcome of “Request Beta Access” activation must be explicitly approved before final behavioral specification and implementation tasks that include CTA activation are marked ready. The current design does not establish a destination or form behavior.
-- **Evidence:** `EVD-007`, `AUD-003`, audit question `Q-001`
-- **Impact:** Stage 2 can define the unresolved requirement boundary, but implementation must not invent the action.
+- **Description:** Both “Request Beta Access” controls must be implemented as links with `href="#"` in the current scope. No form, route, external URL, beta-submission workflow, or other activation behavior is implied.
+- **Evidence:** `EVD-007`, `AUD-003`, owner decision 2026-08-14 resolving audit question `Q-001`
+- **Impact:** Removes the CTA destination blocker for later design/specification and implementation decomposition while intentionally keeping production beta behavior out of scope.
 - **Acceptance criteria:** `AC-026`
 
 ### REQ-CON-007 — Do not equate supplied frame widths with implementation breakpoints
@@ -303,13 +305,13 @@ Referenced existing constraints:
 - **Impact:** Prevents unsupported breakpoint rules.
 - **Acceptance criteria:** `AC-027`
 
-### REQ-CON-008 — Resolve social-link behavior before making it product-functional
+### REQ-CON-008 — Use approved placeholder destinations for social links
 
 - **Classification:** Confirmed
 - **Priority:** Must
-- **Description:** The approved design establishes Facebook, Twitter, and Instagram affordances but does not establish destination URLs. If the affordances are implemented as links, their destinations must be explicitly approved before implementation; otherwise the implementation must not invent external URLs.
-- **Evidence:** `EVD-003`, `AUD-006`
-- **Impact:** Footer presence is required, destination behavior remains unresolved.
+- **Description:** Facebook, Twitter, and Instagram affordances must be implemented as links with `href="#"` in the current scope. No production external destination may be invented.
+- **Evidence:** `EVD-003`, `AUD-006`, owner decision 2026-08-14 resolving requirements question `Q-004`
+- **Impact:** Removes the social-destination blocker while keeping production social URLs outside scope.
 - **Acceptance criteria:** `AC-028`
 
 ## 13. Dependencies
@@ -320,8 +322,8 @@ Referenced existing constraints:
 | Existing Astro frontend baseline | `SRC-REPO-001` | Technical starting point | Available; immutable commit | Current app is still the starter, so full page implementation remains later work |
 | Hero/product imagery | `EVD-002`, `AUD-006` | Hero visual fidelity | Available in Figma source | Export format/provenance not yet documented |
 | Testimonial portrait/decorations | `EVD-003`, `AUD-006` | Testimonial fidelity | Available in Figma source | Export format/provenance not yet documented |
-| CTA destination decision | `EVD-007`, `AUD-003`, `REQ-CON-006` | Product behavior | Unresolved | Blocks final CTA behavior/implementation readiness |
-| Social destination decision | `EVD-003`, `REQ-CON-008` | Footer link behavior | Unresolved | Blocks invented external destinations |
+| CTA placeholder decision | owner decision 2026-08-14, `REQ-CON-006` | Current-scope activation target | Resolved: `#` | Production destination intentionally deferred |
+| Social placeholder decision | owner decision 2026-08-14, `REQ-CON-008` | Current-scope footer link target | Resolved: `#` | Production destinations intentionally deferred |
 
 ## 14. Assumptions and Open Questions
 
@@ -330,10 +332,14 @@ Referenced existing constraints:
 - **A-001:** The three Home frames represent one responsive route/page rather than separate routes, as already inferred by the approved audit.
 - **A-002:** The approved copy, metric values, testimonial attribution, copyright text, and platform labels remain the baseline content until an explicit approved content change is recorded.
 
+### Resolved owner decisions
+
+- **Q-001 — Resolved 2026-08-14:** Both “Request Beta Access” links use `href="#"` for the current implementation scope.
+- **Q-004 — Resolved 2026-08-14:** Facebook, Twitter, and Instagram links use `href="#"` for the current implementation scope.
+
 ### Blocking questions
 
-- **Q-001 — CTA activation:** What must “Request Beta Access” do when activated? This must be resolved before the CTA activation behavior is finalized in `SPEC.md` or an implementation task containing that behavior becomes Ready.
-- **Q-004 — Social destinations:** Are the footer platform affordances intended to be links, and if so, what are the approved destination URLs? This must be resolved before external destinations are implemented.
+- None at Stage 2 after the owner resolved `Q-001` and `Q-004` with placeholder `#` destinations.
 
 ### Non-blocking questions
 
@@ -345,8 +351,7 @@ Referenced existing constraints:
 
 | Risk | Impact | Likelihood | Mitigation | Blocking |
 |---|---|---|---|---|
-| CTA destination remains undefined | Product behavior could be invented or reworked | High while unresolved | Resolve `Q-001` before Stage 4 behavior is finalized / implementation readiness | Yes for CTA behavior, not for Stage 2 requirement review |
-| Social destinations remain undefined | Incorrect external links could be invented | Medium | Resolve `Q-004` before making footer affordances interactive | Yes for external-link behavior |
+| Placeholder `#` links are not production destinations | Links intentionally do not reach a real beta/social destination | Certain in current scope | Treat `#` as the explicit approved placeholder; replace only under a later approved requirement | No |
 | Figma source is mutable | Later source changes could invalidate evidence | Medium | Re-verify `SRC-DS-001` at relevant stages/tasks | No while verification remains Unchanged |
 | Only three viewport examples are supplied | Intermediate-width layout may drift or fail | Medium | Derive transitions from content/layout failure and verify representative intermediate widths | No |
 | Accessibility behavior is not proven by Figma | Semantic/keyboard/reflow issues could survive visual matching | Medium | Carry `REQ-AR-*` into design/spec/tasks and execute accessibility checks | No |
@@ -357,12 +362,12 @@ Referenced existing constraints:
 
 - **AC-001:** One rendered landing-page route exposes the major content sequence Header → Hero → Metrics → Testimonial → Footer in a logical reading order.
 - **AC-002:** No additional product route, workflow, or major section outside the approved scope is required to satisfy the baseline landing page.
-- **AC-003:** The header shows the Suite brand mark and the secondary “Request Beta Access” affordance at each supplied responsive example.
-- **AC-004:** The hero shows the approved headline, supporting copy, and primary CTA label without unapproved text substitutions.
+- **AC-003:** The header shows the Suite brand mark and a secondary “Request Beta Access” anchor whose `href` is exactly `#` at each supplied responsive example.
+- **AC-004:** The hero shows the approved headline, supporting copy, and a primary “Request Beta Access” anchor whose `href` is exactly `#`, without unapproved text substitutions.
 - **AC-005:** The hero includes the approved product visual in each supplied responsive composition, using the appropriate source treatment for the layout.
 - **AC-006:** The rendered metrics show `2K+ / COMPANIES`, `8 / LANGUAGES`, and `1.2M / LEADS`.
 - **AC-007:** The testimonial renders the approved portrait, heading, quote, author, and role/company attribution.
-- **AC-008:** The footer renders the Suite brand mark, approved copyright text, and the Facebook, Twitter, and Instagram platform affordances without invented destination URLs.
+- **AC-008:** The footer renders the Suite brand mark, approved copyright text, and Facebook, Twitter, and Instagram anchors; each social anchor has `href="#"`.
 - **AC-009:** At 1440px, the material layout arrangement matches the approved desktop composition, subject only to documented accessibility/platform adjustments.
 - **AC-010:** At 768px, the material layout arrangement matches the approved tablet composition, subject only to documented accessibility/platform adjustments.
 - **AC-011:** At 375px, the material layout arrangement matches the approved mobile composition, subject only to documented accessibility/platform adjustments.
@@ -370,7 +375,7 @@ Referenced existing constraints:
 - **AC-013:** On a hover-capable pointer, primary and secondary CTA presentations expose the approved hover intent when hovered.
 - **AC-014:** When a CTA receives keyboard focus, its focus state is clearly perceivable and not dependent on hover.
 - **AC-015:** Baseline marketing content is available in the initial rendered page without requiring a backend API, account, or authenticated session.
-- **AC-016:** No form submission, visitor persistence, analytics/tracking, authentication, sensitive-data handling, or similar data boundary is introduced without a requirement that explicitly authorizes it.
+- **AC-016:** No form submission, visitor persistence, analytics/tracking, authentication, sensitive-data handling, or similar data boundary is introduced by the placeholder links or elsewhere without an explicit requirement.
 - **AC-017:** Automated/manual semantic inspection establishes a meaningful page structure and heading/region order corresponding to the content hierarchy rather than only visual coordinates.
 - **AC-018:** Every implemented interactive element can be reached and operated using the keyboard where applicable, and focus remains visible throughout keyboard navigation.
 - **AC-019:** Implemented interactive controls expose meaningful accessible names; informative imagery has an appropriate text alternative and decorative imagery does not create redundant assistive-technology content.
@@ -380,15 +385,16 @@ Referenced existing constraints:
 - **AC-023:** Visual comparison at the three supplied source widths documents no unexplained material deviation in hierarchy, typography, spacing, color, imagery, or responsive arrangement.
 - **AC-024:** Any client-side JavaScript runtime or new dependency introduced for the landing page is explicitly justified by a requirement/specification that cannot be satisfied equivalently by the project’s static baseline approach.
 - **AC-025:** Repeated instances of the audited CTA and responsive section families exhibit no unintended behavior/style drift.
-- **AC-026:** Before CTA activation is specified as implementation-ready, an approved decision records its destination/outcome; no implementation task invents that behavior.
+- **AC-026:** Both “Request Beta Access” anchors use exactly `href="#"`; no form, external destination, application route, or beta-request workflow is introduced.
 - **AC-027:** Later responsive documentation records transition conditions based on design/content/layout behavior rather than asserting that 375/768/1440 are automatically the CSS breakpoints.
-- **AC-028:** Any implemented external social destination corresponds to an explicitly approved URL; no destination is inferred solely from the social-platform icon.
+- **AC-028:** Facebook, Twitter, and Instagram anchors each use exactly `href="#"`; no production social URL is inferred or introduced.
 
 ## 17. Definition of Done
 
 - [ ] All Must requirements and applicable acceptance criteria pass with evidence.
-- [ ] `Q-001` is resolved before CTA activation implementation is declared ready.
-- [ ] `Q-004` is resolved before external social destinations are implemented.
+- [ ] Both beta CTA anchors use `href="#"` consistently.
+- [ ] All footer social anchors use `href="#"` consistently.
+- [ ] No unapproved form, route, external destination, analytics, tracking, or data-collection behavior is introduced.
 - [ ] Responsive behavior is verified at the three supplied examples and representative intermediate/beyond widths selected by later specification.
 - [ ] Accessibility requirements are carried into specification/tasks and their required checks execute successfully.
 - [ ] Visual comparison against the active design snapshot is completed and material deviations are resolved or explicitly approved.
@@ -398,24 +404,24 @@ Referenced existing constraints:
 
 ## 18. Traceability
 
-| Requirement | Snapshot or evidence | Design decision | Specification | Validation |
+| Requirement | Snapshot, evidence, or owner decision | Design decision | Specification | Validation |
 |---|---|---|---|---|
 | `REQ-FR-001` | `EVD-001`, `EVD-004` | Pending Stage 3 | Pending Stage 4 | `AC-001`, `AC-002` |
-| `REQ-FR-002` | `EVD-002`, `EVD-004` | Pending Stage 3 | Pending Stage 4 | `AC-003` |
-| `REQ-FR-003` | `EVD-002` | Pending Stage 3 | Pending Stage 4 | `AC-004`, `AC-005` |
+| `REQ-FR-002` | `EVD-002`, `EVD-004`, owner decision 2026-08-14 | Pending Stage 3 | Pending Stage 4 | `AC-003` |
+| `REQ-FR-003` | `EVD-002`, owner decision 2026-08-14 | Pending Stage 3 | Pending Stage 4 | `AC-004`, `AC-005` |
 | `REQ-FR-004` | `EVD-001`, `EVD-004` | Pending Stage 3 | Pending Stage 4 | `AC-006` |
 | `REQ-FR-005` | `EVD-003`, `EVD-004` | Pending Stage 3 | Pending Stage 4 | `AC-007` |
-| `REQ-FR-006` | `EVD-003`, `EVD-004` | Pending Stage 3 | Pending Stage 4 | `AC-008` |
+| `REQ-FR-006` | `EVD-003`, `EVD-004`, owner decision 2026-08-14 | Pending Stage 3 | Pending Stage 4 | `AC-008` |
 | `REQ-FR-007` | `EVD-001`, `EVD-004`, `AUD-001` | Pending Stage 3 | Pending Stage 4 | `AC-009`–`AC-012` |
 | `REQ-FR-008` | `EVD-007`, `EVD-008`, `AUD-002` | Pending Stage 3 | Pending Stage 4 | `AC-013`, `AC-014` |
 | `REQ-DR-001` | Approved context, `EVD-002`, `EVD-003` | Pending as needed | Pending Stage 4 | `AC-015` |
-| `REQ-DR-002` | Approved context, `AUD-003` | Pending as needed | Pending Stage 4 | `AC-016` |
+| `REQ-DR-002` | Approved context, owner placeholder decision | Pending as needed | Pending Stage 4 | `AC-016` |
 | `REQ-AR-001`–`REQ-AR-006` | `EVD-001`, `EVD-004`, `EVD-007`, `EVD-008`, `AUD-004` | Pending Stage 3 | Pending Stage 4 | `AC-017`–`AC-022` |
 | `REQ-NFR-001`–`REQ-NFR-003` | `EVD-001`–`EVD-008`, approved context | Pending Stage 3 | Pending Stage 4 | `AC-023`–`AC-025` |
-| `REQ-SEC-001` | Approved context | Pending as needed | Pending Stage 4 | `AC-016` |
-| `REQ-CON-006` | `EVD-007`, `AUD-003`, `Q-001` | Pending owner decision | Pending Stage 4 | `AC-026` |
+| `REQ-SEC-001` | Approved context, owner placeholder decision | Pending as needed | Pending Stage 4 | `AC-016` |
+| `REQ-CON-006` | `EVD-007`, `AUD-003`, owner decision resolving `Q-001` | Owner decision: `#` | Pending Stage 4 | `AC-026` |
 | `REQ-CON-007` | `AUD-001`, `EVD-004` | Pending Stage 3 | Pending Stage 4 | `AC-027` |
-| `REQ-CON-008` | `EVD-003`, `AUD-006` | Pending owner/content decision | Pending Stage 4 | `AC-028` |
+| `REQ-CON-008` | `EVD-003`, `AUD-006`, owner decision resolving `Q-004` | Owner decision: `#` | Pending Stage 4 | `AC-028` |
 
 ## 19. Source Verification
 
@@ -423,6 +429,7 @@ Referenced existing constraints:
 - Result: `Unchanged` for `SRC-DS-001` before this requirements baseline was authored.
 - Material structure verified: Product Screens (`2140:1361`), Components (`2140:1310`), Design System Documentation (`2140:1363`), and the same desktop/tablet/mobile Home frames and responsive component families.
 - Repository baseline: `SRC-REPO-001` remains the immutable implementation input baseline; this stage does not make implementation claims beyond approved context.
+- Product decision added after source review: the project owner approved `href="#"` as the current-scope destination for both beta CTAs and all footer social links. This is an owner requirement, not a claim about Figma prototype behavior.
 
 ## 20. Review
 
@@ -431,24 +438,26 @@ Referenced existing constraints:
 - [x] Requirements cover the agreed scope.
 - [x] Requirements are necessary, specific, testable, and prioritized.
 - [x] Goals, non-goals, users, functional needs, data boundaries, accessibility, quality, security scope, constraints, dependencies, risks, assumptions, questions, acceptance criteria, and Definition of Done are covered as applicable.
-- [x] Unsupported business, security, retention, browser, or performance rules were not invented.
+- [x] `Q-001` and `Q-004` are explicitly resolved by the owner-approved `href="#"` placeholder rule.
+- [x] Unsupported business, security, retention, browser, production-destination, or performance rules were not invented.
 - [x] Snapshot IDs in metadata exist and were actually used.
 
 ### Pass 2 — Consistency, traceability, source integrity, risks, and uncertainty
 
 - [x] Identifiers follow `Identifier-Conventions.md`, including preservation rather than redefinition of the Stage 0 `REQ-CON-001`–`REQ-CON-005` history.
-- [x] Every material requirement has evidence from an approved artifact or pinned snapshot.
+- [x] Every material requirement has evidence from an approved artifact, pinned snapshot, or explicit owner decision.
 - [x] No source changed silently after the artifact baseline was recorded; `VER-004` records the Stage 2 re-verification.
-- [x] Confirmed, inferred, recommended, assumed, and open information remain distinct.
-- [x] Blocking questions are visible and tied to the stage where they become blocking.
-- [x] Requirements do not choose arbitrary breakpoints, CTA destinations, social URLs, backend behavior, or implementation structure.
+- [x] The `#` destination is identified as an owner decision rather than misrepresented as Figma evidence.
+- [x] Confirmed, inferred, assumed, resolved, and open information remain distinct.
+- [x] No Stage 2 blocking product question remains.
+- [x] Requirements do not choose arbitrary breakpoints, production URLs, backend behavior, or implementation structure beyond the explicit placeholder-link requirement.
 
 ## 21. Completion Summary
 
-- Requirements status: Reviewed narrative pending canonical artifact review and owner approval.
+- Requirements narrative: Re-reviewed after explicit owner decision; canonical artifact review must be refreshed before approval.
 - Active snapshots used: `SRC-DS-001`, `SRC-REPO-001`.
 - Latest design verification: `VER-004` — `Unchanged`.
-- Review correction: normalized `REQ-CON-008` to standard `Must` priority while keeping link behavior conditional in the description.
-- Main unresolved product behavior: `Q-001` CTA activation destination/outcome.
-- Secondary unresolved behavior: `Q-004` footer social destinations/activation.
-- Ready for Stage 3: No; Gated owner approval is still required after the canonical review state is recorded.
+- Owner decision incorporated: both “Request Beta Access” links and Facebook/Twitter/Instagram links use `href="#"` in the current implementation scope.
+- Resolved questions: `Q-001`, `Q-004`.
+- Remaining non-blocking questions: `Q-002`, `Q-003`, `Q-005`.
+- Ready for Stage 3: No; the refreshed Stage 2 review and Gated owner approval are still required.
