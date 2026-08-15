@@ -1,10 +1,10 @@
 {
-  "id": "review-art-task-p01-t01-2026-08-15",
+  "id": "review-art-task-p02-t01-2026-08-15",
   "argv": [
     "artifact",
     "review",
-    "ART-TASK-P01-T01",
+    "ART-TASK-P02-T01",
     "--evidence",
-    "Two-pass Stage 9 review confirms P01-T01 has one coherent foundation objective, accurate source/prerequisite rules, concrete file ownership, static/no-data scope, asset-readiness handling, integrated accessibility/responsive behavior, supported build/manual validation, acceptance criteria, risks, and output-lineage requirements with no implementation code."
+    "Two-pass Stage 9 review confirms P02-T01 maps PLAN-002 to one coherent Header/Hero/Metrics objective with enforced P01 prerequisite, exact file ownership/content/link contracts, responsive interpolation rules, native CTA/focus/image/reduced-motion accessibility, supported build/manual validation, acceptance criteria, risks, and output lineage with no implementation code."
   ]
 }
