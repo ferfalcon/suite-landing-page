@@ -250,13 +250,14 @@
       "id": "ART-PLAN-REVIEW",
       "type": "PLAN-REVIEW",
       "path": "PLAN-REVIEW.md",
-      "status": "Reviewed",
+      "status": "Approved",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
       ],
-      "statusChangedAt": "2026-08-15T02:40:10.737Z",
-      "statusEvidence": "Stage 8 PLAN-REVIEW.md completed its two-pass adversarial review. Five findings were corrected in PLAN.md; refreshed source verifications are VER-010 and VER-011; final readiness is Ready with documented risks and there are no unresolved technical decisions blocking task decomposition."
+      "statusChangedAt": "2026-08-15T02:45:33.207Z",
+      "statusEvidence": "Fernando Falcon approved the Stage 8 adversarial plan review and accepted its documented residual risks.",
+      "statusBy": "Fernando Falcon"
     }
   ],
   "traceItems": [],
