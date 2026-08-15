@@ -270,7 +270,15 @@
       ]
     }
   ],
-  "traceItems": [],
+  "traceItems": [
+    {
+      "id": "PLAN-001",
+      "owner": "ART-PLAN",
+      "status": "Active",
+      "required": true,
+      "references": []
+    }
+  ],
   "gates": [
     {
       "id": "GATE-001",
