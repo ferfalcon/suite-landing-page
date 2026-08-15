@@ -126,6 +126,14 @@
       "method": "Pinned repository baseline comparison against current main for Stage 8 plan challenge",
       "evidence": "Compared pinned SRC-REPO-001 commit 69b2949ace42bc06b61806755abdb9a2f95f5a96 with current main 815a9dd08a25b95e21ac79653e1576d1e64b6970. Current main adds workflow/documentation state and frontend/vercel.json build policy, while the landing-page starter entry/layout/package/component/assets remain unimplemented and no Suite landing-page implementation has begun. The pinned implementation baseline remains valid; the current Vercel build policy is a later repository constraint, not implementation output.",
       "checkedAt": "2026-08-15T02:36:30.378Z"
+    },
+    {
+      "id": "VER-012",
+      "snapshot": "SRC-DS-001",
+      "result": "Unchanged",
+      "method": "Connected Figma metadata and design-context inspection immediately before P01-T01 implementation",
+      "evidence": "Re-inspected Workflow page 2140:147 and confirmed the approved desktop 2140:148, tablet 2140:330, mobile 2140:289, component families, CTA states, required asset nodes, and design-system documentation remain present. Design context for color documentation 2140:951 still exposes Neutral 900 #172339, Neutral 500 #49566D, Neutral 200 #F3EDE7, Neutral 0 #FAF8F6, Eupatorium Purple 500 #CB30E3, and the documented semantic aliases. No material drift affecting P01-T01 was detected.",
+      "checkedAt": "2026-08-15T03:26:29.077Z"
     }
   ],
   "artifacts": [
