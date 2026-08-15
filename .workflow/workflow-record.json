@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 3,
-    "status": "Ready",
+    "stage": 4,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -154,6 +154,16 @@
       "statusChangedAt": "2026-08-15T01:17:55.328Z",
       "statusEvidence": "Project owner explicitly approved the reviewed Stage 3 design intent after PR #7 review on 2026-08-14.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-SPEC",
+      "type": "SPEC",
+      "path": "SPEC.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
