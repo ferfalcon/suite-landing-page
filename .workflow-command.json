@@ -1,5 +1,5 @@
 {
-  "id": "scaffold-p02-t01-artifact-2026-08-15",
+  "id": "scaffold-p03-t01-artifact-2026-08-15",
   "argv": [
     "artifact",
     "scaffold",
@@ -7,12 +7,12 @@
     "--control",
     "cli-managed",
     "--id",
-    "ART-TASK-P02-T01",
+    "ART-TASK-P03-T01",
     "--task-id",
-    "P02-T01",
+    "P03-T01",
     "--title",
-    "Implement the header, hero, and metrics sections",
+    "Complete integrated responsive, accessibility, visual, and preview validation",
     "--path",
-    "Phase-02--Task-01.md"
+    "Phase-03--Task-01.md"
   ]
 }
