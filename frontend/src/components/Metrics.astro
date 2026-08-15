@@ -1,0 +1,76 @@
+<section class="metrics" aria-label="Company results">
+	<div class="metric">
+		<p class="metric__value">2K+</p>
+		<p class="metric__label">Companies</p>
+	</div>
+	<div class="metric">
+		<p class="metric__value">8</p>
+		<p class="metric__label">Languages</p>
+	</div>
+	<div class="metric">
+		<p class="metric__value">1.2M</p>
+		<p class="metric__label">Leads</p>
+	</div>
+</section>
+
+<style>
+	.metrics {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-64);
+		inline-size: 190px;
+		margin: 0;
+	}
+
+	.metric p {
+		margin: 0;
+	}
+
+	.metric {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-4);
+	}
+
+	.metric__value {
+		color: var(--color-text-primary);
+		font-size: 48px;
+		font-weight: 700;
+		line-height: 1.2;
+		letter-spacing: -0.5px;
+	}
+
+	.metric__label {
+		color: var(--color-text-secondary);
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: 2.5px;
+		text-transform: uppercase;
+	}
+
+	@media (max-width: 1040px) and (min-width: 620px) {
+		.metrics {
+			flex-direction: row;
+			gap: var(--space-64);
+			inline-size: 100%;
+			text-align: center;
+		}
+
+		.metric {
+			flex: 1 1 0;
+		}
+	}
+
+	@media (max-width: 619px) {
+		.metrics {
+			align-items: center;
+			gap: var(--space-40);
+			inline-size: 100%;
+			text-align: center;
+		}
+
+		.metric {
+			inline-size: 100%;
+		}
+	}
+</style>
