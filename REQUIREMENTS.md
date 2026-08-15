@@ -18,7 +18,7 @@ execution_mode: Gated
 
 ## 1. Document Information
 
-- Version: 0.1
+- Version: 0.2
 - Scope: Single responsive Suite marketing landing page represented by the approved `🤖 Workflow` Figma page.
 - Last updated: 2026-08-15
 - Owner: Project owner / Suite landing page workflow
@@ -306,8 +306,8 @@ Referenced existing constraints:
 ### REQ-CON-008 — Resolve social-link behavior before making it product-functional
 
 - **Classification:** Confirmed
-- **Priority:** Must when social affordances are implemented as links
-- **Description:** The approved design establishes Facebook, Twitter, and Instagram affordances but does not establish destination URLs. Any interactive destinations must be explicitly approved before implementation; otherwise the implementation must not invent external URLs.
+- **Priority:** Must
+- **Description:** The approved design establishes Facebook, Twitter, and Instagram affordances but does not establish destination URLs. If the affordances are implemented as links, their destinations must be explicitly approved before implementation; otherwise the implementation must not invent external URLs.
 - **Evidence:** `EVD-003`, `AUD-006`
 - **Impact:** Footer presence is required, destination behavior remains unresolved.
 - **Acceptance criteria:** `AC-028`
@@ -316,7 +316,7 @@ Referenced existing constraints:
 
 | Dependency | Snapshot or evidence | Purpose | Availability | Risk |
 |---|---|---|---|---|
-| Scoped Figma `🤖 Workflow` page | `SRC-DS-001`, latest Stage 2 verification | Visual/content/responsive authority | Available; time-bound | Source may change and must be re-verified |
+| Scoped Figma `🤖 Workflow` page | `SRC-DS-001`, `VER-004` | Visual/content/responsive authority | Available; time-bound | Source may change and must be re-verified |
 | Existing Astro frontend baseline | `SRC-REPO-001` | Technical starting point | Available; immutable commit | Current app is still the starter, so full page implementation remains later work |
 | Hero/product imagery | `EVD-002`, `AUD-006` | Hero visual fidelity | Available in Figma source | Export format/provenance not yet documented |
 | Testimonial portrait/decorations | `EVD-003`, `AUD-006` | Testimonial fidelity | Available in Figma source | Export format/provenance not yet documented |
@@ -419,8 +419,8 @@ Referenced existing constraints:
 
 ## 19. Source Verification
 
-- Stage 2 source check: connected Figma metadata re-verification of page `2140:147`.
-- Result: recorded canonically as `Unchanged` for `SRC-DS-001` before this requirements baseline was authored.
+- Stage 2 source check: `VER-004`, connected Figma metadata re-verification of page `2140:147`.
+- Result: `Unchanged` for `SRC-DS-001` before this requirements baseline was authored.
 - Material structure verified: Product Screens (`2140:1361`), Components (`2140:1310`), Design System Documentation (`2140:1363`), and the same desktop/tablet/mobile Home frames and responsive component families.
 - Repository baseline: `SRC-REPO-001` remains the immutable implementation input baseline; this stage does not make implementation claims beyond approved context.
 
@@ -428,25 +428,27 @@ Referenced existing constraints:
 
 ### Pass 1 — Completeness and correctness
 
-- [ ] Requirements cover the agreed scope.
-- [ ] Requirements are necessary, specific, testable, and prioritized.
-- [ ] Goals, non-goals, users, functional needs, data boundaries, accessibility, quality, security scope, constraints, dependencies, risks, assumptions, questions, acceptance criteria, and Definition of Done are covered as applicable.
-- [ ] Unsupported business, security, retention, browser, or performance rules were not invented.
-- [ ] Snapshot IDs in metadata exist and were actually used.
+- [x] Requirements cover the agreed scope.
+- [x] Requirements are necessary, specific, testable, and prioritized.
+- [x] Goals, non-goals, users, functional needs, data boundaries, accessibility, quality, security scope, constraints, dependencies, risks, assumptions, questions, acceptance criteria, and Definition of Done are covered as applicable.
+- [x] Unsupported business, security, retention, browser, or performance rules were not invented.
+- [x] Snapshot IDs in metadata exist and were actually used.
 
 ### Pass 2 — Consistency, traceability, source integrity, risks, and uncertainty
 
-- [ ] Identifiers follow `Identifier-Conventions.md`, including preservation rather than redefinition of the Stage 0 `REQ-CON-001`–`REQ-CON-005` history.
-- [ ] Every material requirement has evidence from an approved artifact or pinned snapshot.
-- [ ] No source changed silently after the artifact baseline was recorded.
-- [ ] Confirmed, inferred, recommended, assumed, and open information remain distinct.
-- [ ] Blocking questions are visible and tied to the stage where they become blocking.
-- [ ] Requirements do not choose arbitrary breakpoints, CTA destinations, social URLs, backend behavior, or implementation structure.
+- [x] Identifiers follow `Identifier-Conventions.md`, including preservation rather than redefinition of the Stage 0 `REQ-CON-001`–`REQ-CON-005` history.
+- [x] Every material requirement has evidence from an approved artifact or pinned snapshot.
+- [x] No source changed silently after the artifact baseline was recorded; `VER-004` records the Stage 2 re-verification.
+- [x] Confirmed, inferred, recommended, assumed, and open information remain distinct.
+- [x] Blocking questions are visible and tied to the stage where they become blocking.
+- [x] Requirements do not choose arbitrary breakpoints, CTA destinations, social URLs, backend behavior, or implementation structure.
 
 ## 21. Completion Summary
 
-- Requirements status: Draft pending two-pass review and owner approval.
+- Requirements status: Reviewed narrative pending canonical artifact review and owner approval.
 - Active snapshots used: `SRC-DS-001`, `SRC-REPO-001`.
+- Latest design verification: `VER-004` — `Unchanged`.
+- Review correction: normalized `REQ-CON-008` to standard `Must` priority while keeping link behavior conditional in the description.
 - Main unresolved product behavior: `Q-001` CTA activation destination/outcome.
 - Secondary unresolved behavior: `Q-004` footer social destinations/activation.
-- Ready for Stage 3: No; Stage 2 review and Gated owner approval are still required.
+- Ready for Stage 3: No; Gated owner approval is still required after the canonical review state is recorded.
