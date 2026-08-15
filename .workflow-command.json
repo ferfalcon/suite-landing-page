@@ -1,7 +1,12 @@
 {
-  "id": "advance-stage-9-2026-08-15",
+  "id": "trace-plan-001-2026-08-15",
   "argv": [
-    "stage",
-    "advance"
+    "trace",
+    "define",
+    "PLAN-001",
+    "--owner",
+    "ART-PLAN",
+    "--required",
+    "true"
   ]
 }
