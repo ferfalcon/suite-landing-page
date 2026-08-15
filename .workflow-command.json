@@ -1,27 +1,4 @@
 {
-  "id": "record-p02-t01-build-validation-2026-08-15",
-  "argv": [
-    "task",
-    "validation",
-    "set",
-    "P02-T01",
-    "--name",
-    "Upper-page build",
-    "--kind",
-    "Build",
-    "--required",
-    "true",
-    "--status",
-    "Passed",
-    "--expected",
-    "pnpm --dir frontend build succeeds for the P02-T01 Header, Hero, and Metrics implementation",
-    "--actual",
-    "pnpm --dir frontend build completed successfully in GitHub Actions for the P02-T01 implementation tree.",
-    "--executed-at",
-    "2026-08-15T18:37:49Z",
-    "--evidence",
-    "GitHub Actions run 31901631211, job 95053198240 completed successfully for commit 855aad90d2c77cb2a557e972051391e75d05e71a. The temporary validation workflow was removed afterward; the frontend implementation under validation is unchanged by the later workflow-state and approval commits.",
-    "--references",
-    "PLAN-002"
-  ]
+  "id": "context-after-p02-t01-completion-2026-08-15",
+  "argv": ["context", "--json"]
 }
