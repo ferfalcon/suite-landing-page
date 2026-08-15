@@ -1,4 +1,21 @@
 {
-  "id": "start-p03-t01-2026-08-15",
-  "argv": ["task", "start", "P03-T01"]
+  "id": "p03-t01-register-runtime-2026-08-15",
+  "argv": [
+    "snapshot",
+    "add",
+    "--kind",
+    "runtime",
+    "--id",
+    "SRC-RUN-001",
+    "--reference",
+    "https://suite-landing-page-9q8cuiaye-fer-falcons-team.vercel.app/",
+    "--role",
+    "Validation runtime",
+    "--pin",
+    "Time-bound",
+    "--status",
+    "Active",
+    "--task",
+    "P03-T01"
+  ]
 }
