@@ -1,12 +1,13 @@
 {
-  "id": "trace-plan-004-2026-08-15",
+  "id": "create-p01-t01-2026-08-15",
   "argv": [
-    "trace",
-    "define",
-    "PLAN-004",
-    "--owner",
-    "ART-PLAN",
-    "--required",
-    "true"
+    "task",
+    "create",
+    "--id",
+    "P01-T01",
+    "--title",
+    "Verify inputs and establish the accessible page foundation",
+    "--references",
+    "PLAN-001"
   ]
 }
