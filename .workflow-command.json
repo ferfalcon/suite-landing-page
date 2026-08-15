@@ -1,7 +1,10 @@
 {
-  "id": "check-stage-2-preflight-2026-08-14",
+  "id": "reopen-stage-2-requirements-link-decision-2026-08-14",
   "argv": [
-    "stage",
-    "check"
+    "artifact",
+    "reopen",
+    "ART-REQUIREMENTS",
+    "--evidence",
+    "Project owner resolved the placeholder link behavior: use href=# for the Request Beta Access CTAs and footer social links. Requirements are reopened so the owner decision can be incorporated and re-reviewed before approval."
   ]
 }
