@@ -1,15 +1,15 @@
 {
-  "id": "create-p02-t02-2026-08-15",
+  "id": "create-p03-t01-2026-08-15",
   "argv": [
     "task",
     "create",
     "--id",
-    "P02-T02",
+    "P03-T01",
     "--title",
-    "Implement the testimonial and footer sections",
+    "Complete integrated responsive, accessibility, visual, and preview validation",
     "--prerequisites",
-    "P02-T01",
+    "P02-T01,P02-T02",
     "--references",
-    "PLAN-003"
+    "PLAN-004"
   ]
 }
