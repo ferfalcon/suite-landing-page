@@ -288,6 +288,16 @@
         "SRC-DS-001",
         "SRC-REPO-001"
       ]
+    },
+    {
+      "id": "ART-TASK-P02-T01",
+      "type": "TASK",
+      "path": "Phase-02--Task-01.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [
