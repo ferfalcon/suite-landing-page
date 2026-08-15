@@ -5,8 +5,7 @@ artifact: PLAN
   repository:
     - SRC-REPO-001
   runtime: []
-  documentation:
-    - SRC-DOC-001
+  documentation: []
   assets: []
 created: 2026-08-15
 updated: 2026-08-15
@@ -23,7 +22,7 @@ execution_mode: Gated
 - Last updated: 2026-08-15
 - Source baseline: `SOURCE-BASELINE.md`
 - Repository snapshot: `SRC-REPO-001` at commit `69b2949ace42bc06b61806755abdb9a2f95f5a96`
-- Design snapshot: `SRC-DS-001`, reverified Unchanged for Stage 7 before this plan was authored.
+- Design snapshot: `SRC-DS-001`, reverified Unchanged for Stage 8 as `VER-010` during the plan challenge.
 - Source documents:
   - `PROJECT-CONTEXT.md`
   - `REQUIREMENTS.md`
@@ -41,7 +40,7 @@ execution_mode: Gated
 - Implement the approved copy, metrics, testimonial, imagery, branding, CTA state behavior, placeholder `href="#"` links, and footer social links.
 - Implement semantic structure, accessible names, image semantics, keyboard operation, visible focus, responsive reflow, and reduced-motion-compatible CTA behavior where motion is used.
 - Keep delivery static: no backend, authentication, persistence, analytics, tracking, runtime data fetching, form workflow, or unnecessary client-side JavaScript.
-- Validate build output, representative responsive widths, browser behavior, keyboard/focus behavior, accessibility properties, visual fidelity, and the Vercel preview before implementation acceptance.
+- Validate build output, representative responsive widths, browser behavior, keyboard/focus behavior, rendered contrast/distinguishability and target sizing where applicable, accessibility properties, visual fidelity, and the Vercel preview before implementation acceptance.
 
 ### Excluded
 
@@ -49,7 +48,7 @@ execution_mode: Gated
 - Production beta-request or social destinations; the approved implementation remains `href="#"`.
 - Additional routes, forms, APIs, user data, account flows, analytics, tracking, or persistence.
 - Unrelated repository refactors, dependency upgrades, framework changes, or design-system work outside this landing page.
-- Stage 8 plan review, task decomposition, or implementation work in this Stage 7 change.
+- Invented SEO, social-preview, analytics, or marketing metadata not required by the approved sources.
 
 ## 3. Current Repository State
 
@@ -62,7 +61,7 @@ The application surface is minimal:
 - `frontend/src/components/Welcome.astro`, `frontend/src/assets/astro.svg`, and `frontend/src/assets/background.svg` are starter-only content.
 - No project component library, token stylesheet, test suite, client-side framework integration, data layer, or application state layer exists.
 - `docs/starter-code/assets/` contains logo, social icons, hero imagery, Jeremy portrait variants, and decorative SVGs that appear relevant to the challenge, but these files are not registered as an active workflow asset snapshot and their provenance/mapping to the approved Figma nodes has not yet been independently established. They must therefore be treated as candidate source assets, not automatically trusted implementation assets.
-- Current `main` still matches the pinned implementation subtree for the starter entry/layout/package structure; workflow and documentation commits have not started the landing-page implementation.
+- Stage 8 repository verification `VER-011` confirms the pinned implementation baseline remains valid. Current `main` adds workflow/documentation state and `frontend/vercel.json` build policy, while the landing-page starter entry/layout/package/component/assets remain unimplemented and no Suite landing-page implementation has begun.
 
 Repository constraints from `AGENTS.md` and `frontend/AGENTS.md` apply: preserve Astro/pnpm conventions, avoid unnecessary dependencies and client JavaScript, implement semantic and accessible behavior, and use the branch → PR → Vercel preview → verification → merge path.
 
@@ -74,16 +73,16 @@ Use Astro components and CSS only unless a later approved task proves client Jav
 - **Data and state flow:** approved marketing content remains static Astro markup. No client state, fetch, form state, loading state, or persistence is required. CTA/social links remain native anchors with `href="#"`.
 - **Styling and design-system integration:** translate approved Figma typography, color, spacing, radius, and component-state evidence into CSS custom properties and section styles. Do not invent a general-purpose design system beyond values needed by this page.
 - **Responsive strategy:** start from intrinsic, fluid layouts and use section-specific media-query transitions only where the content/layout ceases to satisfy approved behavior. The 375, 768, and 1440 Figma frames are validation anchors, not automatic breakpoint values. Hero, metrics, testimonial, and footer may transition at different widths.
-- **Accessibility strategy:** semantic landmarks/headings, logical source order, native links, visible focus, meaningful social-link names, appropriate informative/decorative image treatment, no interaction available only on hover, and reduced-motion handling are implemented in the same plan item that creates each affected section.
+- **Accessibility strategy:** semantic landmarks/headings, logical source order, native links, visible focus, meaningful social-link names, image treatment aligned with `SPEC-ACC-003`, no interaction available only on hover, rendered contrast/target checks from `SPEC-ACC-004`, and reduced-motion handling are implemented in the same plan item that creates each affected section.
 - **Error and state handling:** there are no approved loading, empty, submission, authentication, or data-error states. Missing/unverified required assets are treated as an implementation-readiness failure, not replaced by invented content.
-- **Testing and validation strategy:** use the repository-defined `pnpm build` as the guaranteed automated build check. Supplement with rendered browser inspection at approved and intermediate/extreme widths, keyboard/focus checks, accessibility inspection, visual comparison against `SRC-DS-001`, and Vercel preview runtime verification. Do not claim lint/type/test scripts that the pinned repository does not provide.
+- **Testing and validation strategy:** use the repository-defined `pnpm build` as the guaranteed automated build check. Supplement with rendered browser inspection at approved and intermediate/extreme widths, keyboard/focus checks, accessibility inspection including the `SPEC-ACC-004` contrast/distinguishability and target validation set, visual comparison against `SRC-DS-001`, and Vercel preview runtime verification. Record the concrete criteria actually used without asserting an unsourced WCAG conformance level. Do not claim lint/type/test scripts that the pinned repository does not provide.
 
 ## 5. Files and Modules
 
 | Path | Action | Existing or proposed | Responsibility | Repository evidence |
 |---|---|---|---|---|
 | `frontend/src/pages/index.astro` | Modify | Existing | Replace starter composition with the approved landing-page section order. | `SRC-REPO-001`; existing starter page |
-| `frontend/src/layouts/Layout.astro` | Modify | Existing | Set page metadata, global document defaults, and load shared page styles without breaking semantic document structure. | `SRC-REPO-001`; existing starter layout |
+| `frontend/src/layouts/Layout.astro` | Modify | Existing | Replace Astro-starter document metadata with only a minimal Suite document title supported by approved brand content, set global document defaults, and load shared page styles; do not invent SEO/social metadata. | `SRC-REPO-001`; existing starter layout; `SPEC.md` SEO boundary |
 | `frontend/src/components/Welcome.astro` | Delete after replacement | Existing | Remove unused Astro starter UI. | `SRC-REPO-001`; starter-only component |
 | `frontend/src/assets/astro.svg` | Delete if unused | Existing | Remove unused Astro starter asset. | `SRC-REPO-001` |
 | `frontend/src/assets/background.svg` | Delete if unused | Existing | Remove unused Astro starter background. | `SRC-REPO-001` |
@@ -104,13 +103,13 @@ Exact asset filenames/format choices in `frontend/src/assets/` must be selected 
 
 - **Objective:** Enter implementation with verified design/repository inputs, establish the page-level Astro/CSS foundation, and prevent unverified asset or platform assumptions from leaking into section work.
 - **Requirement and specification references:** `REQ-DR-001`, `REQ-DR-002`, `REQ-NFR-002`, `REQ-SEC-001`; `SPEC.md` static-link/data boundaries and approved design-system evidence.
-- **Source snapshots:** `SRC-DS-001`, `SRC-REPO-001`; latest Stage 7 verification events must still be valid when implementation begins.
+- **Source snapshots:** `SRC-DS-001`, `SRC-REPO-001`; latest Stage 8 verification events must still be valid when implementation begins.
 - **File impact:** modify `frontend/src/layouts/Layout.astro`; create `frontend/src/styles/global.css`; inspect candidate `docs/starter-code/assets/*`; prepare only verified required assets under `frontend/src/assets/`.
-- **Dependencies:** approved Stage 7/8 gates and task decomposition; no implementation task may consume an unverified candidate asset.
-- **Implementation approach:** preserve Astro static rendering; define only page-required CSS custom properties/defaults from approved Figma values; set title/metadata appropriate to Suite; verify each required logo/icon/photo/decorative asset against approved Figma node intent and record provenance/owner confirmation before copying it into the implementation surface.
+- **Dependencies:** approved Stage 8 gate and task decomposition; no implementation task may consume an unverified candidate asset.
+- **Implementation approach:** preserve Astro static rendering; define only page-required CSS custom properties/defaults from approved Figma values; replace the Astro starter title/metadata only with a minimal Suite document title supported by approved brand content and do not add unsourced SEO/social metadata; verify each required logo/icon/photo/decorative asset against authoritative Figma node/export evidence and repository evidence. If mapping/provenance/use cannot be established from those sources, obtain explicit owner confirmation before use rather than treating candidate filenames as authority.
 - **Integrated accessibility, responsive, state, and error work:** establish document defaults that support text resize/reflow, visible focus styling primitives, and reduced-motion overrides. Missing or ambiguous required assets block the dependent section instead of triggering a fabricated replacement.
-- **Validation:** source verification remains Unchanged; asset mapping/provenance evidence exists for every consumed asset; no unnecessary dependency/client script is added; `pnpm build` succeeds after foundation changes.
-- **Risks:** asset provenance is the main readiness item. Browser support assumptions are constrained to broadly supported semantic HTML/CSS until an explicit support matrix is provided.
+- **Validation:** source verification remains Unchanged; mapping/provenance evidence exists for every consumed asset from authoritative Figma/repository evidence or explicit owner confirmation where needed; no unnecessary dependency/client script is added; `pnpm build` succeeds after foundation changes.
+- **Risks:** asset mapping/provenance is the main readiness item. An unresolved mapping requires escalation before that asset is consumed, but owner confirmation is not an automatic dependency when authoritative source evidence is sufficient. Browser support assumptions are constrained to broadly supported semantic HTML/CSS until an explicit support matrix is provided.
 
 ### PLAN-002 — Implement the semantic header, hero, and proof metrics
 
@@ -120,7 +119,7 @@ Exact asset filenames/format choices in `frontend/src/assets/` must be selected 
 - **File impact:** modify `frontend/src/pages/index.astro`; create `SiteHeader.astro`, `Hero.astro`, `Metrics.astro`; consume only PLAN-001-verified assets and shared CSS.
 - **Dependencies:** PLAN-001.
 - **Implementation approach:** use semantic header/main content and native anchors; keep approved content in DOM source order; reproduce the desktop metrics rail, tablet horizontal metrics arrangement, and mobile stacked arrangement through intrinsic layout plus independently justified transitions.
-- **Integrated accessibility, responsive, state, and error work:** implement focus-visible CTA presentation alongside default/hover states; preserve primary/secondary CTA distinction; support keyboard activation natively; classify hero/decorative imagery correctly; ensure no content overlap/clipping or page-level horizontal overflow; suppress nonessential CTA transition motion under reduced-motion preference if the 200ms design transition is implemented.
+- **Integrated accessibility, responsive, state, and error work:** implement focus-visible CTA presentation alongside default/hover states; preserve primary/secondary CTA distinction; support keyboard activation natively; follow `SPEC-ACC-003` for hero/product imagery and decorative marks—use decorative treatment when nearby approved text already carries the meaning and do not invent alternative text merely to fill an attribute; ensure no content overlap/clipping or page-level horizontal overflow; suppress nonessential CTA transition motion under reduced-motion preference if the 200ms design transition is implemented.
 - **Validation:** compare 1440/768/375 outcomes to Figma, then test at least one width between 375–768, one between 768–1440, one below 375, and one above 1440; keyboard-tab through both CTAs; inspect heading/landmark/image semantics; confirm all beta CTAs use exactly `href="#"`.
 - **Risks:** exact transition widths are intentionally unresolved until rendered content pressure is observed; hero image source/format remains dependent on PLAN-001 provenance resolution.
 
@@ -132,7 +131,7 @@ Exact asset filenames/format choices in `frontend/src/assets/` must be selected 
 - **File impact:** create `Testimonial.astro`, `SiteFooter.astro`; update shared CSS and `index.astro`; remove `Welcome.astro` and unused starter assets only after no references remain.
 - **Dependencies:** PLAN-001; may follow PLAN-002 so page-level spacing and section transitions can be judged together.
 - **Implementation approach:** reproduce wide side-by-side testimonial and horizontal footer, then their stacked tablet/mobile transformations; keep approved testimonial text and attribution exact; render social controls as native anchors with icon presentation separated from accessible naming.
-- **Integrated accessibility, responsive, state, and error work:** provide meaningful portrait alternative treatment based on approved content intent, hide purely decorative graphics from accessibility APIs, give social links platform names and visible focus, maintain logical DOM order during visual rearrangement, preserve touch/keyboard target usability, and prevent overflow under narrow/zoomed conditions.
+- **Integrated accessibility, responsive, state, and error work:** follow `SPEC-ACC-003` for testimonial imagery: the portrait/backdrop may be decorative when the nearby attribution supplies the identity, decorative graphics stay out of accessibility APIs, and unsourced alternative copy is not invented; give social links platform names and visible focus, maintain logical DOM order during visual rearrangement, preserve touch/keyboard target usability, and prevent overflow under narrow/zoomed conditions.
 - **Validation:** compare all three approved reference widths plus intermediate/extreme widths; keyboard and accessible-name inspection for social links; content/attribution verification; no unintended horizontal scroll; no orphaned starter UI/assets; all social links exactly `href="#"`.
 - **Risks:** testimonial/portrait asset mapping is subject to PLAN-001; section-specific transition widths may differ from header/hero/metrics and must be recorded from observed failure conditions.
 
@@ -143,9 +142,9 @@ Exact asset filenames/format choices in `frontend/src/assets/` must be selected 
 - **Source snapshots:** reverify mutable `SRC-DS-001` immediately before final visual acceptance; confirm implementation is still based on the pinned `SRC-REPO-001` or complete workflow rebaseline if repository authority changes materially.
 - **File impact:** implementation files from PLAN-001 through PLAN-003 only for fixes discovered by validation; no new product scope. Workflow/runtime evidence is recorded through canonical tooling in the later implementation stages.
 - **Dependencies:** PLAN-002 and PLAN-003 complete.
-- **Implementation approach:** run `pnpm build`; inspect rendered output in the project preview; perform visual comparison at 1440, 768, 375 and required intermediate/extreme widths; verify keyboard order/focus, semantic structure, accessible names/image semantics, reduced-motion behavior, resize/reflow, and placeholder links; inspect browser console/runtime errors; verify the Vercel PR preview before merge.
+- **Implementation approach:** run `pnpm build`; inspect rendered output in the project preview; perform visual comparison at 1440, 768, 375 and required intermediate/extreme widths; verify keyboard order/focus, semantic structure, accessible names/image semantics, reduced-motion behavior, resize/reflow, and placeholder links; execute the `SPEC-ACC-004` visual-accessibility set against rendered backgrounds—normal text, large display text, CTA labels, social icons, inverse testimonial content, focus indicators, and control boundaries—and verify operable target areas for both CTAs and all three social links; document the applicable criteria used without asserting an unsourced conformance level; inspect browser console/runtime errors; verify the Vercel PR preview before merge.
 - **Integrated accessibility, responsive, state, and error work:** any defect is fixed in the owning component/style rather than patched with a validation-only workaround. No data/error workflow is invented because none is in scope.
-- **Validation:** build success; zero material unexplained design differences; no page-level layout overflow at required widths; keyboard and focus checks pass; accessibility issues found in implemented content are resolved or explicitly gated; no unsourced tracking/data behavior; Vercel preview loads the intended page without runtime/console failure.
+- **Validation:** build success; zero material unexplained design differences; no page-level layout overflow at required widths; keyboard and focus checks pass; rendered contrast/readability/distinguishability and target-area checks pass against the documented applicable criteria; accessible names/image semantics and reduced-motion behavior pass; no unsourced tracking/data behavior; Vercel preview loads the intended page without runtime/console failure.
 - **Risks:** the repository defines no browser support matrix and no automated browser/a11y suite. Unless the owner supplies a matrix before implementation validation, verify at minimum the current stable Chromium runtime available to the implementation environment and avoid unsupported/experimental CSS features; record any additional browser coverage actually exercised. `latestValidationRuntime` is currently unset, so runtime evidence must be created from the implementation preview rather than inferred during planning.
 
 ## 7. Recommended Phase Shape
@@ -164,7 +163,7 @@ Exact asset filenames/format choices in `frontend/src/assets/` must be selected 
 
 ### Phase 4 — Regression protection and runtime acceptance
 
-- PLAN-004: build, browser/runtime, keyboard/accessibility, visual comparison, and Vercel preview verification. Fix failures in their owning implementation item before acceptance.
+- PLAN-004: build, browser/runtime, keyboard/accessibility including rendered contrast/target checks, visual comparison, and Vercel preview verification. Fix failures in their owning implementation item before acceptance.
 
 ## 8. Responsive Decision Process
 
@@ -196,7 +195,7 @@ For each Header, Hero, Metrics, Testimonial, and Footer transition:
 
 - **Migration:** none; there is no data model, persistence, API, route migration, or user state.
 - **Compatibility:** no explicit browser support matrix is approved. Prefer broadly supported semantic HTML/CSS and avoid experimental features unless a later task establishes support and fallback evidence. Browser coverage actually validated must be recorded in implementation review.
-- **Deployment:** retain the existing Vercel project and repository build policy. Implementation occurs on a dedicated branch/PR; validate the Vercel preview before merge. Do not manually promote production.
+- **Deployment:** retain the existing Vercel project and repository build policy, including the current `frontend/vercel.json` ignored-build-step behavior for non-frontend changes. Implementation occurs on a dedicated branch/PR; validate the Vercel preview when implementation changes begin and before merge. Stage 8 itself does not require a deployment. Do not manually promote production.
 - **Rollback:** because the change is a static frontend replacement, rollback is Git-based: revert the implementation PR if a post-merge regression is discovered. No data rollback is required.
 - **Security/privacy:** no new external scripts, analytics, tracking, forms, data storage, identity, or sensitive-data boundary may be introduced without returning to requirements/specification.
 
@@ -211,22 +210,22 @@ For each Header, Hero, Metrics, Testimonial, and Footer transition:
 
 | Risk or question | Impact | Blocking | Mitigation or owner |
 |---|---|---|---|
-| Candidate assets in `docs/starter-code/assets/` lack a canonical asset snapshot/provenance confirmation. | Wrong or unlicensed/unapproved imagery could be shipped. | Blocks dependent implementation tasks until resolved; does not block Stage 7 planning. | PLAN-001: match assets to approved Figma nodes and record provenance/owner confirmation before use. |
+| Candidate assets in `docs/starter-code/assets/` lack a canonical asset snapshot/provenance confirmation. | Wrong or unapproved imagery could be shipped if candidate filenames are trusted without evidence. | Blocks dependent implementation tasks until resolved; does not block Stage 8 approval or task decomposition. | PLAN-001: match assets to approved Figma node/export and repository evidence; obtain owner confirmation only where authoritative mapping/provenance remains unresolved. |
 | Exact CSS transition widths are not specified by Figma. | Blindly using 375/768/1440 as breakpoints may fail intermediate widths. | No | Derive section-specific transitions from content pressure and validate on both sides plus required intermediate/extreme widths. |
 | No approved browser support matrix exists. | Advanced CSS could behave inconsistently outside the tested browser. | No for plan; must be bounded during implementation validation. | Prefer broadly supported features; record tested browsers. Owner may supply a stricter matrix before implementation acceptance. |
 | No runtime snapshot/validation exists yet (`latestValidationRuntime` is unset). | Planning cannot prove deployed behavior. | No for plan; required before implementation acceptance. | PLAN-004 creates runtime evidence from the Vercel PR preview and checks console/render behavior. |
 | Repository has no lint/unit/browser/a11y test scripts. | Validation relies more heavily on build plus explicit runtime/manual evidence. | No | Use `pnpm build` as guaranteed automation; do not add tooling dependencies unless later evidence justifies them; record browser/accessibility/visual checks explicitly. |
-| Time-bound Figma source can drift after Stage 7. | Implementation could target stale visual evidence. | Potentially | Reverify `SRC-DS-001` before implementation/final visual acceptance and rebaseline on material change. |
+| Time-bound Figma source can drift after Stage 8. | Implementation could target stale visual evidence. | Potentially | Reverify `SRC-DS-001` before implementation/final visual acceptance and rebaseline on material change. |
 
 ## 14. Definition of Done
 
 - [x] Every must-have requirement and material specification is covered by PLAN-001 through PLAN-004.
 - [x] Every plan item has concrete file impact, dependencies, implementation approach, validation, and risks.
 - [x] Accessibility and responsive behavior are integrated into the relevant implementation items rather than deferred to cleanup.
-- [x] Required build, browser/runtime, keyboard/accessibility, responsive, visual, and Vercel-preview validation are identified.
+- [x] Required build, browser/runtime, keyboard/accessibility, rendered contrast/target, responsive, visual, and Vercel-preview validation are identified.
 - [x] Migration, compatibility, deployment, rollback, security, and privacy are addressed to the extent applicable to this static page.
 - [x] Existing paths and proposed paths are explicitly distinguished.
-- [x] `SRC-DS-001` and `SRC-REPO-001` exist and were reverified for Stage 7 before planning.
+- [x] `SRC-DS-001` and `SRC-REPO-001` exist and were reverified for Stage 8 as `VER-010` and `VER-011`.
 - [x] Known readiness risks—asset provenance, intermediate viewport behavior, browser support, and runtime evidence—are resolved by plan ownership or explicitly carried forward.
 
 ## 15. Review
@@ -242,8 +241,8 @@ For each Header, Hero, Metrics, Testimonial, and Footer transition:
 
 - [x] `PLAN-001` through `PLAN-004` follow `Identifier-Conventions.md`.
 - [x] Every plan item maps to approved `REQUIREMENTS.md`/`SPEC.md` concerns and `SRC-DS-001`/`SRC-REPO-001`.
-- [x] Stage 7 refreshed both repository and design input verification; no source change is being silently absorbed.
-- [x] No unsupported product scope, data workflow, new dependency, client runtime, production link destination, or extra route is introduced.
-- [x] Accessibility, responsive behavior, focus, image semantics, and reduced-motion behavior are implemented with their owning sections rather than deferred to final cleanup.
+- [x] Stage 8 refreshed both repository and design input verification; no source change is being silently absorbed.
+- [x] No unsupported product scope, data workflow, new dependency, client runtime, production link destination, extra route, or unsourced SEO/social metadata is introduced.
+- [x] Accessibility, responsive behavior, focus, image semantics, rendered contrast/target validation, and reduced-motion behavior are implemented with their owning sections rather than deferred to final cleanup.
 - [x] The Stage 6 architecture-skip decision is preserved and no unnecessary `ARCHITECTURE.md` is introduced.
 - [x] Asset provenance, unspecific breakpoint thresholds, browser support assumptions, absent automated test scripts, time-bound design drift, and missing runtime evidence remain explicit with owners/mitigations.
