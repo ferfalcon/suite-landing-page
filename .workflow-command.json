@@ -1,7 +1,8 @@
 {
-  "id": "advance-stage-10-2026-08-15",
+  "id": "start-p01-t01-2026-08-15",
   "argv": [
-    "stage",
-    "advance"
+    "task",
+    "start",
+    "P01-T01"
   ]
 }
