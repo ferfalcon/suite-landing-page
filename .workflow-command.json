@@ -1,7 +1,12 @@
 {
-  "id": "check-stage-5-document-review-2026-08-14",
+  "id": "approve-stage-5-document-review-2026-08-14",
   "argv": [
-    "stage",
-    "check"
+    "artifact",
+    "approve",
+    "ART-DOCUMENT-REVIEW",
+    "--evidence",
+    "Project owner explicitly approved the reviewed Stage 5 documentation consistency review on 2026-08-14.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
