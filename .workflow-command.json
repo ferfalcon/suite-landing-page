@@ -1,8 +1,14 @@
 {
-  "id": "start-p01-t01-2026-08-15",
+  "id": "verify-stage10-figma-2026-08-15",
   "argv": [
-    "task",
-    "start",
-    "P01-T01"
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma metadata and design-context inspection immediately before P01-T01 implementation",
+    "--evidence",
+    "Re-inspected Workflow page 2140:147 and confirmed the approved desktop 2140:148, tablet 2140:330, mobile 2140:289, component families, CTA states, required asset nodes, and design-system documentation remain present. Design context for color documentation 2140:951 still exposes Neutral 900 #172339, Neutral 500 #49566D, Neutral 200 #F3EDE7, Neutral 0 #FAF8F6, Eupatorium Purple 500 #CB30E3, and the documented semantic aliases. No material drift affecting P01-T01 was detected."
   ]
 }
