@@ -7,7 +7,7 @@
   },
   "state": {
     "stage": 1,
-    "status": "In progress",
+    "status": "Ready",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -104,13 +104,14 @@
       "id": "ART-DESIGN-AUDIT",
       "type": "DESIGN-AUDIT",
       "path": "DESIGN-AUDIT.md",
-      "status": "Reviewed",
+      "status": "Approved",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
       ],
-      "statusChangedAt": "2026-08-15T00:26:41.589Z",
-      "statusEvidence": "Pass 1 confirmed the full scoped Workflow page, three product viewports, responsive component variants, design tokens, CTA states, prototype reactions, content, assets, and accessibility implications were inventoried with precise source references. Pass 2 confirmed EVD/AUD traceability, Time-bound source integrity, distinction between observed/inferred/recommended/open evidence, and that unresolved CTA behavior and responsive gaps were recorded without inventing requirements or implementation decisions."
+      "statusChangedAt": "2026-08-15T00:31:41.440Z",
+      "statusEvidence": "Project owner explicitly approved the Stage 1 design audit and authorized progression on 2026-08-14.",
+      "statusBy": "Fernando Falcon"
     }
   ],
   "traceItems": [],
@@ -135,6 +136,29 @@
       ],
       "evidence": "Project owner approved Stage 0. Active Figma and repository inputs are verified, all Stage 0 control artifacts are reviewed and approved, scope and limitations are recorded, and the workflow record and generated views validate cleanly.",
       "recordedAt": "2026-08-15T00:20:20.019Z",
+      "approvedBy": "Fernando Falcon"
+    },
+    {
+      "id": "GATE-002",
+      "stage": 1,
+      "status": "Active",
+      "result": "Passed",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ],
+      "verifications": [
+        "VER-003",
+        "VER-002"
+      ],
+      "artifacts": [
+        "ART-SOURCE-BASELINE",
+        "ART-PROJECT-CONTEXT",
+        "ART-WORKFLOW-STATE",
+        "ART-DESIGN-AUDIT"
+      ],
+      "evidence": "Project owner approved ART-DESIGN-AUDIT. Stage 1 preflight recommends Passed with no findings; the active Figma source is verified Unchanged, the design audit is approved, and unresolved evidence is explicitly recorded without invented behavior.",
+      "recordedAt": "2026-08-15T00:32:35.145Z",
       "approvedBy": "Fernando Falcon"
     }
   ],
