@@ -1,4 +1,18 @@
 {
-  "id": "start-p03-t01-2026-08-15",
-  "argv": ["task", "start", "P03-T01"]
+  "id": "accept-final-implementation-review-2026-08-15",
+  "argv": [
+    "review",
+    "set-result",
+    "accepted",
+    "--artifact",
+    "ART-IMPLEMENTATION-REVIEW",
+    "--output",
+    "SRC-REPO-005",
+    "--runtime",
+    "SRC-RUN-001",
+    "--evidence",
+    "Project owner approved the final implementation review. Stage 11 gate passed with approved final-review artifact, freshly reverified design and repository inputs, freshly reverified final implementation output, recorded validation runtime, and successful integrated acceptance evidence. Narrative result: Implementation accepted.",
+    "--approved-by",
+    "Fernando Falcon"
+  ]
 }
