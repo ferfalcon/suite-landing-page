@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 2,
+  "project": {
+    "name": "Suite landing page",
+    "profile": "Standard",
+    "executionMode": "Gated"
+  },
+  "state": {
+    "stage": 0,
+    "status": "In progress",
+    "activeInputs": [
+      "SRC-DS-001",
+      "SRC-REPO-001"
+    ],
+    "currentTask": null,
+    "latestOutput": null,
+    "latestValidationRuntime": null,
+    "architectureDecision": null
+  },
+  "snapshots": [
+    {
+      "id": "SRC-DS-001",
+      "role": "Input baseline",
+      "pinStrength": "Time-bound",
+      "status": "Unverified",
+      "reference": "https://www.figma.com/design/EVFb3Lb4Y5iKn762QYva4y/suite-landing-page?node-id=2140-147"
+    },
+    {
+      "id": "SRC-REPO-001",
+      "role": "Input baseline",
+      "pinStrength": "Immutable",
+      "status": "Unverified",
+      "reference": "/home/runner/work/suite-landing-page/suite-landing-page",
+      "commit": "69b2949ace42bc06b61806755abdb9a2f95f5a96"
+    }
+  ],
+  "verifications": [],
+  "artifacts": [
+    {
+      "id": "ART-SOURCE-BASELINE",
+      "type": "SOURCE-BASELINE",
+      "path": "SOURCE-BASELINE.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
+    },
+    {
+      "id": "ART-PROJECT-CONTEXT",
+      "type": "PROJECT-CONTEXT",
+      "path": "PROJECT-CONTEXT.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
+    },
+    {
+      "id": "ART-WORKFLOW-STATE",
+      "type": "WORKFLOW-STATE",
+      "path": "WORKFLOW-STATE.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
+    }
+  ],
+  "traceItems": [],
+  "gates": [],
+  "tasks": [],
+  "profileTransitions": [],
+  "implementationReviews": []
+}
