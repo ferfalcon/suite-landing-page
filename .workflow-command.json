@@ -1,11 +1,12 @@
 {
-  "id": "approve-stage-5-document-review-2026-08-14",
+  "id": "pass-stage-5-gate-2026-08-14",
   "argv": [
-    "artifact",
-    "approve",
-    "ART-DOCUMENT-REVIEW",
+    "stage",
+    "review",
+    "--result",
+    "Passed",
     "--evidence",
-    "Project owner explicitly approved the reviewed Stage 5 documentation consistency review on 2026-08-14.",
+    "Project owner approved ART-DOCUMENT-REVIEW. Stage 5 preflight recommends Passed with no findings; VER-007 confirms the active Figma source remains Unchanged; the two-pass cross-document review is complete and all identified inconsistencies were corrected in their owning documents.",
     "--approved-by",
     "Fernando Falcon"
   ]
