@@ -1,11 +1,12 @@
 {
-  "id": "approve-stage-11-final-review-2026-08-15",
+  "id": "pass-stage-11-final-gate-2026-08-15",
   "argv": [
-    "artifact",
-    "approve",
-    "ART-IMPLEMENTATION-REVIEW",
+    "stage",
+    "review",
+    "--result",
+    "Passed",
     "--evidence",
-    "Project owner explicitly approved the final implementation review in ChatGPT on 2026-08-15 with: Approve final review.",
+    "Final implementation review is approved; SRC-DS-001 and SRC-REPO-001 are freshly reverified unchanged; SRC-REPO-005 is freshly reverified as the expected workflow output; the recorded validation runtime and integrated acceptance evidence support the accepted implementation result.",
     "--approved-by",
     "Fernando Falcon"
   ]
