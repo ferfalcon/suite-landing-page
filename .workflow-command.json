@@ -1,13 +1,7 @@
 {
-  "id": "pass-stage-6-gate-2026-08-14",
+  "id": "inspect-stage-7-context-2026-08-14",
   "argv": [
-    "stage",
-    "review",
-    "--result",
-    "Passed",
-    "--evidence",
-    "Project owner approved the Stage 6 architecture decision as Not required. The two-pass architecture review found no meaningful current multi-runtime, service, data, identity, routing, integration, migration, security, reliability, observability, or deployment architecture boundary; Stage 6 preflight completed successfully; no ARCHITECTURE.md is required for this Standard-profile decision.",
-    "--approved-by",
-    "Fernando Falcon"
+    "context",
+    "--json"
   ]
 }
