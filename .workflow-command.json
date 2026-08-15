@@ -1,7 +1,7 @@
 {
-  "id": "stage-10-preflight-context-2026-08-15",
+  "id": "advance-stage-10-2026-08-15",
   "argv": [
-    "context",
-    "--json"
+    "stage",
+    "advance"
   ]
 }
