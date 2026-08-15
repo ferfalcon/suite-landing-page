@@ -1,7 +1,7 @@
 {
-  "id": "check-stage-4-spec-2026-08-14",
+  "id": "read-stage-4-context-after-spec-approval-2026-08-14",
   "argv": [
-    "stage",
-    "check"
+    "context",
+    "--json"
   ]
 }
