@@ -1,10 +1,10 @@
 {
-  "id": "review-stage-0-project-context-2026-08-14",
+  "id": "review-stage-0-workflow-state-2026-08-14",
   "argv": [
     "artifact",
     "review",
-    "ART-PROJECT-CONTEXT",
+    "ART-WORKFLOW-STATE",
     "--evidence",
-    "Pass 1 confirmed project goal, static-page scope, Standard profile rationale, Figma and repository boundaries, and evidence-based quality expectations. Pass 2 confirmed exclusions, deferred stages, constraints, risks, and authority relationships are consistent with the repository contract and active source baseline."
+    "Pass 1 confirmed blocking status, assumptions, deferred architecture decision, verification history, and next permitted action. Pass 2 confirmed Gated advancement rules, the accepted executor deviation, source-change handling, and absence of premature task/output state are consistent with canonical workflow controls."
   ]
 }
