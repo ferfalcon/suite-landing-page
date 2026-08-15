@@ -1,14 +1,14 @@
 {
-  "id": "verify-stage-11-figma-2026-08-15",
+  "id": "verify-stage-11-repo-baseline-2026-08-15",
   "argv": [
     "snapshot",
     "verify",
-    "SRC-DS-001",
+    "SRC-REPO-001",
     "--result",
     "Unchanged",
     "--method",
-    "Connected Figma metadata reinspection during Stage 11 final implementation review",
+    "Immutable Git baseline and implementation-output lineage verification during Stage 11",
     "--evidence",
-    "Re-inspected Figma file EVFb3Lb4Y5iKn762QYva4y page 2140:147 during Stage 11. Product Screens still contain desktop 2140:148 at 1440x1716, tablet 2140:330 at 768x1904, and mobile 2140:289 at 375x2399. Components still contain Site Header 2176:1216, Hero 2159:699, Metrics 2156:483, Testimonial 2160:742, Footer 2157:513, CTA state sets 3:960 and 3:978, approved imagery and decorations; Design System Documentation 2140:1363 remains present. No material source drift was detected against the approved implementation baseline."
+    "SRC-REPO-001 remains the immutable repository input baseline at commit 69b2949ace42bc06b61806755abdb9a2f95f5a96. All completed implementation outputs retain SRC-REPO-001 as their recorded parent baseline, and SRC-REPO-005 was successfully reverified as the expected final workflow output. No upstream mutation of the pinned baseline is possible or detected."
   ]
 }
