@@ -1,9 +1,9 @@
 {
-  "id": "approve-art-task-p02-t02-2026-08-15",
+  "id": "approve-art-task-p03-t01-2026-08-15",
   "argv": [
     "artifact",
     "approve",
-    "ART-TASK-P02-T02",
+    "ART-TASK-P03-T01",
     "--evidence",
     "Fernando Falcon explicitly approved the Stage 9 task set and accepted the documented task-set risks on 2026-08-15, with the instruction not to start Stage 10.",
     "--approved-by",
