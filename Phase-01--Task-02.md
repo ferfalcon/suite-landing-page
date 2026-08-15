@@ -6,8 +6,7 @@ id: P02-T02
   repository:
     - SRC-REPO-001
   runtime: []
-  documentation:
-    - SRC-DOC-001
+  documentation: []
   assets: []
 created: 2026-08-15
 updated: 2026-08-15
@@ -16,213 +15,167 @@ profile: Standard
 execution_mode: Gated
 ---
 
-The repository snapshot in metadata is the task-start state. Record the Implementation output snapshot after the task is committed.
+The canonical task registry owns mutable task state. The filename reflects the current workflow renderer limitation; the canonical identity is `P02-T02`.
 
-# Phase 01 — Task 02: Implement the testimonial and footer sections
-
-
+# Phase 02 — Task 02: Implement the testimonial and footer sections
 
 ## 2. Objective
 
-Describe the single concrete result this task must produce.
+Complete the approved landing-page content by implementing the Testimonial and Footer as static Astro components, integrating them with the completed upper page, preserving exact approved content/link behavior, removing obsolete starter UI/assets, and satisfying section-level responsive/accessibility requirements.
 
 ## 3. Source References
 
-- Source baseline: `SOURCE-BASELINE.md`
-- Design inputs: `SRC-DS-*`
-- Task-start repository snapshot: `SRC-REPO-*`
-- Supporting runtime inputs: `SRC-RUN-*` / None
-- Documentation inputs: `SRC-DOC-*` / None
-- Asset inputs: `SRC-ASSET-*` / None
-- `PLAN.md`:
-- `PLAN-REVIEW.md`:
-- Requirement IDs:
-- Specification IDs or sections:
-- `DESIGN.md` references:
-- Design-source evidence:
-- `ARCHITECTURE.md` references, when applicable:
-- Related tasks:
+- Design input: `SRC-DS-001`; Stage 8 verification `VER-010 — Unchanged`
+- Repository baseline: `SRC-REPO-001`; Stage 8 verification `VER-011 — Unchanged`
+- `PLAN.md`: `PLAN-003`
+- Prerequisites: completed `P01-T01` and `P02-T01` outputs
+- Requirements: `REQ-FR-005`–`REQ-FR-008`, `REQ-AR-001`–`REQ-AR-006`, `REQ-NFR-001`, `REQ-NFR-003`
+- Specification: Testimonial `2160:742`, portrait `2140:1359`, Footer `2157:513`, social-link semantics, applicable responsive/accessibility rules
+- Design evidence: desktop `2140:148`, tablet `2140:330`, mobile `2140:289`
+- Architecture: Stage 6 decision — Not required
+- Related tasks: requires `P02-T01`; precedes `P03-T01`
 
 ## 4. Snapshot Verification
 
-Complete before implementation begins.
-
-- Verification date and method:
-- Design inputs applicable: Yes / No / Unverified
-- Task-start repository commit checked out: Yes / No / Unverified
-- Difference classification: Unchanged / Expected previous-task output / Unexpected concurrent change / Unavailable
-- Upstream rebaseline required: Yes / No
-- Action or limitation:
-
-An approved previous-task output may become this task's start snapshot without reopening upstream stages. Do not begin affected implementation when an unexpected material change remains unresolved.
+Before implementation, verify the Stage 10 branch contains approved outputs from `P01-T01` and `P02-T01` and remains a valid descendant of the canonical repository lineage. Reverify `SRC-DS-001` if the time-bound Figma source may have changed. Confirm portrait/logo/social/decorative assets required here were resolved by the foundation task or resolve them through the same authoritative-evidence rule before use.
 
 ## 5. Prerequisites
 
-List tasks, repository conditions, assets, decisions, access requirements, and required snapshot verification.
-
-- ...
-
-Use `None` when no prerequisite exists.
+- `P01-T01` and `P02-T01` complete with required validation Passed.
+- Upper-page composition/shared styles are stable enough for page-level integration.
+- Required Testimonial/Footer assets are verified for intended use.
+- Stage 10 task started canonically after source verification.
 
 ## 6. Scope
 
 ### Included
 
-- Work required to produce the objective
-- Relevant accessibility, responsive, state, error, and testing work
+- Create `Testimonial.astro` and `SiteFooter.astro`.
+- Append Testimonial → Footer to the page's approved Header → Hero → Metrics → Testimonial → Footer hierarchy.
+- Implement exact approved testimonial text, attribution, copyright, branding, and Facebook/Twitter/Instagram social controls.
+- Keep all three social links exactly `href="#"` with meaningful accessible platform names.
+- Implement approved responsive Testimonial/Footer transformations using content-driven transitions.
+- Apply `SPEC-ACC-003` to testimonial portrait/backdrop/decorative visuals without inventing alternative copy.
+- Preserve logical source order, visible focus, target usability, and robust narrow/zoomed reflow.
+- Remove `Welcome.astro` and unused starter SVGs only after references are eliminated.
 
 ### Excluded
 
-- Nearby work assigned to other tasks
-- Deferred or unapproved capabilities
-- Unrelated refactoring
+- Changes to approved Header/Hero/Metrics behavior except necessary page-level integration fixes discovered here.
+- Production social destinations, analytics/tracking, new routes/data/client runtime, or unrelated refactors.
+- Full final cross-page acceptance evidence, which belongs to `P03-T01`.
 
 ## 7. Repository Context
 
-Record current state at the task-start `SRC-REPO-*` commit:
-
-- Existing files and modules
-- Established patterns and conventions
-- Reusable components, utilities, tokens, or tests
-- Confirmed scripts and commands
-- Constraints or technical debt
-
-Distinguish observed paths from proposed paths and unrelated later changes.
+This task begins from the completed static foundation and upper-page components. Shared design tokens/CTA/focus/reduced-motion rules already exist in `global.css`. The task should extend the page rather than introduce a new styling architecture or runtime model. Starter component/assets can be deleted only when no imports/references remain.
 
 ## 8. Files and Modules
 
-| Path | Action | Existing or proposed | Responsibility | Repository evidence |
-|---|---|---|---|---|
-| `path/to/file` | Create / Modify / Delete | Existing / Proposed | ... | task-start `SRC-REPO-*` |
+| Path | Action | Existing or proposed | Responsibility |
+|---|---|---|---|
+| `frontend/src/components/Testimonial.astro` | Create | Proposed | Portrait/backdrop, quote, heading/attribution and responsive testimonial composition. |
+| `frontend/src/components/SiteFooter.astro` | Create | Proposed | Suite branding, copyright and accessible social placeholder links. |
+| `frontend/src/pages/index.astro` | Modify | Existing | Complete approved five-section page hierarchy. |
+| `frontend/src/styles/global.css` | Modify | Existing | Testimonial/Footer styles, focus/target/reflow and integration spacing. |
+| `frontend/src/assets/*` | Consume | Verified assets | Portrait, logo, social icons and decorations. |
+| `frontend/src/components/Welcome.astro` | Delete after references removed | Existing starter | Remove unused starter UI. |
+| `frontend/src/assets/astro.svg` | Delete if unused | Existing starter | Remove unused starter asset. |
+| `frontend/src/assets/background.svg` | Delete if unused | Existing starter | Remove unused starter asset. |
 
 ## 9. Dependencies and Interfaces
 
-Document module and task dependencies, public interfaces, data or component contracts, compatibility requirements, and downstream effects.
+- `index.astro` remains the composition owner; new section components remain static/presentational Astro.
+- Social links are native anchors and icon presentation must be separated from accessible naming.
+- Page-level spacing may be adjusted to integrate upper/lower sections, but material changes to previously accepted upper-section behavior require a documented discovery/deviation.
+- Final validation task consumes this complete page and may fix defects in their owning files only.
 
 ## 10. Implementation Steps
 
-1. Verify input and task-start snapshots.
-2. Inspect affected files and confirm repository assumptions.
-3. ...
-4. Update relevant tests and documentation.
-5. Run required validation.
-6. Commit the approved result and create an Implementation output `SRC-REPO-*` record.
-
-Do not include implementation code during task decomposition.
+1. Verify prerequisite/source/asset evidence and current full-page composition.
+2. Implement `Testimonial.astro` with exact approved content and `SPEC-ACC-003` image treatment.
+3. Implement `SiteFooter.astro` with branding/copyright and three accessible placeholder social anchors.
+4. Complete page composition in `index.astro` and integrate shared styles.
+5. Derive section-specific responsive transitions from rendered pressure; preserve logical DOM order during visual rearrangement.
+6. Verify focus, social accessible names, target usability, narrow/zoomed reflow, and no horizontal overflow.
+7. Remove starter-only component/assets once unused.
+8. Run build and section/page-level validation.
+9. Commit the result and record canonical output/validation evidence.
 
 ## 11. State, Responsive, and Accessibility Requirements
 
 ### States and errors
 
-- Default:
-- Loading:
-- Empty:
-- Error:
-- Success:
-- Disabled or unavailable:
-- Other:
+- Social controls use native anchor default/focus/hover behavior as supported by approved design; no dynamic loading/error/success state exists.
+- All social links remain `href="#"`; do not invent production destinations.
+- Missing required verified imagery blocks the relevant visual rather than authorizing substitution.
 
 ### Responsive behavior
 
-- Small viewports:
-- Intermediate widths:
-- Large viewports:
-- Content and overflow edge cases:
+- Wide: preserve approved side-by-side testimonial and horizontal footer relationships.
+- Tablet/mobile: reproduce approved stacked/rearranged compositions while maintaining logical source order.
+- Validate 1440/768/375 plus intermediate/beyond widths and transition boundaries.
+- No clipped quote/attribution, orphaned layout, target collision, or horizontal overflow at narrow/zoomed conditions.
 
 ### Accessibility
 
-- Semantic structure:
-- Keyboard interaction:
-- Focus behavior:
-- Accessible names and relationships:
-- Announcements:
-- Contrast, reflow, touch targets, or reduced motion:
-
-Use `Not applicable` only with a reason.
+- Testimonial structure and attribution are semantically understandable in source order.
+- Portrait/backdrop may be decorative when nearby attribution supplies identity; unsourced alt text is not invented.
+- Footer social links expose meaningful names `Facebook`, `Twitter`, and `Instagram` independent of decorative icon graphics.
+- All links are keyboard reachable with visible focus and usable target areas.
+- Decorative graphics are hidden from accessibility APIs where appropriate.
 
 ## 12. Validation
 
-List only commands and checks supported by the task-start repository snapshot.
-
 ### Automated validation
 
-- Unit tests:
-- Component or integration tests:
-- End-to-end tests:
-- Type checking:
-- Linting:
-- Build:
-- Other:
+- `pnpm --dir frontend build` — expected: production build succeeds after complete page composition/starter cleanup.
+- No repository-defined lint/unit/browser/a11y commands are assumed.
 
 ### Manual validation
 
-- Interaction checks:
-- Responsive checks:
-- Accessibility checks:
-- Visual comparison against `SRC-DS-*`:
-- Error and edge-case checks:
-- Regression checks:
-
-For each check, define the expected result. Do not claim a check passed until it ran successfully.
+- Exact testimonial copy/attribution, footer copyright/branding, and social labels/destinations.
+- Social links expose correct accessible names and exactly `href="#"`.
+- Compare Testimonial/Footer at 1440/768/375 plus intermediate/beyond widths; inspect transition boundaries.
+- Keyboard/focus/target usability, image semantics, logical DOM order and zoom/reflow.
+- No page-level horizontal overflow or orphaned starter UI/assets.
+- Regression check that Header/Hero/Metrics remain materially consistent after full-page integration.
 
 ## 13. Acceptance Criteria
 
-- [ ] `[Requirement or specification ID]` Objective result is observable and correct.
-- [ ] Required accessibility behavior is verified.
-- [ ] Required responsive and state behavior is verified.
-- [ ] Relevant automated and manual validation passes.
-- [ ] Snapshot verification or approved upstream rebaseline is complete.
-- [ ] The committed result has an Implementation output snapshot.
-- [ ] Documentation and task status are updated.
+- [ ] `PLAN-003` is fully represented by Testimonial/Footer/full-page integration.
+- [ ] Applicable `REQ-FR-005`–`008`, `REQ-AR-*`, and `REQ-NFR-*` behavior is correct.
+- [ ] Testimonial content/attribution and Footer branding/copyright are exact to approved sources.
+- [ ] Facebook/Twitter/Instagram links have meaningful accessible names and exactly `href="#"`.
+- [ ] Testimonial imagery/decorations follow `SPEC-ACC-003` without invented alt copy.
+- [ ] Approved responsive outcomes and intermediate/beyond widths reflow without material unexplained drift or overflow.
+- [ ] Starter-only UI/assets are removed when unused.
+- [ ] Build and required manual validation pass; output lineage is recorded.
 
 ## 14. Risks and Considerations
 
 | Risk or assumption | Impact | Mitigation or validation |
 |---|---|---|
-| ... | ... | ... |
+| Portrait/social asset mapping may be unresolved. | Wrong or inaccessible imagery/icon use. | Consume only verified assets; escalate unresolved authoritative mapping before use. |
+| Lower-page transition widths may differ from upper page. | One global breakpoint could distort approved layout. | Use section-specific pressure-driven transitions and validate adjacent widths. |
+| Page-level spacing changes can regress upper sections. | Previously accepted fidelity can drift. | Limit integration changes and include explicit upper-page regression inspection. |
 
 ## 15. Implementation Discoveries
 
-| Discovery | Impact | Owning artifact | Required update |
-|---|---|---|---|
-| ... | ... | `SOURCE-BASELINE.md` / `REQUIREMENTS.md` / `DESIGN.md` / `SPEC.md` / `ARCHITECTURE.md` / `PLAN.md` / Task | ... |
-
-Do not silently work around documentation or source-baseline errors.
+Record any source/spec/asset/repository mismatch and route it to the earliest owning artifact rather than silently compensating.
 
 ## 16. Deviations
 
-| Planned approach or baseline | Actual approach or baseline | Reason | Approval or evidence | Impact |
-|---|---|---|---|---|
-| ... | ... | ... | ... | ... |
-
-Use `None` when implementation followed the task exactly.
-
-
+Use `None` when implementation follows the task. Record material deviations with reason/evidence/impact.
 
 ## 18. Definition of Done
 
-- [ ] The objective is implemented within scope.
-- [ ] Acceptance criteria pass.
-- [ ] Required validation executed successfully.
-- [ ] No required validation remains failing or unverified.
-- [ ] Input snapshot references remain valid or an approved upstream rebaseline was completed.
-- [ ] The implementation output snapshot and parent lineage are recorded.
-- [ ] Relevant documentation was updated.
-- [ ] `TASKS-INDEX.md` and `WORKFLOW-STATE.md` reflect current status and lineage.
-- [ ] Deviations and remaining risks are recorded.
-- [ ] Downstream tasks have the information they need.
+- [ ] Objective and acceptance criteria implemented.
+- [ ] Required canonical validation Passed with evidence.
+- [ ] Prerequisite/source verification recorded and no unresolved material drift remains.
+- [ ] Implementation-output snapshot/commit lineage recorded.
+- [ ] Discoveries/deviations/remaining risks recorded.
+- [ ] `P03-T01` is unblocked with a complete rendered page.
 
 ## 19. Completion Report
 
-- Files created, modified, or deleted:
-- Input snapshot IDs used:
-- Task-start repository snapshot:
-- Implementation-output repository snapshot:
-- Source verification performed:
-- Behavior implemented:
-- Validation executed:
-- Validation results:
-- Deviations:
-- Remaining risks:
-- Documentation updated:
-- Next unblocked task:
+Record changed/deleted files, input/prerequisite/output snapshots, source verification, final lower-page transitions, image/social semantics, validation results, deviations/risks, documentation updates, and `P03-T01` as the next task.
