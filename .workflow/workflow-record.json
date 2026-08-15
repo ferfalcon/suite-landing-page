@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 2,
-    "status": "Ready",
+    "stage": 3,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -133,6 +133,16 @@
       "statusChangedAt": "2026-08-15T00:55:32.493Z",
       "statusEvidence": "Project owner explicitly approved the Stage 2 requirements on 2026-08-14, including the href=# placeholder decision for beta CTA and footer social links.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-DESIGN",
+      "type": "DESIGN",
+      "path": "DESIGN.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
