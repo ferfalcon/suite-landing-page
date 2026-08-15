@@ -94,6 +94,14 @@
       "method": "Connected Figma Stage 5 metadata inspection of the scoped Workflow page, product screens, component families, and design-system documentation",
       "evidence": "Re-inspected Figma page 2140:147 during Stage 5 consistency review. Product Screens 2140:1361 still contains desktop 2140:148 at 1440x1716, tablet 2140:330 at 768x1904, and mobile 2140:289 at 375x2399. Components 2140:1310 still contains Site Header 2176:1216, Hero 2159:699, Metrics 2156:483, Testimonial 2160:742, Footer 2157:513, CTA sets 3:960 and 3:978, approved imagery, logo, social icons, and decorations. Design System Documentation 2140:1363 remains present with typography, spacing, radius, and color documentation. No material source drift was detected against the Stage 4 baseline.",
       "checkedAt": "2026-08-15T01:33:12.443Z"
+    },
+    {
+      "id": "VER-008",
+      "snapshot": "SRC-REPO-001",
+      "result": "Unchanged",
+      "method": "Pinned commit inspection and current-main implementation subtree comparison",
+      "evidence": "Inspected immutable commit 69b2949ace42bc06b61806755abdb9a2f95f5a96 and current main. The Astro implementation entry, layout, package manifest, starter component/assets, and frontend structure remain unchanged from the pinned implementation baseline; main contains workflow/documentation changes but no landing-page implementation.",
+      "checkedAt": "2026-08-15T02:20:03.800Z"
     }
   ],
   "artifacts": [
