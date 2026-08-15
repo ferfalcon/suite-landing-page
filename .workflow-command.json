@@ -1,7 +1,14 @@
 {
-  "id": "advance-to-stage-2-2026-08-14",
+  "id": "reverify-stage-2-figma-source-2026-08-14",
   "argv": [
-    "stage",
-    "advance"
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma metadata re-verification for Stage 2 requirements",
+    "--evidence",
+    "Re-inspected Workflow page 2140:147 before deriving requirements. Product Screens still contain Home desktop 2140:148, tablet 2140:330, and mobile 2140:289; Components still contain the responsive Header, Hero, Metrics, Testimonial, Footer and CTA state families; Design System Documentation remains present. No material structural change was detected against the approved Stage 1 evidence baseline."
   ]
 }
