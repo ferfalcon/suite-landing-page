@@ -1,10 +1,10 @@
 {
-  "id": "review-stage-9-tasks-index-2026-08-15",
+  "id": "review-art-task-p01-t01-2026-08-15",
   "argv": [
     "artifact",
     "review",
-    "ART-TASKS-INDEX",
+    "ART-TASK-P01-T01",
     "--evidence",
-    "Stage 9 two-pass review confirms complete PLAN-001 through PLAN-004 coverage, coherent prerequisite ordering, canonical Ready task IDs, explicit validation ownership, source/rebaseline rules, accessibility/responsive/security integration, and documented asset/browser/Vercel/workflow-renderer risks without implementation scope leakage."
+    "Two-pass Stage 9 review confirms P01-T01 has one coherent foundation objective, accurate source/prerequisite rules, concrete file ownership, static/no-data scope, asset-readiness handling, integrated accessibility/responsive behavior, supported build/manual validation, acceptance criteria, risks, and output-lineage requirements with no implementation code."
   ]
 }
