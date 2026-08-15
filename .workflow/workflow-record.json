@@ -57,11 +57,13 @@
       "id": "ART-SOURCE-BASELINE",
       "type": "SOURCE-BASELINE",
       "path": "SOURCE-BASELINE.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T00:10:41.651Z",
+      "statusEvidence": "Pass 1 confirmed material Stage 0 sources, exact scoped Figma nodes, immutable repository commit, and source limitations. Pass 2 confirmed source authority, mutable-source handling, workflow-only post-baseline commits, and external-library uncertainty are represented consistently without redefining canonical state."
     },
     {
       "id": "ART-PROJECT-CONTEXT",
