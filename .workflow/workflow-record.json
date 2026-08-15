@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 0,
-    "status": "Ready",
+    "stage": 1,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -91,6 +91,16 @@
       "statusChangedAt": "2026-08-15T00:19:56.512Z",
       "statusEvidence": "Project owner explicitly approved Stage 0 and authorized progression on 2026-08-14.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-DESIGN-AUDIT",
+      "type": "DESIGN-AUDIT",
+      "path": "DESIGN-AUDIT.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
