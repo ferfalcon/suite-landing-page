@@ -50,6 +50,14 @@
       "method": "Git commit comparison and frontend entry-file blob comparison",
       "evidence": "Pinned implementation baseline is commit 69b2949ace42bc06b61806755abdb9a2f95f5a96. Current main adds workflow-control infrastructure, while frontend/src/pages/index.astro remains blob c04f3602b5521c56580c70dd0846b2c559be7193 at both the pinned commit and current main.",
       "checkedAt": "2026-08-15T00:10:13.590Z"
+    },
+    {
+      "id": "VER-003",
+      "snapshot": "SRC-DS-001",
+      "result": "Unchanged",
+      "method": "Connected Figma metadata, screenshots, variables, styled text, and prototype reaction inspection",
+      "evidence": "Re-inspected Workflow page 2140:147 including Home desktop 2140:148, tablet 2140:330, mobile 2140:289, Components 2140:1310, Design System Documentation 2140:1363, CTA states and reactions. No material mismatch was detected against the active time-bound design snapshot.",
+      "checkedAt": "2026-08-15T00:25:34.887Z"
     }
   ],
   "artifacts": [
