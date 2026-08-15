@@ -66,6 +66,14 @@
       "commit": "64286291a73370378f56ba8b1da9507ac4e49e3e",
       "parent": "SRC-REPO-001",
       "task": "P02-T02"
+    },
+    {
+      "id": "SRC-RUN-001",
+      "role": "Validation runtime",
+      "pinStrength": "Time-bound",
+      "status": "Active",
+      "reference": "https://suite-landing-page-9q8cuiaye-fer-falcons-team.vercel.app/",
+      "task": "P03-T01"
     }
   ],
   "verifications": [
