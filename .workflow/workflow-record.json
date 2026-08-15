@@ -167,11 +167,13 @@
       "id": "ART-SPEC",
       "type": "SPEC",
       "path": "SPEC.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T01:24:20.901Z",
+      "statusEvidence": "Stage 4 SPEC.md completed both required review passes. All approved AC-001 through AC-028 are expressed as testable outcomes; behavior, interactions, responsive conditions, accessibility, data boundaries, validation, and edge cases are traced without invented breakpoints or application behavior. VER-006 confirms the active Figma source is Unchanged."
     }
   ],
   "traceItems": [],
