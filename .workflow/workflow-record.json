@@ -125,13 +125,13 @@
       "id": "ART-REQUIREMENTS",
       "type": "REQUIREMENTS",
       "path": "REQUIREMENTS.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
       ],
-      "statusChangedAt": "2026-08-15T00:47:28.749Z",
-      "statusEvidence": "Project owner resolved the placeholder link behavior: use href=# for the Request Beta Access CTAs and footer social links. Requirements are reopened so the owner decision can be incorporated and re-reviewed before approval."
+      "statusChangedAt": "2026-08-15T00:49:19.850Z",
+      "statusEvidence": "Pass 1 confirmed the owner-approved href=# placeholder rule is applied consistently to both Request Beta Access CTAs and all footer social links, with no beta form, production destination, tracking, or data behavior introduced. Pass 2 confirmed the # rule is recorded as an explicit owner decision rather than Figma evidence, Q-001 and Q-004 are resolved, existing requirement IDs remain stable, VER-004 remains the active design verification, and no Stage 2 blocking product question remains."
     }
   ],
   "traceItems": [],
