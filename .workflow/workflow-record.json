@@ -198,6 +198,14 @@
       "method": "Vercel preview inspection and Git commit lineage comparison",
       "evidence": "Vercel deployment dpl_Afdx61Jgmk6yv8wqCjMKcA1NUNbc is READY and the branch preview returns HTTP 200 with the expected Suite DOM. The deployed frontend is commit 54cd28f20f3eabd6a98ee793daaea1f3bfd0f6cb; comparison through current main and this validation branch shows no frontend/** changes after that commit, so this runtime exactly represents the current implementation under P03-T01 validation.",
       "checkedAt": "2026-08-15T20:06:47.194Z"
+    },
+    {
+      "id": "VER-015",
+      "snapshot": "SRC-REPO-005",
+      "result": "Expected workflow output",
+      "method": "Exact-HEAD task-completion lineage and Git frontend-subtree comparison",
+      "evidence": "SRC-REPO-005 is the exact HEAD captured by the successful P03-T01 task-completion job at fca5af73deda2d98bf7b094a7894771083a81f0c. Git comparison from the READY Vercel frontend commit 54cd28f20f3eabd6a98ee793daaea1f3bfd0f6cb through the Stage 11 branch shows no frontend/** changes, so the implementation output retains the fully validated frontend while adding only workflow/validation evidence. The snapshot descends from the pinned SRC-REPO-001 baseline and is the canonical latest implementation output.",
+      "checkedAt": "2026-08-15T20:20:23.149Z"
     }
   ],
   "artifacts": [
