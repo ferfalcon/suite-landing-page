@@ -1,7 +1,12 @@
 {
-  "id": "stage-8-preflight-2026-08-15",
+  "id": "approve-stage-8-plan-2026-08-15",
   "argv": [
-    "stage",
-    "check"
+    "artifact",
+    "approve",
+    "ART-PLAN",
+    "--evidence",
+    "Fernando Falcon approved the corrected Stage 8 implementation plan, accepting the documented residual risks after the adversarial review.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
