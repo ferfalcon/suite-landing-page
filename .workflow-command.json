@@ -1,27 +1,27 @@
 {
-  "id": "validation-p02-t01-2026-08-15",
+  "id": "validation-p02-t02-2026-08-15",
   "argv": [
     "task",
     "validation",
     "set",
-    "P02-T01",
+    "P02-T02",
     "--name",
-    "Upper-page acceptance",
+    "Lower-page acceptance",
     "--kind",
-    "Responsive",
+    "Accessibility",
     "--required",
     "true",
     "--status",
     "Not executed",
     "--expected",
-    "The build succeeds and Header, Hero, and Metrics match approved content and visual relationships at 1440, 768, 375 and required intermediate/beyond widths; both beta anchors remain href=#; keyboard focus, image semantics, reflow, target usability, and reduced-motion behavior meet the approved specification with no page-level overflow.",
+    "The build succeeds and Testimonial/Footer match approved content and responsive relationships; social anchors are exactly href=# with accessible Facebook, Twitter, and Instagram names; testimonial imagery follows approved semantics; focus/target/reflow behavior passes; no page overflow or orphaned starter UI/assets remain and upper-page behavior is not materially regressed.",
     "--command",
     "pnpm --dir frontend build",
     "--environment",
-    "repository root plus rendered browser comparison to SRC-DS-001",
+    "repository root plus rendered browser accessibility and responsive inspection",
     "--reason",
     "Stage 10 implementation has not started.",
     "--references",
-    "PLAN-002"
+    "PLAN-003"
   ]
 }
