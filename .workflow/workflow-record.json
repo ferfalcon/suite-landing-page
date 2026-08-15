@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 8,
-    "status": "Ready",
+    "stage": 9,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -258,6 +258,16 @@
       "statusChangedAt": "2026-08-15T02:45:33.207Z",
       "statusEvidence": "Fernando Falcon approved the Stage 8 adversarial plan review and accepted its documented residual risks.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-TASKS-INDEX",
+      "type": "TASKS-INDEX",
+      "path": "TASKS-INDEX.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
