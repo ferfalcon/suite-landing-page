@@ -177,7 +177,7 @@ None.
 - [x] Objective and acceptance criteria implemented within scope.
 - [x] Required canonical build and visual validation Passed with evidence.
 - [x] Source/prerequisite review found no unresolved material drift.
-- [ ] Implementation-output snapshot/commit lineage recorded by canonical task completion against exact HEAD.
+- [x] Implementation-output snapshot/commit lineage recorded by canonical task completion against exact HEAD.
 - [x] Discoveries, deviations, and remaining risks recorded.
 - [x] P02-T02 can consume a stable upper-page implementation after this task branch is merged.
 
@@ -185,9 +185,9 @@ None.
 
 - Implementation files: `frontend/src/components/SiteHeader.astro`, `frontend/src/components/Hero.astro`, `frontend/src/components/Metrics.astro`, `frontend/src/pages/index.astro`, and `frontend/src/styles/global.css`.
 - Inputs/prerequisites: active `SRC-DS-001`, pinned `SRC-REPO-001`, completed P01-T01 output `SRC-REPO-002`, and the P01 verified asset/foundation set.
+- Output lineage: canonical implementation output `SRC-REPO-003`, commit `90363616733a97f5659c2fe9c27849e7d0c7ef29`.
 - Result: static responsive Site Header + Hero + Metrics implementation with exact approved copy, native placeholder beta links, verified imagery, Epilogue typography, semantic source order, and shared accessible CTA behavior.
 - Validation: GitHub Actions production build Passed; Vercel preview served the expected static contract; project owner rendered visual/responsive review Passed.
 - Deviations: None.
 - Remaining risk: automated browser/viewport coverage is still absent from the repository and remains relevant to integrated P03-T01 validation.
-- Output lineage: to be filled canonically by the task-completion command against exact HEAD; the workflow record, not this Markdown file, owns the output snapshot ID and mutable task status.
 - Next dependency after merge: P02-T02 is the next ready task, but it must not be started without a later explicit user instruction.
