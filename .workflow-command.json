@@ -1,14 +1,10 @@
 {
-  "id": "verify-stage-8-repository-2026-08-14",
+  "id": "reopen-stage-8-plan-corrections-2026-08-15",
   "argv": [
-    "snapshot",
-    "verify",
-    "SRC-REPO-001",
-    "--result",
-    "Unchanged",
-    "--method",
-    "Pinned repository baseline comparison against current main for Stage 8 plan challenge",
+    "artifact",
+    "reopen",
+    "ART-PLAN",
     "--evidence",
-    "Compared pinned SRC-REPO-001 commit 69b2949ace42bc06b61806755abdb9a2f95f5a96 with current main 815a9dd08a25b95e21ac79653e1576d1e64b6970. Current main adds workflow/documentation state and frontend/vercel.json build policy, while the landing-page starter entry/layout/package/component/assets remain unimplemented and no Suite landing-page implementation has begun. The pinned implementation baseline remains valid; the current Vercel build policy is a later repository constraint, not implementation output."
+    "Stage 8 adversarial review identified source-traceability, metadata-scope, accessibility-validation, image-semantics, and asset-readiness corrections. PLAN.md was corrected before Stage 8 approval."
   ]
 }
