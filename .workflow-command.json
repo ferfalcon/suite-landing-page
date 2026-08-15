@@ -1,10 +1,10 @@
 {
-  "id": "reopen-stage-8-plan-corrections-2026-08-15",
+  "id": "review-corrected-stage-8-plan-2026-08-15",
   "argv": [
     "artifact",
-    "reopen",
+    "review",
     "ART-PLAN",
     "--evidence",
-    "Stage 8 adversarial review identified source-traceability, metadata-scope, accessibility-validation, image-semantics, and asset-readiness corrections. PLAN.md was corrected before Stage 8 approval."
+    "Stage 8 corrected PLAN.md received a second end-to-end review against REQUIREMENTS.md, SPEC.md, the Stage 6 architecture decision, refreshed VER-010/VER-011 source evidence, and repository constraints. All identified Stage 8 findings are corrected; remaining risks are explicitly owned and non-blocking for task decomposition."
   ]
 }
