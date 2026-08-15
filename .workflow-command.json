@@ -1,14 +1,14 @@
 {
-  "id": "verify-stage-0-figma-source-2026-08-14",
+  "id": "verify-stage-0-repository-source-2026-08-14",
   "argv": [
     "snapshot",
     "verify",
-    "SRC-DS-001",
+    "SRC-REPO-001",
     "--result",
     "Unchanged",
     "--method",
-    "Connected Figma metadata and scoped page inspection",
+    "Git commit comparison and frontend entry-file blob comparison",
     "--evidence",
-    "Resolved file EVFb3Lb4Y5iKn762QYva4y page 2140:147 with Product Screens, Components, and Design System Documentation; no material mismatch established against the registered design reference."
+    "Pinned implementation baseline is commit 69b2949ace42bc06b61806755abdb9a2f95f5a96. Current main adds workflow-control infrastructure, while frontend/src/pages/index.astro remains blob c04f3602b5521c56580c70dd0846b2c559be7193 at both the pinned commit and current main."
   ]
 }
