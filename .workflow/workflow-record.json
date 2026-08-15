@@ -7,7 +7,7 @@
   },
   "state": {
     "stage": 9,
-    "status": "In progress",
+    "status": "Ready",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -585,6 +585,40 @@
       ],
       "evidence": "Fernando Falcon explicitly approved ART-PLAN and ART-PLAN-REVIEW, accepted the documented Stage 8 residual risks, and approved Stage 8 as Passed. The approved preflight found the Stage 8 decision recordable with current VER-010 and VER-011 source verification and no unresolved blocker to task decomposition.",
       "recordedAt": "2026-08-15T02:46:16.417Z",
+      "approvedBy": "Fernando Falcon"
+    },
+    {
+      "id": "GATE-010",
+      "stage": 9,
+      "status": "Active",
+      "result": "Passed",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ],
+      "verifications": [
+        "VER-010",
+        "VER-011"
+      ],
+      "artifacts": [
+        "ART-SOURCE-BASELINE",
+        "ART-PROJECT-CONTEXT",
+        "ART-WORKFLOW-STATE",
+        "ART-DESIGN-AUDIT",
+        "ART-REQUIREMENTS",
+        "ART-DESIGN",
+        "ART-SPEC",
+        "ART-DOCUMENT-REVIEW",
+        "ART-PLAN",
+        "ART-PLAN-REVIEW",
+        "ART-TASKS-INDEX",
+        "ART-TASK-P01-T01",
+        "ART-TASK-P02-T02",
+        "ART-TASK-P02-T01",
+        "ART-TASK-P03-T01"
+      ],
+      "evidence": "Fernando Falcon explicitly approved ART-TASKS-INDEX and all four Stage 9 TASK artifacts, accepted the documented task-set risks, and approved Stage 9 as Passed on 2026-08-15. He explicitly instructed not to start Stage 10.",
+      "recordedAt": "2026-08-15T03:14:11.103Z",
       "approvedBy": "Fernando Falcon"
     }
   ],
