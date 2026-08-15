@@ -22,49 +22,72 @@
       "id": "SRC-DS-001",
       "role": "Input baseline",
       "pinStrength": "Time-bound",
-      "status": "Unverified",
+      "status": "Active",
       "reference": "https://www.figma.com/design/EVFb3Lb4Y5iKn762QYva4y/suite-landing-page?node-id=2140-147"
     },
     {
       "id": "SRC-REPO-001",
       "role": "Input baseline",
       "pinStrength": "Immutable",
-      "status": "Unverified",
+      "status": "Active",
       "reference": "/home/runner/work/suite-landing-page/suite-landing-page",
       "commit": "69b2949ace42bc06b61806755abdb9a2f95f5a96"
     }
   ],
-  "verifications": [],
+  "verifications": [
+    {
+      "id": "VER-001",
+      "snapshot": "SRC-DS-001",
+      "result": "Unchanged",
+      "method": "Connected Figma metadata and scoped page inspection",
+      "evidence": "Resolved file EVFb3Lb4Y5iKn762QYva4y page 2140:147 with Product Screens, Components, and Design System Documentation; no material mismatch established against the registered design reference.",
+      "checkedAt": "2026-08-15T00:09:47.860Z"
+    },
+    {
+      "id": "VER-002",
+      "snapshot": "SRC-REPO-001",
+      "result": "Unchanged",
+      "method": "Git commit comparison and frontend entry-file blob comparison",
+      "evidence": "Pinned implementation baseline is commit 69b2949ace42bc06b61806755abdb9a2f95f5a96. Current main adds workflow-control infrastructure, while frontend/src/pages/index.astro remains blob c04f3602b5521c56580c70dd0846b2c559be7193 at both the pinned commit and current main.",
+      "checkedAt": "2026-08-15T00:10:13.590Z"
+    }
+  ],
   "artifacts": [
     {
       "id": "ART-SOURCE-BASELINE",
       "type": "SOURCE-BASELINE",
       "path": "SOURCE-BASELINE.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T00:10:41.651Z",
+      "statusEvidence": "Pass 1 confirmed material Stage 0 sources, exact scoped Figma nodes, immutable repository commit, and source limitations. Pass 2 confirmed source authority, mutable-source handling, workflow-only post-baseline commits, and external-library uncertainty are represented consistently without redefining canonical state."
     },
     {
       "id": "ART-PROJECT-CONTEXT",
       "type": "PROJECT-CONTEXT",
       "path": "PROJECT-CONTEXT.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T00:11:10.875Z",
+      "statusEvidence": "Pass 1 confirmed project goal, static-page scope, Standard profile rationale, Figma and repository boundaries, and evidence-based quality expectations. Pass 2 confirmed exclusions, deferred stages, constraints, risks, and authority relationships are consistent with the repository contract and active source baseline."
     },
     {
       "id": "ART-WORKFLOW-STATE",
       "type": "WORKFLOW-STATE",
       "path": "WORKFLOW-STATE.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T00:11:34.341Z",
+      "statusEvidence": "Pass 1 confirmed blocking status, assumptions, deferred architecture decision, verification history, and next permitted action. Pass 2 confirmed Gated advancement rules, the accepted executor deviation, source-change handling, and absence of premature task/output state are consistent with canonical workflow controls."
     }
   ],
   "traceItems": [],
