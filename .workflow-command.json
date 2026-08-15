@@ -1,10 +1,8 @@
 {
-  "id": "review-art-task-p03-t01-2026-08-15",
+  "id": "stage-9-preflight-2026-08-15",
   "argv": [
-    "artifact",
-    "review",
-    "ART-TASK-P03-T01",
-    "--evidence",
-    "Two-pass Stage 9 review confirms P03-T01 maps PLAN-004 to one coherent integrated acceptance objective with prerequisite lineage, Figma re-verification, supported build/browser/runtime checks, required width coverage, keyboard/accessibility including SPEC-ACC-004 contrast and target validation, visual fidelity, Vercel preview/runtime evidence, bounded browser/Vercel risks, and no new product scope."
+    "stage",
+    "check",
+    "--json"
   ]
 }
