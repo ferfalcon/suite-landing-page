@@ -1,10 +1,7 @@
 {
-  "id": "review-stage-5-documentation-2026-08-14",
+  "id": "check-stage-5-document-review-2026-08-14",
   "argv": [
-    "artifact",
-    "review",
-    "ART-DOCUMENT-REVIEW",
-    "--evidence",
-    "Stage 5 completed two-pass cross-document review. Corrected stale Stage 0 source/context/workflow narratives, refreshed REQUIREMENTS and DESIGN downstream traceability to approved Stage 3/4 outputs, resolved stable constraint ownership, removed the scaffolded nonexistent SRC-DOC-001, and confirmed VER-007 plus the unchanged immutable repository implementation baseline. No blocking inconsistency remains; only explicit non-blocking asset, content-variability, browser-matrix, and pre-runtime risks remain."
+    "stage",
+    "check"
   ]
 }
