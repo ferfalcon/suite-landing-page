@@ -1,7 +1,10 @@
 {
-  "id": "advance-stage-11-2026-08-15",
+  "id": "review-stage-11-implementation-review-2026-08-15",
   "argv": [
-    "stage",
-    "advance"
+    "artifact",
+    "review",
+    "ART-IMPLEMENTATION-REVIEW",
+    "--evidence",
+    "Completed Stage 11 implementation review against SRC-DS-001, SRC-REPO-005, SRC-RUN-001, approved requirements/specification, successful P03 integrated acceptance, final Figma reinspection, Git lineage, and Vercel deployment evidence. Narrative result: Implementation accepted; no unresolved product findings; unexecuted cross-browser and dedicated manual screen-reader coverage are explicitly recorded as non-blocking limitations rather than passed checks."
   ]
 }
