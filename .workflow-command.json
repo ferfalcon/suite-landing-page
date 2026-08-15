@@ -1,8 +1,13 @@
 {
-  "id": "stage-8-approved-preflight-2026-08-15",
+  "id": "pass-stage-8-gate-2026-08-15",
   "argv": [
     "stage",
-    "check",
-    "--json"
+    "review",
+    "--result",
+    "Passed",
+    "--evidence",
+    "Fernando Falcon explicitly approved ART-PLAN and ART-PLAN-REVIEW, accepted the documented Stage 8 residual risks, and approved Stage 8 as Passed. The approved preflight found the Stage 8 decision recordable with current VER-010 and VER-011 source verification and no unresolved blocker to task decomposition.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
