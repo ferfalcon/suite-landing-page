@@ -1,4 +1,4 @@
 {
-  "id": "context-p02-t02-start-2026-08-15",
-  "argv": ["context", "--json"]
+  "id": "start-p02-t02-2026-08-15",
+  "argv": ["task", "start", "P02-T02"]
 }
