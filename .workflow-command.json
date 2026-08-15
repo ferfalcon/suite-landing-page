@@ -1,13 +1,7 @@
 {
-  "id": "pass-stage-2-gate-2026-08-14",
+  "id": "advance-stage-3-design-2026-08-14",
   "argv": [
     "stage",
-    "review",
-    "--result",
-    "Passed",
-    "--evidence",
-    "Project owner approved ART-REQUIREMENTS. Stage 2 preflight recommends Passed with no findings; the requirements are approved, VER-004 remains Unchanged, the href=# placeholder behavior is explicitly resolved, and no Stage 2 blocking product question remains.",
-    "--approved-by",
-    "Fernando Falcon"
+    "advance"
   ]
 }
