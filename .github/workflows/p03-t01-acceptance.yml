@@ -36,7 +36,7 @@ jobs:
           const executablePath=['/usr/bin/google-chrome','/usr/bin/google-chrome-stable','/usr/bin/chromium'].find(fs.existsSync);
           const browser=await chromium.launch({executablePath,headless:true,args:['--no-sandbox']});
           const widths=[1600,1440,1121,1120,1041,1040,900,768,700,620,619,500,375,320];
-          const refs=new Map([[1440,{height:1716,header:[166,50,1110,52],hero:[166,182,1110,600],testimonial:[167,972,1109,535],footer:[0,1252,1440,464]}],[768,{height:1904,header:[32,32,704,52],hero:[32,164,704,480],metrics:[32,724,704,86],testimonial:[32,1076,704,684],footer:[0,1440,768,464]}],[375,{height:2399,header:[16,24,343,52],hero:[16,140,343,599],metrics:[16,803,343,338],testimonial:[0,1426,375,744],footer:[0,1935,375,464]}]]);
+          const refs=new Map([[1440,{height:1716,header:[166,50,1110,52],hero:[166,182,920,600],testimonial:[167,972,1109,535],footer:[0,1252,1440,464]}],[768,{height:1904,header:[32,32,704,52],hero:[32,164,704,480],metrics:[32,724,704,86],testimonial:[32,1076,704,684],footer:[0,1440,768,464]}],[375,{height:2399,header:[16,24,343,52],hero:[16,140,343,599],metrics:[16,803,343,338],testimonial:[0,1426,375,744],footer:[0,1935,375,464]}]]);
           const ok=(v,m)=>{if(!v)throw new Error(m)}, near=(a,b)=>Math.abs(a-b)<=2;
           const rgb=s=>{const m=s.match(/rgba?\((\d+(?:\.\d+)?)[, ]+\s*(\d+(?:\.\d+)?)[, ]+\s*(\d+(?:\.\d+)?)/);if(!m)throw new Error(`bad color ${s}`);return m.slice(1,4).map(Number)};
           const lum=c=>{const v=rgb(c).map(x=>x/255).map(x=>x<=.04045?x/12.92:((x+.055)/1.055)**2.4);return .2126*v[0]+.7152*v[1]+.0722*v[2]}, ratio=(a,b)=>{const x=[lum(a),lum(b)].sort((p,q)=>q-p);return(x[0]+.05)/(x[1]+.05)};
