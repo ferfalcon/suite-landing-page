@@ -180,6 +180,14 @@
       "method": "Git ancestry and implementation-surface comparison immediately before P01-T01 edits",
       "evidence": "Current P01-T01 branch descends from pinned SRC-REPO-001 commit 69b2949ace42bc06b61806755abdb9a2f95f5a96 with that commit as merge base. Changes since the baseline are approved workflow/documentation state plus frontend/vercel.json and Stage 10 CLI state; frontend/src starter implementation files and package dependency surface remain unimplemented. The pinned implementation baseline remains valid for P01-T01.",
       "checkedAt": "2026-08-15T03:27:32.851Z"
+    },
+    {
+      "id": "VER-014",
+      "snapshot": "SRC-RUN-001",
+      "result": "Expected workflow output",
+      "method": "Vercel preview inspection and Git commit lineage comparison",
+      "evidence": "Vercel deployment dpl_Afdx61Jgmk6yv8wqCjMKcA1NUNbc is READY and the branch preview returns HTTP 200 with the expected Suite DOM. The deployed frontend is commit 54cd28f20f3eabd6a98ee793daaea1f3bfd0f6cb; comparison through current main and this validation branch shows no frontend/** changes after that commit, so this runtime exactly represents the current implementation under P03-T01 validation.",
+      "checkedAt": "2026-08-15T20:06:47.194Z"
     }
   ],
   "artifacts": [
