@@ -1,7 +1,14 @@
 {
-  "id": "advance-stage-5-document-review-2026-08-14",
+  "id": "verify-stage-5-design-source-2026-08-14",
   "argv": [
-    "stage",
-    "advance"
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma Stage 5 metadata inspection of the scoped Workflow page, product screens, component families, and design-system documentation",
+    "--evidence",
+    "Re-inspected Figma page 2140:147 during Stage 5 consistency review. Product Screens 2140:1361 still contains desktop 2140:148 at 1440x1716, tablet 2140:330 at 768x1904, and mobile 2140:289 at 375x2399. Components 2140:1310 still contains Site Header 2176:1216, Hero 2159:699, Metrics 2156:483, Testimonial 2160:742, Footer 2157:513, CTA sets 3:960 and 3:978, approved imagery, logo, social icons, and decorations. Design System Documentation 2140:1363 remains present with typography, spacing, radius, and color documentation. No material source drift was detected against the Stage 4 baseline."
   ]
 }
