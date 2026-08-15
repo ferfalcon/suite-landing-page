@@ -1,7 +1,14 @@
 {
-  "id": "advance-to-stage-1-2026-08-14",
+  "id": "verify-stage-1-figma-source-2026-08-14",
   "argv": [
-    "stage",
-    "advance"
+    "snapshot",
+    "verify",
+    "SRC-DS-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Connected Figma metadata, screenshots, variables, styled text, and prototype reaction inspection",
+    "--evidence",
+    "Re-inspected Workflow page 2140:147 including Home desktop 2140:148, tablet 2140:330, mobile 2140:289, Components 2140:1310, Design System Documentation 2140:1363, CTA states and reactions. No material mismatch was detected against the active time-bound design snapshot."
   ]
 }
