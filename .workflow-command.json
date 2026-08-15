@@ -1,13 +1,7 @@
 {
-  "id": "pass-stage-9-gate-2026-08-15",
+  "id": "verify-stage-9-approved-state-2026-08-15",
   "argv": [
-    "stage",
-    "review",
-    "--result",
-    "Passed",
-    "--evidence",
-    "Fernando Falcon explicitly approved ART-TASKS-INDEX and all four Stage 9 TASK artifacts, accepted the documented task-set risks, and approved Stage 9 as Passed on 2026-08-15. He explicitly instructed not to start Stage 10.",
-    "--approved-by",
-    "Fernando Falcon"
+    "context",
+    "--json"
   ]
 }
