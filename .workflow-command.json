@@ -1,7 +1,12 @@
 {
-  "id": "read-workflow-context-after-stage-0-approval-2026-08-14",
+  "id": "approve-stage-0-source-baseline-2026-08-14",
   "argv": [
-    "context",
-    "--json"
+    "artifact",
+    "approve",
+    "ART-SOURCE-BASELINE",
+    "--evidence",
+    "Project owner explicitly approved Stage 0 and authorized progression on 2026-08-14.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
