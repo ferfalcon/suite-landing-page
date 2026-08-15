@@ -1,10 +1,7 @@
 {
-  "id": "review-stage-2-requirements-2026-08-14",
+  "id": "check-stage-2-preflight-2026-08-14",
   "argv": [
-    "artifact",
-    "review",
-    "ART-REQUIREMENTS",
-    "--evidence",
-    "Pass 1 confirmed complete coverage of scope, users, functional outcomes, data boundaries, accessibility, quality, security scope, constraints, dependencies, risks, assumptions, acceptance criteria and Definition of Done without unsupported business rules or thresholds. Pass 2 confirmed stable identifiers, approved evidence traceability, Stage 2 source verification VER-004 as Unchanged, preserved Stage 0 constraint identifier history, and explicit unresolved CTA/social behavior without invented destinations or breakpoint rules."
+    "stage",
+    "check"
   ]
 }
