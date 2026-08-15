@@ -555,6 +555,20 @@
       "output": null,
       "blocker": null,
       "validation": []
+    },
+    {
+      "id": "P02-T01",
+      "status": "Not started",
+      "baseline": "SRC-REPO-001",
+      "prerequisites": [
+        "P01-T01"
+      ],
+      "references": [
+        "PLAN-002"
+      ],
+      "output": null,
+      "blocker": null,
+      "validation": []
     }
   ],
   "profileTransitions": [],
