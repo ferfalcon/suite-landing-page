@@ -1,5 +1,5 @@
 {
-  "id": "record-p02-t01-upper-page-validation-blocked-2026-08-15-v2",
+  "id": "record-p02-t01-upper-page-validation-blocked-2026-08-15-v3",
   "argv": [
     "task",
     "validation",
@@ -8,22 +8,16 @@
     "--name",
     "Upper-page acceptance",
     "--kind",
-    "Other",
+    "Visual",
     "--required",
     "true",
     "--status",
     "Blocked",
     "--expected",
-    "Header, Hero, and Metrics build successfully, preserve the approved semantic/link contract, and materially match SRC-DS-001 at supplied and representative responsive widths without overlap, clipping, or layout-caused horizontal scrolling",
+    "Header, Hero, and Metrics materially match the approved design at supplied and representative responsive widths without overlap, clipping, or layout-caused horizontal scrolling",
     "--reason",
     "Required viewport-capable rendered visual comparison cannot be executed with the available environment; no browser/screenshot viewport runner is available and the repository defines no browser-validation command that can be invoked without inventing new tooling.",
-    "--actual",
-    "Astro production build passed and the READY Vercel preview returned the expected semantic DOM, exact CTA href values, approved content, and responsive image sources. Rendered visual comparison at the required viewport set remains unexecuted.",
-    "--executed-at",
-    "2026-08-15T18:38:20Z",
-    "--evidence",
-    "GitHub Actions run 31901631211 job 95053198240 passed pnpm --dir frontend build for the implementation tree. Vercel deployment dpl_FM1GaAPKHUiVqePMRRs6PdMjdGM6 at commit 1207d60810bfb9e71041d5e88fc669c31caff6a0 was READY and returned HTTP 200 with the expected Header/Hero/Metrics DOM and both beta CTAs exactly href=#. Manual rendered viewport/visual validation remains unavailable and is therefore not claimed as passed.",
     "--references",
-    "PLAN-001,SPEC-RWD-001,SPEC-RWD-002,SPEC-RWD-003,REQ-NFR-001"
+    "PLAN-001"
   ]
 }
