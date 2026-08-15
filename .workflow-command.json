@@ -1,13 +1,7 @@
 {
-  "id": "approve-stage-10-2026-08-15",
+  "id": "advance-stage-11-2026-08-15",
   "argv": [
     "stage",
-    "review",
-    "--result",
-    "Passed",
-    "--evidence",
-    "Project owner approved Stage 10 in ChatGPT on 2026-08-15 after integrated P03-T01 validation passed and canonical state reached Ready with all implementation tasks complete.",
-    "--approved-by",
-    "Fernando Falcon"
+    "advance"
   ]
 }
