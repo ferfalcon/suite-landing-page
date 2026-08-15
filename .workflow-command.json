@@ -1,7 +1,12 @@
 {
-  "id": "read-stage-2-context-before-approval-2026-08-14",
+  "id": "approve-stage-2-requirements-2026-08-14",
   "argv": [
-    "context",
-    "--json"
+    "artifact",
+    "approve",
+    "ART-REQUIREMENTS",
+    "--evidence",
+    "Project owner explicitly approved the Stage 2 requirements on 2026-08-14, including the href=# placeholder decision for beta CTA and footer social links.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
