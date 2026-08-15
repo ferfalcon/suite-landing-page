@@ -1,14 +1,8 @@
 {
-  "id": "verify-stage-11-repo-baseline-2026-08-15",
+  "id": "preflight-stage-11-after-verification-2026-08-15",
   "argv": [
-    "snapshot",
-    "verify",
-    "SRC-REPO-001",
-    "--result",
-    "Unchanged",
-    "--method",
-    "Immutable Git baseline and implementation-output lineage verification during Stage 11",
-    "--evidence",
-    "SRC-REPO-001 remains the immutable repository input baseline at commit 69b2949ace42bc06b61806755abdb9a2f95f5a96. All completed implementation outputs retain SRC-REPO-001 as their recorded parent baseline, and SRC-REPO-005 was successfully reverified as the expected final workflow output. No upstream mutation of the pinned baseline is possible or detected."
+    "stage",
+    "check",
+    "--json"
   ]
 }
