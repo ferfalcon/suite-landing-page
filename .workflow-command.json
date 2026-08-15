@@ -1,12 +1,7 @@
 {
-  "id": "approve-stage-1-design-audit-2026-08-14",
+  "id": "check-stage-1-after-approval-2026-08-14",
   "argv": [
-    "artifact",
-    "approve",
-    "ART-DESIGN-AUDIT",
-    "--evidence",
-    "Project owner explicitly approved the Stage 1 design audit and authorized progression on 2026-08-14.",
-    "--approved-by",
-    "Fernando Falcon"
+    "stage",
+    "check"
   ]
 }
