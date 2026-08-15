@@ -1,13 +1,15 @@
 {
-  "id": "create-p01-t01-2026-08-15",
+  "id": "create-p02-t01-2026-08-15",
   "argv": [
     "task",
     "create",
     "--id",
-    "P01-T01",
+    "P02-T01",
     "--title",
-    "Verify inputs and establish the accessible page foundation",
+    "Implement the header, hero, and metrics sections",
+    "--prerequisites",
+    "P01-T01",
     "--references",
-    "PLAN-001"
+    "PLAN-002"
   ]
 }
