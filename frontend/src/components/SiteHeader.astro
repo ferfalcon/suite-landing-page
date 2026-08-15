@@ -1,0 +1,28 @@
+---
+import logo from '../assets/logo.svg';
+---
+
+<header class="site-header">
+	<img class="site-header__logo" src={logo.src} alt="" aria-hidden="true" />
+	<a class="cta cta--secondary site-header__cta" href="#">Request Beta Access</a>
+</header>
+
+<style>
+	.site-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		inline-size: 100%;
+	}
+
+	.site-header__logo {
+		inline-size: 78.414px;
+		block-size: 24.8px;
+	}
+
+	@media (max-width: 420px) {
+		.site-header__cta {
+			padding-inline: var(--space-20);
+		}
+	}
+</style>
