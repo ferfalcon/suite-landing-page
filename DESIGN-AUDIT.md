@@ -246,9 +246,9 @@ The file subscribes to external libraries, but this audit did not establish a ma
 ## 20. Source Verification
 
 - Verification method: connected Figma metadata, variable definitions, screenshots, styled-text inspection, and prototype-reaction inspection on `🤖 Workflow`.
-- Active snapshot status at audit: Active; Stage 0 verification recorded as Unchanged. A fresh Stage 1 verification is required in canonical workflow state before closure.
+- Active snapshot status: Active; fresh Stage 1 canonical verification recorded as Unchanged through `design-workflow`.
 - Newer source content detected: No material mismatch detected during this audit inspection.
-- Action required: record the fresh `SRC-DS-001` verification through `design-workflow`, then run Stage 1 preflight.
+- Action required: complete the Stage 1 artifact review and preflight; owner approval remains required in Gated mode.
 
 ## 21. Audit Review
 
@@ -273,8 +273,8 @@ The file subscribes to external libraries, but this audit did not establish a ma
 
 - Files created or modified: `DESIGN-AUDIT.md`.
 - Snapshot IDs used: `SRC-DS-001` (design); `SRC-REPO-001` remains workflow baseline but was not used as design evidence.
-- Source verification performed: direct Figma inspection completed; canonical Stage 1 verification pending record update.
+- Source verification performed: fresh connected Figma inspection recorded canonically as Unchanged during Stage 1.
 - Important findings: three explicit responsive compositions; local responsive component variants; tokenized color/spacing/radius/typography; CTA Default/Hover/Focus states; 200ms hover transitions; no demonstrated CTA destination; missing intermediate-width and implementation-accessibility evidence.
 - Assumptions introduced: the three Home frames represent one responsive route.
 - Open questions or blockers: CTA activation behavior should be resolved before final behavioral specification/implementation readiness.
-- Ready for requirements: Pending canonical source re-verification and owner approval of this audit.
+- Ready for requirements: Pending owner approval of this audit and a passing Stage 1 gate.
