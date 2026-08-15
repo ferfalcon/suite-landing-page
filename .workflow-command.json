@@ -1,12 +1,12 @@
 {
-  "id": "pass-stage-5-gate-2026-08-14",
+  "id": "pass-stage-6-gate-2026-08-14",
   "argv": [
     "stage",
     "review",
     "--result",
     "Passed",
     "--evidence",
-    "Project owner approved ART-DOCUMENT-REVIEW. Stage 5 preflight recommends Passed with no findings; VER-007 confirms the active Figma source remains Unchanged; the two-pass cross-document review is complete and all identified inconsistencies were corrected in their owning documents.",
+    "Project owner approved the Stage 6 architecture decision as Not required. The two-pass architecture review found no meaningful current multi-runtime, service, data, identity, routing, integration, migration, security, reliability, observability, or deployment architecture boundary; Stage 6 preflight completed successfully; no ARCHITECTURE.md is required for this Standard-profile decision.",
     "--approved-by",
     "Fernando Falcon"
   ]
