@@ -1,21 +1,14 @@
 {
-  "id": "p03-t01-register-runtime-2026-08-15",
+  "id": "p03-t01-verify-runtime-2026-08-15",
   "argv": [
     "snapshot",
-    "add",
-    "--kind",
-    "runtime",
-    "--id",
+    "verify",
     "SRC-RUN-001",
-    "--reference",
-    "https://suite-landing-page-9q8cuiaye-fer-falcons-team.vercel.app/",
-    "--role",
-    "Validation runtime",
-    "--pin",
-    "Time-bound",
-    "--status",
-    "Active",
-    "--task",
-    "P03-T01"
+    "--result",
+    "Expected workflow output",
+    "--method",
+    "Vercel preview inspection and Git commit lineage comparison",
+    "--evidence",
+    "Vercel deployment dpl_Afdx61Jgmk6yv8wqCjMKcA1NUNbc is READY and the branch preview returns HTTP 200 with the expected Suite DOM. The deployed frontend is commit 54cd28f20f3eabd6a98ee793daaea1f3bfd0f6cb; comparison through current main and this validation branch shows no frontend/** changes after that commit, so this runtime exactly represents the current implementation under P03-T01 validation."
   ]
 }
