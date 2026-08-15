@@ -81,11 +81,13 @@
       "id": "ART-WORKFLOW-STATE",
       "type": "WORKFLOW-STATE",
       "path": "WORKFLOW-STATE.md",
-      "status": "Draft",
+      "status": "Reviewed",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
-      ]
+      ],
+      "statusChangedAt": "2026-08-15T00:11:34.341Z",
+      "statusEvidence": "Pass 1 confirmed blocking status, assumptions, deferred architecture decision, verification history, and next permitted action. Pass 2 confirmed Gated advancement rules, the accepted executor deviation, source-change handling, and absence of premature task/output state are consistent with canonical workflow controls."
     }
   ],
   "traceItems": [],
