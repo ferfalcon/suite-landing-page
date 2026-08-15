@@ -1,27 +1,27 @@
 {
-  "id": "validation-p02-t02-2026-08-15",
+  "id": "validation-p03-t01-2026-08-15",
   "argv": [
     "task",
     "validation",
     "set",
-    "P02-T02",
+    "P03-T01",
     "--name",
-    "Lower-page acceptance",
+    "Integrated implementation acceptance",
     "--kind",
-    "Accessibility",
+    "Visual",
     "--required",
     "true",
     "--status",
     "Not executed",
     "--expected",
-    "The build succeeds and Testimonial/Footer match approved content and responsive relationships; social anchors are exactly href=# with accessible Facebook, Twitter, and Instagram names; testimonial imagery follows approved semantics; focus/target/reflow behavior passes; no page overflow or orphaned starter UI/assets remain and upper-page behavior is not materially regressed.",
+    "The build succeeds; current Figma is reverified; the complete page has zero material unexplained visual/responsive drift at approved and required intermediate/extreme widths; keyboard/focus/names/image semantics/reduced motion/reflow pass; the documented SPEC-ACC-004 contrast/distinguishability and five-link target-area checks pass; no relevant runtime/console failures occur; and the Vercel PR preview loads the intended page with canonical runtime evidence recorded.",
     "--command",
     "pnpm --dir frontend build",
     "--environment",
-    "repository root plus rendered browser accessibility and responsive inspection",
+    "repository root, stable Chromium rendered inspection, current SRC-DS-001, and Vercel PR preview",
     "--reason",
-    "Stage 10 implementation has not started.",
+    "Stage 10 implementation and runtime preview do not exist yet.",
     "--references",
-    "PLAN-003"
+    "PLAN-004"
   ]
 }
