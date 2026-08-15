@@ -1,7 +1,12 @@
 {
-  "id": "read-stage-3-context-after-pr7-2026-08-14",
+  "id": "approve-stage-3-design-2026-08-14",
   "argv": [
-    "context",
-    "--json"
+    "artifact",
+    "approve",
+    "ART-DESIGN",
+    "--evidence",
+    "Project owner explicitly approved the reviewed Stage 3 design intent after PR #7 review on 2026-08-14.",
+    "--approved-by",
+    "Fernando Falcon"
   ]
 }
