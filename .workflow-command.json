@@ -1,14 +1,10 @@
 {
-  "id": "verify-stage-1-figma-source-2026-08-14",
+  "id": "review-stage-1-design-audit-2026-08-14",
   "argv": [
-    "snapshot",
-    "verify",
-    "SRC-DS-001",
-    "--result",
-    "Unchanged",
-    "--method",
-    "Connected Figma metadata, screenshots, variables, styled text, and prototype reaction inspection",
+    "artifact",
+    "review",
+    "ART-DESIGN-AUDIT",
     "--evidence",
-    "Re-inspected Workflow page 2140:147 including Home desktop 2140:148, tablet 2140:330, mobile 2140:289, Components 2140:1310, Design System Documentation 2140:1363, CTA states and reactions. No material mismatch was detected against the active time-bound design snapshot."
+    "Pass 1 confirmed the full scoped Workflow page, three product viewports, responsive component variants, design tokens, CTA states, prototype reactions, content, assets, and accessibility implications were inventoried with precise source references. Pass 2 confirmed EVD/AUD traceability, Time-bound source integrity, distinction between observed/inferred/recommended/open evidence, and that unresolved CTA behavior and responsive gaps were recorded without inventing requirements or implementation decisions."
   ]
 }
