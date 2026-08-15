@@ -1,0 +1,235 @@
+name: P03-T01 Integrated Acceptance
+
+on:
+  push:
+    branches:
+      - agent/p03-t01-final-validation
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/p03-t01-acceptance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Enable pnpm
+        run: corepack enable pnpm
+
+      - name: Install and build frontend
+        run: |
+          pnpm --dir frontend install --frozen-lockfile
+          pnpm --dir frontend build
+
+      - name: Start Astro preview
+        run: |
+          pnpm --dir frontend preview --host 127.0.0.1 > /tmp/suite-preview.log 2>&1 &
+          for i in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4321/ > /dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat /tmp/suite-preview.log
+          exit 1
+
+      - name: Install browser harness
+        run: npm install --prefix /tmp/suite-validator playwright-core@1.55.0
+
+      - name: Run integrated browser acceptance
+        env:
+          NODE_PATH: /tmp/suite-validator/node_modules
+        run: |
+          mkdir -p /tmp/suite-screenshots
+          cat > /tmp/suite-validator/validate.mjs <<'EOF'
+          import { chromium } from '/tmp/suite-validator/node_modules/playwright-core/index.mjs';
+          import fs from 'node:fs';
+
+          const browserPath = ['/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium'].find(fs.existsSync);
+          if (!browserPath) throw new Error('No Chromium-compatible browser found');
+
+          const browser = await chromium.launch({ executablePath: browserPath, headless: true, args: ['--no-sandbox'] });
+          const widths = [1600, 1440, 1121, 1120, 1041, 1040, 900, 768, 700, 620, 619, 500, 375, 320];
+          const reference = new Map([
+            [1440, { pageHeight: 1716, header: [166, 50, 1110, 52], hero: [166, 182, 1110, 600], testimonial: [167, 972, 1109, 535], footer: [0, 1252, 1440, 464] }],
+            [768, { pageHeight: 1904, header: [32, 32, 704, 52], hero: [32, 164, 704, 480], metrics: [32, 724, 704, 86], testimonial: [32, 1076, 704, 684], footer: [0, 1440, 768, 464] }],
+            [375, { pageHeight: 2399, header: [16, 24, 343, 52], hero: [16, 140, 343, 599], metrics: [16, 803, 343, 338], testimonial: [0, 1426, 375, 744], footer: [0, 1935, 375, 464] }],
+          ]);
+
+          const rgb = (value) => {
+            const m = value.match(/rgba?\((\d+(?:\.\d+)?)[, ]+\s*(\d+(?:\.\d+)?)[, ]+\s*(\d+(?:\.\d+)?)/);
+            if (!m) throw new Error(`Unsupported color ${value}`);
+            return m.slice(1, 4).map(Number);
+          };
+          const luminance = ([r,g,b]) => {
+            const c = [r,g,b].map(v => v / 255).map(v => v <= 0.04045 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+            return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2];
+          };
+          const contrast = (a,b) => {
+            const [l1,l2] = [luminance(rgb(a)), luminance(rgb(b))].sort((x,y) => y-x);
+            return (l1 + 0.05) / (l2 + 0.05);
+          };
+          const assert = (condition, message) => { if (!condition) throw new Error(message); };
+          const approx = (actual, expected, tolerance = 2) => Math.abs(actual - expected) <= tolerance;
+
+          for (const width of widths) {
+            const page = await browser.newPage({ viewport: { width, height: 1000 } });
+            const consoleErrors = [];
+            const pageErrors = [];
+            const postLoadRequests = [];
+            page.on('console', msg => { if (msg.type() === 'error') consoleErrors.push(msg.text()); });
+            page.on('pageerror', error => pageErrors.push(error.message));
+            await page.goto('http://127.0.0.1:4321/', { waitUntil: 'networkidle' });
+            page.on('request', request => postLoadRequests.push(request.url()));
+
+            const snapshot = await page.evaluate(() => {
+              const rect = (selector) => {
+                const el = document.querySelector(selector);
+                if (!el) throw new Error(`Missing ${selector}`);
+                const r = el.getBoundingClientRect();
+                return [r.x, r.y, r.width, r.height];
+              };
+              const links = [...document.querySelectorAll('a')].map(a => ({ text: a.textContent.trim(), href: a.getAttribute('href'), rect: (() => { const r = a.getBoundingClientRect(); return [r.x,r.y,r.width,r.height]; })() }));
+              const sectionOrder = [...document.querySelectorAll('body header, body main > .upper-page > *, body main > .testimonial, body > footer')].map(el => el.matches('header') ? 'Header' : el.classList.contains('hero') ? 'Hero' : el.classList.contains('metrics') ? 'Metrics' : el.classList.contains('testimonial') ? 'Testimonial' : el.matches('footer') ? 'Footer' : el.tagName);
+              const text = (selector) => document.querySelector(selector)?.textContent.replace(/\s+/g,' ').trim();
+              const css = (selector) => getComputedStyle(document.querySelector(selector));
+              return {
+                scrollWidth: document.documentElement.scrollWidth,
+                innerWidth: innerWidth,
+                bodyHeight: document.body.getBoundingClientRect().height,
+                header: rect('.site-header'), hero: rect('.hero'), metrics: rect('.metrics'), testimonial: rect('.testimonial'), footer: rect('.site-footer'),
+                links,
+                sectionOrder,
+                h1Count: document.querySelectorAll('h1').length,
+                mainCount: document.querySelectorAll('main').length,
+                headerCount: document.querySelectorAll('header').length,
+                footerCount: document.querySelectorAll('footer').length,
+                heroTitle: text('h1'), testimonialTitle: text('.testimonial__title'), quote: text('.testimonial__body'),
+                metrics: [...document.querySelectorAll('.metric')].map(el => el.textContent.replace(/\s+/g,' ').trim()),
+                scripts: [...document.scripts].map(s => s.src || 'inline'),
+                decorative: [...document.querySelectorAll('img')].every(img => img.alt === ''),
+                colors: {
+                  bodyText: css('body').color, bodyBg: css('body').backgroundColor,
+                  secondaryText: css('.hero__description').color,
+                  primaryCtaText: css('.cta--primary').color, primaryCtaBg: css('.cta--primary').backgroundColor,
+                  secondaryCtaText: css('.cta--secondary').color,
+                  testimonialTitle: css('.testimonial__title').color, testimonialBody: css('.testimonial__body').color, testimonialBg: css('.testimonial').backgroundColor,
+                  footerBg: css('.site-footer').backgroundColor,
+                  secondaryBorder: css('.cta--secondary').borderTopColor,
+                },
+                storage: { local: localStorage.length, session: sessionStorage.length, cookies: document.cookie },
+              };
+            });
+
+            assert(snapshot.scrollWidth <= snapshot.innerWidth, `${width}px horizontal overflow ${snapshot.scrollWidth} > ${snapshot.innerWidth}`);
+            assert(snapshot.h1Count === 1 && snapshot.mainCount === 1 && snapshot.headerCount === 1 && snapshot.footerCount === 1, `${width}px landmark/heading hierarchy mismatch`);
+            assert(JSON.stringify(snapshot.sectionOrder) === JSON.stringify(['Header','Hero','Metrics','Testimonial','Footer']), `${width}px content sequence mismatch: ${snapshot.sectionOrder.join(' > ')}`);
+            assert(snapshot.links.length === 5, `${width}px expected five links, got ${snapshot.links.length}`);
+            assert(snapshot.links.every(l => l.href === '#'), `${width}px not all links are exact href=#`);
+            assert(snapshot.links.map(l => l.text).join('|') === 'Request Beta Access|Request Beta Access|Facebook|Twitter|Instagram', `${width}px accessible/visible link names mismatch`);
+            assert(snapshot.links.every(l => l.rect[2] >= 24 && l.rect[3] >= 24), `${width}px target smaller than 24x24 CSS px`);
+            assert(snapshot.decorative, `${width}px unexpected non-empty image alternative text`);
+            assert(snapshot.scripts.length === 0, `${width}px unexpected client script runtime: ${snapshot.scripts.join(', ')}`);
+            assert(snapshot.storage.local === 0 && snapshot.storage.session === 0 && snapshot.storage.cookies === '', `${width}px unexpected client storage/cookie state`);
+            assert(snapshot.heroTitle === 'A super solution for your business.', `${width}px hero heading mismatch`);
+            assert(snapshot.testimonialTitle === 'It just works.', `${width}px testimonial heading mismatch`);
+            assert(snapshot.metrics.join('|') === '2K+ COMPANIES|8 LANGUAGES|1.2M LEADS', `${width}px metrics mismatch`);
+
+            const ref = reference.get(width);
+            if (ref) {
+              const checkRect = (name, actual, expected) => expected.forEach((v,i) => assert(approx(actual[i], v), `${width}px ${name}[${i}] ${actual[i]} != ${v}`));
+              checkRect('header', snapshot.header, ref.header);
+              checkRect('hero', snapshot.hero, ref.hero);
+              if (ref.metrics) checkRect('metrics', snapshot.metrics ? snapshot.metrics && (await page.locator('.metrics').evaluate(el => { const r=el.getBoundingClientRect(); return [r.x,r.y,r.width,r.height]; })) : [], ref.metrics);
+              checkRect('testimonial', snapshot.testimonial, ref.testimonial);
+              checkRect('footer', snapshot.footer, ref.footer);
+              assert(approx(snapshot.bodyHeight, ref.pageHeight), `${width}px body height ${snapshot.bodyHeight} != ${ref.pageHeight}`);
+              await page.screenshot({ path: `/tmp/suite-screenshots/${width}.png`, fullPage: true });
+            }
+
+            const contrastResults = {
+              bodyNormal: contrast(snapshot.colors.bodyText, snapshot.colors.bodyBg),
+              secondaryNormal: contrast(snapshot.colors.secondaryText, snapshot.colors.bodyBg),
+              primaryCtaLabel: contrast(snapshot.colors.primaryCtaText, snapshot.colors.primaryCtaBg),
+              secondaryCtaLabel: contrast(snapshot.colors.secondaryCtaText, snapshot.colors.bodyBg),
+              testimonialTitle: contrast(snapshot.colors.testimonialTitle, snapshot.colors.testimonialBg),
+              testimonialBody: contrast(snapshot.colors.testimonialBody, snapshot.colors.testimonialBg),
+              secondaryBoundary: contrast(snapshot.colors.secondaryBorder, snapshot.colors.bodyBg),
+              socialIcon: contrast('rgb(23, 35, 57)', snapshot.colors.footerBg),
+            };
+            assert(contrastResults.bodyNormal >= 4.5 && contrastResults.secondaryNormal >= 4.5, `${width}px normal text contrast failed ${JSON.stringify(contrastResults)}`);
+            assert(contrastResults.primaryCtaLabel >= 4.5 && contrastResults.secondaryCtaLabel >= 4.5 && contrastResults.testimonialBody >= 4.5, `${width}px label/inverse normal text contrast failed ${JSON.stringify(contrastResults)}`);
+            assert(contrastResults.testimonialTitle >= 3 && contrastResults.secondaryBoundary >= 3 && contrastResults.socialIcon >= 3, `${width}px large/non-text distinguishability failed ${JSON.stringify(contrastResults)}`);
+
+            await page.keyboard.press('Tab');
+            const focusNames = [];
+            for (let i=0; i<5; i++) {
+              if (i > 0) await page.keyboard.press('Tab');
+              const focus = await page.evaluate(() => {
+                const el = document.activeElement;
+                const s = getComputedStyle(el);
+                return { name: el?.textContent?.trim(), outlineWidth: parseFloat(s.outlineWidth) || 0, outlineColor: s.outlineColor, boxShadow: s.boxShadow, rect: (() => { const r=el.getBoundingClientRect(); return [r.x,r.y,r.width,r.height]; })() };
+              });
+              focusNames.push(focus.name);
+              assert(focus.outlineWidth >= 3 || focus.boxShadow !== 'none', `${width}px focus not visibly styled for ${focus.name}`);
+              assert(focus.rect[0] >= -1 && focus.rect[0] + focus.rect[2] <= width + 1, `${width}px focused control clipped horizontally: ${focus.name}`);
+            }
+            assert(focusNames.join('|') === 'Request Beta Access|Request Beta Access|Facebook|Twitter|Instagram', `${width}px tab order mismatch ${focusNames.join('|')}`);
+
+            const primaryBefore = await page.locator('.cta--primary').evaluate(el => ({ bg: getComputedStyle(el).backgroundImage, color: getComputedStyle(el).color }));
+            await page.locator('.cta--primary').hover();
+            const primaryHover = await page.locator('.cta--primary').evaluate(el => ({ bg: getComputedStyle(el).backgroundImage, color: getComputedStyle(el).color }));
+            assert(primaryBefore.bg !== primaryHover.bg, `${width}px primary CTA hover intent absent`);
+            const secondaryBefore = await page.locator('.cta--secondary').evaluate(el => getComputedStyle(el).backgroundColor);
+            await page.locator('.cta--secondary').hover();
+            const secondaryHover = await page.locator('.cta--secondary').evaluate(el => getComputedStyle(el).backgroundColor);
+            assert(secondaryBefore !== secondaryHover, `${width}px secondary CTA hover intent absent`);
+
+            await page.emulateMedia({ reducedMotion: 'reduce' });
+            const reduced = await page.locator('.cta').first().evaluate(el => getComputedStyle(el).transitionDuration);
+            assert(reduced.split(',').every(v => parseFloat(v) === 0), `${width}px reduced-motion transition not removed: ${reduced}`);
+
+            const requestsBeforeActivation = postLoadRequests.length;
+            for (const selector of ['.site-header__cta', '.hero .cta', '.site-footer__social-link:nth-child(1)', '.site-footer__social-link:nth-child(2)', '.site-footer__social-link:nth-child(3)']) {
+              await page.locator(selector).focus();
+              await page.keyboard.press('Enter');
+            }
+            await page.waitForTimeout(100);
+            assert(postLoadRequests.length === requestsBeforeActivation, `${width}px link activation caused network request(s): ${postLoadRequests.slice(requestsBeforeActivation).join(', ')}`);
+            assert(consoleErrors.length === 0 && pageErrors.length === 0, `${width}px runtime errors console=${consoleErrors.join(' | ')} page=${pageErrors.join(' | ')}`);
+
+            console.log(`${width}px PASS`, JSON.stringify({ bodyHeight: snapshot.bodyHeight, links: snapshot.links.map(l => l.rect), contrastResults }));
+            await page.close();
+          }
+
+          const zoomPage = await browser.newPage({ viewport: { width: 1280, height: 900 } });
+          await zoomPage.goto('http://127.0.0.1:4321/', { waitUntil: 'networkidle' });
+          await zoomPage.evaluate(() => { document.documentElement.style.zoom = '2'; });
+          const zoom = await zoomPage.evaluate(() => ({ scrollWidth: document.documentElement.scrollWidth, innerWidth, links: [...document.querySelectorAll('a')].map(a => { const r=a.getBoundingClientRect(); return [r.x,r.y,r.width,r.height]; }), textVisible: [...document.querySelectorAll('h1,p')].every(el => { const r=el.getBoundingClientRect(); const s=getComputedStyle(el); return r.width > 0 && r.height > 0 && s.visibility !== 'hidden' && s.display !== 'none'; }) }));
+          assert(zoom.textVisible, '200% zoom simulation hides required text');
+          assert(zoom.links.every(r => r[2] > 0 && r[3] > 0), '200% zoom simulation hides a control');
+          console.log('200% CSS zoom resilience', JSON.stringify(zoom));
+          await zoomPage.close();
+
+          await browser.close();
+          console.log('P03-T01 integrated browser acceptance PASS');
+          EOF
+          node /tmp/suite-validator/validate.mjs
+
+      - name: Upload source-width screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p03-source-width-screenshots
+          path: /tmp/suite-screenshots/*.png
+          if-no-files-found: warn
