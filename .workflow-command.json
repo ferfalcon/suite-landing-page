@@ -1,10 +1,7 @@
 {
-  "id": "review-stage-1-design-audit-2026-08-14",
+  "id": "check-stage-1-preflight-2026-08-14",
   "argv": [
-    "artifact",
-    "review",
-    "ART-DESIGN-AUDIT",
-    "--evidence",
-    "Pass 1 confirmed the full scoped Workflow page, three product viewports, responsive component variants, design tokens, CTA states, prototype reactions, content, assets, and accessibility implications were inventoried with precise source references. Pass 2 confirmed EVD/AUD traceability, Time-bound source integrity, distinction between observed/inferred/recommended/open evidence, and that unresolved CTA behavior and responsive gaps were recorded without inventing requirements or implementation decisions."
+    "stage",
+    "check"
   ]
 }
