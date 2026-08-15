@@ -6,7 +6,7 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 1,
+    "stage": 2,
     "status": "Ready",
     "activeInputs": [
       "SRC-DS-001",
@@ -58,6 +58,14 @@
       "method": "Connected Figma metadata, screenshots, variables, styled text, and prototype reaction inspection",
       "evidence": "Re-inspected Workflow page 2140:147 including Home desktop 2140:148, tablet 2140:330, mobile 2140:289, Components 2140:1310, Design System Documentation 2140:1363, CTA states and reactions. No material mismatch was detected against the active time-bound design snapshot.",
       "checkedAt": "2026-08-15T00:25:34.887Z"
+    },
+    {
+      "id": "VER-004",
+      "snapshot": "SRC-DS-001",
+      "result": "Unchanged",
+      "method": "Connected Figma metadata re-verification for Stage 2 requirements",
+      "evidence": "Re-inspected Workflow page 2140:147 before deriving requirements. Product Screens still contain Home desktop 2140:148, tablet 2140:330, and mobile 2140:289; Components still contain the responsive Header, Hero, Metrics, Testimonial, Footer and CTA state families; Design System Documentation remains present. No material structural change was detected against the approved Stage 1 evidence baseline.",
+      "checkedAt": "2026-08-15T00:38:34.095Z"
     }
   ],
   "artifacts": [
@@ -112,6 +120,19 @@
       "statusChangedAt": "2026-08-15T00:31:41.440Z",
       "statusEvidence": "Project owner explicitly approved the Stage 1 design audit and authorized progression on 2026-08-14.",
       "statusBy": "Fernando Falcon"
+    },
+    {
+      "id": "ART-REQUIREMENTS",
+      "type": "REQUIREMENTS",
+      "path": "REQUIREMENTS.md",
+      "status": "Approved",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ],
+      "statusChangedAt": "2026-08-15T00:55:32.493Z",
+      "statusEvidence": "Project owner explicitly approved the Stage 2 requirements on 2026-08-14, including the href=# placeholder decision for beta CTA and footer social links.",
+      "statusBy": "Fernando Falcon"
     }
   ],
   "traceItems": [],
@@ -159,6 +180,30 @@
       ],
       "evidence": "Project owner approved ART-DESIGN-AUDIT. Stage 1 preflight recommends Passed with no findings; the active Figma source is verified Unchanged, the design audit is approved, and unresolved evidence is explicitly recorded without invented behavior.",
       "recordedAt": "2026-08-15T00:32:35.145Z",
+      "approvedBy": "Fernando Falcon"
+    },
+    {
+      "id": "GATE-003",
+      "stage": 2,
+      "status": "Active",
+      "result": "Passed",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ],
+      "verifications": [
+        "VER-004",
+        "VER-002"
+      ],
+      "artifacts": [
+        "ART-SOURCE-BASELINE",
+        "ART-PROJECT-CONTEXT",
+        "ART-WORKFLOW-STATE",
+        "ART-DESIGN-AUDIT",
+        "ART-REQUIREMENTS"
+      ],
+      "evidence": "Project owner approved ART-REQUIREMENTS. Stage 2 preflight recommends Passed with no findings; the requirements are approved, VER-004 remains Unchanged, the href=# placeholder behavior is explicitly resolved, and no Stage 2 blocking product question remains.",
+      "recordedAt": "2026-08-15T00:56:30.448Z",
       "approvedBy": "Fernando Falcon"
     }
   ],
