@@ -11,121 +11,88 @@ updated: 2026-08-14
 
 ## 2. Document Information
 
-- Project:
+- Project: Suite landing page
 - Created: 2026-08-14
 - Last updated: 2026-08-14
-- Owner:
+- Owner: Project owner with agent-assisted evidence capture
 - Related context: `PROJECT-CONTEXT.md`
 - Operational state: `WORKFLOW-STATE.md`
 
 ## 3. Design Source Evidence
 
-### SRC-DS-001 — Snapshot title
+### SRC-DS-001 — Suite landing page / 🤖 Workflow
 
-The ID and current registry fields belong in the workflow record in CLI-managed mode.
+The canonical registry owns current snapshot status and lineage.
 
-- **Source type:** Figma / Screenshot / Image / PDF / Existing website / Other
-- **Purpose:**
-- **Included scope:**
-- **Excluded scope:**
-- **Captured or inspected at:** 2026-08-14THH:MM:SS±HH:MM
-- **Version, revision, or checksum evidence:**
-- **Captured evidence:**
-- **Access and reproduction instructions:**
-- **Dependencies:**
-- **Authority for this project:**
-- **Known limitations:**
-
-For Figma, record file key, page and node IDs, named version when available, library dependencies, and inspection mode.
+- **Source type:** Figma design
+- **Purpose:** Authoritative visual source for the Suite landing page implementation.
+- **File key:** `EVFb3Lb4Y5iKn762QYva4y`
+- **Included scope:** Figma page `🤖 Workflow` (`2140:147`), including `Product Screens` (`2140:1361`), `Components` (`2140:1310`), and `Design System Documentation` (`2140:1363`). Product screen references are `Home / Desktop / Default` (`2140:148`, 1440 × 1716), `Home / Tablet / Default` (`2140:330`, 768 × 1904), and `Home / Mobile / Default` (`2140:289`, 375 × 2399).
+- **Excluded scope:** Every other page in the Figma file unless explicitly authorized by the project owner. File-global design-system resources remain subject to the controlled exception in root `AGENTS.md`.
+- **Captured or inspected at:** 2026-08-14 during Stage 0 source inspection.
+- **Version, revision, or checksum evidence:** The active design reference is a normal mutable Figma URL rather than a named immutable version; the workflow therefore records it as Time-bound.
+- **Captured evidence:** Connected Figma metadata for node `2140:147` established the scoped page hierarchy, responsive screen frames, component inventory, and design-system documentation. The file library listing was also inspected.
+- **Access and reproduction instructions:** Read through the connected Figma source using file key `EVFb3Lb4Y5iKn762QYva4y` and page node `2140:147`. No design changes were made during Stage 0.
+- **Dependencies:** The file is subscribed to Material 3 Design Kit, Simple Design System, and iOS 18 and iPadOS 18 community libraries. Subscription does not by itself prove that scoped project nodes depend on those libraries; actual usage must be established during audit if material.
+- **Authority for this project:** Visual composition, supplied responsive examples, component states, typography/spacing/color documentation, and visible content within `🤖 Workflow`.
+- **Known limitations:** Figma does not independently establish semantic HTML, keyboard or screen-reader behavior, intermediate responsive behavior, browser rendering, performance, or runtime behavior. No named Figma version was available in the inspected reference.
 
 ## 4. Repository Source Evidence
 
-### SRC-REPO-001 — Repository snapshot title
+### SRC-REPO-001 — Suite landing page implementation baseline
 
-- **Repository:**
-- **Relevant application, package, or directory:**
-- **Branch at capture:**
-- **Captured at:** 2026-08-14THH:MM:SS±HH:MM
-- **Lockfile, submodule, or workspace state:**
-- **Uncommitted changes or patch:** None / reference
-- **Access and reproduction instructions:**
-- **Build or inspection context:**
-- **Known limitations:**
-
-Commit, parent, role, task, and current status belong in the workflow record in CLI-managed mode.
+- **Repository:** `ferfalcon/suite-landing-page`
+- **Relevant application, package, or directory:** `frontend/`
+- **Branch at capture:** `main`
+- **Canonical pinned commit:** `69b2949ace42bc06b61806755abdb9a2f95f5a96`
+- **Captured at:** 2026-08-14 during workflow initialization.
+- **Lockfile, submodule, or workspace state:** Astro frontend using pnpm; Node requirement is `>=22.12.0`. No submodule dependency was identified in the inspected project scope.
+- **Uncommitted changes or patch:** None represented in the canonical snapshot.
+- **Access and reproduction instructions:** Inspect repository `ferfalcon/suite-landing-page` at the canonical commit and the `frontend/` application. Root and nested `AGENTS.md` files govern work.
+- **Build or inspection context:** The frontend is an Astro + TypeScript starter. At both the canonical commit and current `main`, `frontend/src/pages/index.astro` has blob SHA `c04f3602b5521c56580c70dd0846b2c559be7193` and still renders the stock `Welcome` component.
+- **Known limitations:** Current `main` is now `eb23c5dee935ef8719909227bd73419805d635ad` because workflow-control and executor commits were merged after the implementation baseline was pinned. Comparison confirmed the inspected frontend entry page is unchanged, so those workflow-control changes do not replace the immutable implementation baseline.
 
 ## 5. Runtime Source Evidence
 
-### SRC-RUN-001 — Runtime snapshot title
-
-- **Environment:** Production / Preview / Staging / Local / Other
-- **URL or entry point:**
-- **Deployment or release evidence:**
-- **Associated repository evidence:**
-- **Captured at:** 2026-08-14THH:MM:SS±HH:MM
-- **Browser, viewport, and device context:**
-- **Authentication, personalization, or feature-flag state:**
-- **Test data context:**
-- **Captured evidence:**
-- **Known limitations:**
+No runtime snapshot is active in Stage 0. Production, preview, and local rendered behavior have not yet been accepted as authoritative evidence.
 
 ## 6. Documentation Source Evidence
 
-### SRC-DOC-001 — Document title
-
-- **Authority:** Normative / Informative / Historical
-- **Path or URL:**
-- **Included sections:**
-- **Revision, version, date, commit, or checksum evidence:**
-- **Captured at:** 2026-08-14THH:MM:SS±HH:MM
-- **Access and reproduction instructions:**
-- **Known limitations:**
+Repository operating instructions are authoritative process constraints but are not registered as a separate active input snapshot. The root `AGENTS.md` and relevant nested `AGENTS.md` files must be read in their scope before work.
 
 ## 7. Asset Source Evidence
 
-### SRC-ASSET-001 — Asset or bundle title
-
-- **Type:** Image / Icon / Font / Archive / Other
-- **Path or reference:**
-- **Included contents:**
-- **Format and size:**
-- **SHA-256 checksum evidence:**
-- **Captured at:** 2026-08-14THH:MM:SS±HH:MM
-- **Licensing or usage constraints:**
-- **Known limitations:**
+No standalone asset bundle is active as a Stage 0 input. Figma-hosted imagery and vectors remain part of `SRC-DS-001` until asset extraction is required in a later stage.
 
 ## 8. Source Verification Log
 
-| Date and time | Snapshot | Verification method | Result classification | Change detected | Action |
+| Date | Snapshot | Verification method | Result classification | Change detected | Action |
 |---|---|---|---|---|---|
-| ... | ... | Commit comparison / named-version check / visual comparison / checksum / other | Unchanged / Expected output / Unexpected change / Unavailable | Yes / No / Unknown | ... |
+| 2026-08-14 | `SRC-DS-001` | Connected Figma metadata and scoped page inspection | Unchanged | No material mismatch observed against the registered Figma reference | Record canonical verification through the workflow CLI |
+| 2026-08-14 | `SRC-REPO-001` | Git commit comparison plus `frontend/src/pages/index.astro` blob comparison | Unchanged implementation baseline | Workflow-control commits exist after the baseline; inspected frontend entry point is unchanged | Preserve immutable baseline and record canonical verification through the workflow CLI |
 
-Record checks before stages, after meaningful pauses, before tasks, and before final acceptance. Current snapshot status remains in the workflow record in CLI-managed mode.
+Current verification status belongs to `.workflow/workflow-record.json`; this table is narrative evidence only.
 
 ## 9. Upstream Rebaseline and Impact Assessments
 
-| New snapshot | Previous snapshot | Change summary | Affected artifacts | Earliest affected stage | Required action | Status |
-|---|---|---|---|---:|---|---|
-| ... | ... | ... | ... | ... | ... | Open / In progress / Complete |
-
-Use this table for changed upstream inputs or unexpected concurrent changes, not for approved task output commits.
+No material upstream design or implementation-source change has been established during Stage 0. The post-baseline repository commits add workflow control/executor state and do not alter the inspected frontend entry point.
 
 ## 10. Baseline Review
 
 ### Pass 1 — Completeness and correctness
 
-- [ ] Every material source has a snapshot ID and evidence section.
-- [ ] Exact scope and capture time are recorded.
-- [ ] Repository snapshots use commit SHAs in the canonical registry.
-- [ ] Task outputs have parent snapshots and task IDs in the canonical registry.
-- [ ] Mutable sources are not mislabeled as immutable.
-- [ ] Access and reproduction limitations are explicit.
+- [x] Every material Stage 0 source has a snapshot ID and evidence section.
+- [x] Exact design scope and repository scope are recorded.
+- [x] Repository identity is pinned to a commit SHA in the canonical registry.
+- [x] Mutable Figma evidence is classified as Time-bound rather than immutable.
+- [x] Access and reproduction limitations are explicit.
+- [x] No task output is being represented before implementation begins.
 
 ### Pass 2 — Consistency, traceability, source integrity, risks, and uncertainty
 
-- [ ] Generated source state is current in CLI-managed mode.
-- [ ] Identifiers follow `Identifier-Conventions.md`.
-- [ ] Expected implementation outputs are distinguished from upstream source changes.
-- [ ] Rebaseline impact assessments cover unexpected upstream changes.
-- [ ] Evidence sections do not redefine record-owned status or lineage.
-- [ ] No artifact silently relies on undefined or newer source content.
+- [x] Evidence does not redefine record-owned mutable status or lineage.
+- [x] The implementation baseline is distinguished from later workflow-control commits.
+- [x] The Figma safety boundary matches root `AGENTS.md`.
+- [x] External-library subscriptions are not misrepresented as proven component dependencies.
+- [x] Missing runtime and semantic/accessibility evidence is explicit.
+- [ ] Generated workflow state and canonical verifications must be confirmed by the workflow executor after these narrative updates.
