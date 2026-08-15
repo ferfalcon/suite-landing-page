@@ -301,13 +301,14 @@
       "id": "ART-TASK-P02-T01",
       "type": "TASK",
       "path": "Phase-02--Task-01.md",
-      "status": "Reviewed",
+      "status": "Approved",
       "baseline": [
         "SRC-DS-001",
         "SRC-REPO-001"
       ],
-      "statusChangedAt": "2026-08-15T03:06:01.187Z",
-      "statusEvidence": "Two-pass Stage 9 review confirms P02-T01 maps PLAN-002 to one coherent Header/Hero/Metrics objective with enforced P01 prerequisite, exact file ownership/content/link contracts, responsive interpolation rules, native CTA/focus/image/reduced-motion accessibility, supported build/manual validation, acceptance criteria, risks, and output lineage with no implementation code."
+      "statusChangedAt": "2026-08-15T03:12:53.462Z",
+      "statusEvidence": "Fernando Falcon explicitly approved the Stage 9 task set and accepted the documented task-set risks on 2026-08-15, with the instruction not to start Stage 10.",
+      "statusBy": "Fernando Falcon"
     },
     {
       "id": "ART-TASK-P03-T01",
