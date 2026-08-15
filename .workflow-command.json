@@ -1,18 +1,7 @@
 {
-  "id": "scaffold-p03-t01-artifact-2026-08-15",
+  "id": "stage-9-narrative-context-2026-08-15",
   "argv": [
-    "artifact",
-    "scaffold",
-    "TASK",
-    "--control",
-    "cli-managed",
-    "--id",
-    "ART-TASK-P03-T01",
-    "--task-id",
-    "P03-T01",
-    "--title",
-    "Complete integrated responsive, accessibility, visual, and preview validation",
-    "--path",
-    "Phase-03--Task-01.md"
+    "context",
+    "--json"
   ]
 }
