@@ -6,8 +6,8 @@
     "executionMode": "Gated"
   },
   "state": {
-    "stage": 7,
-    "status": "Ready",
+    "stage": 8,
+    "status": "In progress",
     "activeInputs": [
       "SRC-DS-001",
       "SRC-REPO-001"
@@ -228,6 +228,16 @@
       ],
       "statusChangedAt": "2026-08-15T02:22:16.209Z",
       "statusEvidence": "Stage 7 two-pass review completed in PLAN.md. Pass 1 confirms repository feasibility, complete scope/order/dependencies/validation, and coherent plan-item sizing. Pass 2 confirms approved requirement/spec mapping, refreshed source integrity, architecture-skip consistency, integrated accessibility/responsive work, and explicit ownership of asset provenance, browser support, responsive interpolation, and runtime evidence risks."
+    },
+    {
+      "id": "ART-PLAN-REVIEW",
+      "type": "PLAN-REVIEW",
+      "path": "PLAN-REVIEW.md",
+      "status": "Draft",
+      "baseline": [
+        "SRC-DS-001",
+        "SRC-REPO-001"
+      ]
     }
   ],
   "traceItems": [],
