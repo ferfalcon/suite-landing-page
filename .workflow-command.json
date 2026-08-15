@@ -1,7 +1,14 @@
 {
-  "id": "advance-to-stage-7-plan-2026-08-14",
+  "id": "verify-stage-7-repository-input-2026-08-14",
   "argv": [
-    "stage",
-    "advance"
+    "snapshot",
+    "verify",
+    "SRC-REPO-001",
+    "--result",
+    "Unchanged",
+    "--method",
+    "Pinned commit inspection and current-main implementation subtree comparison",
+    "--evidence",
+    "Inspected immutable commit 69b2949ace42bc06b61806755abdb9a2f95f5a96 and current main. The Astro implementation entry, layout, package manifest, starter component/assets, and frontend structure remain unchanged from the pinned implementation baseline; main contains workflow/documentation changes but no landing-page implementation."
   ]
 }
