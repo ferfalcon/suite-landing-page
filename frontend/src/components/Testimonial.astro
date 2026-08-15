@@ -1,0 +1,227 @@
+---
+import portraitLarge from '../assets/image-jeremy-large.webp';
+import portraitSmall from '../assets/image-jeremy-small.webp';
+import portraitBlur from '../assets/pattern-blur.svg';
+import testimonialStroke from '../assets/pattern-curved-line-2.svg';
+---
+
+<section class="testimonial" aria-labelledby="testimonial-title">
+	<div class="testimonial__backdrop" aria-hidden="true">
+		<img class="testimonial__blur" src={portraitBlur.src} alt="" />
+	</div>
+
+	<picture class="testimonial__portrait" aria-hidden="true">
+		<source media="(max-width: 900px)" srcset={portraitSmall.src} />
+		<img src={portraitLarge.src} alt="" />
+	</picture>
+
+	<img class="testimonial__stroke" src={testimonialStroke.src} alt="" aria-hidden="true" />
+
+	<div class="testimonial__content">
+		<div class="testimonial__quote">
+			<h2 id="testimonial-title" class="testimonial__title">It just <strong>works.</strong></h2>
+			<blockquote class="testimonial__body">
+				<p>“I really like how it is an all-in-one solution that handle many of the tasks that you would normally need separate tools to do the same job. This thing is a miracle worker.”</p>
+			</blockquote>
+		</div>
+
+		<div class="testimonial__attribution">
+			<p class="testimonial__author">JEREMY ROBINSON</p>
+			<p class="testimonial__role">CMO, FYLO</p>
+		</div>
+	</div>
+</section>
+
+<style>
+	.testimonial {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		inline-size: 100%;
+		block-size: 535px;
+		padding: 88px 125px;
+		border-radius: 15px;
+		background: var(--color-background-inverse);
+		color: var(--color-text-inverse-primary);
+	}
+
+	.testimonial__backdrop {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		border-radius: inherit;
+		pointer-events: none;
+	}
+
+	.testimonial__blur {
+		position: absolute;
+		top: 74px;
+		left: 156px;
+		inline-size: 538px;
+		max-inline-size: none;
+	}
+
+	.testimonial__portrait {
+		position: absolute;
+		bottom: 0;
+		left: 121px;
+		display: block;
+		inline-size: 360px;
+		block-size: 590px;
+		pointer-events: none;
+	}
+
+	.testimonial__portrait img {
+		inline-size: 100%;
+		block-size: 100%;
+		max-inline-size: none;
+		object-fit: contain;
+		object-position: bottom;
+	}
+
+	.testimonial__stroke {
+		position: absolute;
+		top: 161px;
+		left: 520px;
+		inline-size: 64px;
+		block-size: 52px;
+		max-inline-size: none;
+		pointer-events: none;
+	}
+
+	.testimonial__content {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: var(--space-24);
+		inline-size: 350px;
+	}
+
+	.testimonial__quote {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-32);
+		inline-size: 100%;
+	}
+
+	.testimonial__title,
+	.testimonial__body,
+	.testimonial__body p,
+	.testimonial__author,
+	.testimonial__role {
+		margin: 0;
+	}
+
+	.testimonial__title {
+		font-size: 48px;
+		font-weight: 400;
+		line-height: 1.2;
+		letter-spacing: -0.5px;
+	}
+
+	.testimonial__title strong {
+		font-weight: 700;
+	}
+
+	.testimonial__body {
+		color: var(--color-text-inverse-secondary);
+		font-size: 20px;
+		font-style: normal;
+		line-height: 1.6;
+		letter-spacing: 0.111px;
+	}
+
+	.testimonial__attribution {
+		display: flex;
+		flex-direction: column;
+		inline-size: 100%;
+		text-transform: uppercase;
+	}
+
+	.testimonial__author {
+		font-size: 18px;
+		font-weight: 700;
+		line-height: 1.6;
+		letter-spacing: -0.18px;
+	}
+
+	.testimonial__role {
+		color: var(--color-text-inverse-secondary);
+		font-size: 16px;
+		line-height: 1.5;
+		letter-spacing: 2.5px;
+	}
+
+	@media (max-width: 900px) {
+		.testimonial {
+			align-items: flex-end;
+			justify-content: center;
+			block-size: 684px;
+			padding: 64px 48px;
+		}
+
+		.testimonial__blur {
+			top: -133px;
+			left: 50%;
+			inline-size: 518px;
+			transform: translateX(-50%);
+		}
+
+		.testimonial__portrait {
+			bottom: 437px;
+			left: 50%;
+			inline-size: 252px;
+			block-size: 413px;
+			transform: translateX(-50%);
+		}
+
+		.testimonial__stroke {
+			top: 276px;
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		.testimonial__content {
+			align-items: center;
+			inline-size: 100%;
+			text-align: center;
+		}
+
+		.testimonial__attribution {
+			align-items: center;
+		}
+	}
+
+	@media (max-width: 619px) {
+		.testimonial {
+			block-size: 744px;
+			padding: 64px 24px 40px;
+		}
+
+		.testimonial__portrait {
+			bottom: 516px;
+		}
+
+		.testimonial__stroke {
+			top: 257px;
+		}
+	}
+
+	@media (max-width: 340px) {
+		.testimonial {
+			min-block-size: 744px;
+			block-size: auto;
+		}
+
+		.testimonial__title {
+			font-size: 42px;
+		}
+
+		.testimonial__body {
+			font-size: 18px;
+		}
+	}
+</style>
