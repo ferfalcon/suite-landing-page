@@ -1,11 +1,12 @@
 {
-  "id": "approve-stage-4-spec-2026-08-14",
+  "id": "pass-stage-4-gate-2026-08-14",
   "argv": [
-    "artifact",
-    "approve",
-    "ART-SPEC",
+    "stage",
+    "review",
+    "--result",
+    "Passed",
     "--evidence",
-    "Project owner approved ART-SPEC and authorized continuation after reviewing PR #8, which is merged on main at 7e851285b55d27d34f23b8fa39eeb22dbcfa0f28.",
+    "Project owner approved ART-SPEC. Stage 4 canonical preflight recommends Passed with no findings after ART-SPEC approval; VER-006 confirms the time-bound Figma baseline remains Unchanged and the workflow record/generated views are valid and current.",
     "--approved-by",
     "Fernando Falcon"
   ]
