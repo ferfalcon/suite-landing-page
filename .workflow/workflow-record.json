@@ -749,12 +749,15 @@
           "name": "Lower-page acceptance",
           "kind": "Accessibility",
           "required": true,
-          "status": "Not executed",
+          "status": "Passed",
           "expected": "The build succeeds and Testimonial/Footer match approved content and responsive relationships; social anchors are exactly href=# with accessible Facebook, Twitter, and Instagram names; testimonial imagery follows approved semantics; focus/target/reflow behavior passes; no page overflow or orphaned starter UI/assets remain and upper-page behavior is not materially regressed.",
-          "command": "pnpm --dir frontend build",
-          "environment": "repository root plus rendered browser accessibility and responsive inspection",
-          "evidence": [],
-          "reason": "Stage 10 implementation has not started.",
+          "actual": "Production build passed; Chromium acceptance passed at 1440, 1121, 1120, 1041, 1040, 768, 620, 619, 375, and 320 widths with no horizontal overflow, exact reference-frame lower-section coordinates, correct responsive transitions, exact content/landmarks, decorative image semantics, named href=# social anchors, 44x44-or-larger separated targets, and visible keyboard focus. Vercel PR preview reached READY and returned HTTP 200 with the expected compiled DOM.",
+          "executedAt": "2026-08-15T19:27:03Z",
+          "evidence": [
+            "GitHub Actions build run 31903754242 job 95058348508 passed for final frontend commit 54cd28f20f3eabd6a98ee793daaea1f3bfd0f6cb.",
+            "GitHub Actions browser acceptance run 31903900108 job 95058700119 passed all responsive, overflow, target, focus, content, landmark, and decorative-image assertions.",
+            "Vercel PR #17 preview deployment dpl_Afdx61Jgmk6yv8wqCjMKcA1NUNbc reached READY for frontend commit 54cd28f20f3eabd6a98ee793daaea1f3bfd0f6cb; branch preview returned HTTP 200 with expected compiled DOM."
+          ],
           "references": [
             "PLAN-003"
           ]
