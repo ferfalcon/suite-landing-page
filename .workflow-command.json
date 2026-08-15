@@ -1,7 +1,27 @@
 {
-  "id": "stage-9-narrative-context-2026-08-15",
+  "id": "validation-p01-t01-2026-08-15",
   "argv": [
-    "context",
-    "--json"
+    "task",
+    "validation",
+    "set",
+    "P01-T01",
+    "--name",
+    "Foundation acceptance",
+    "--kind",
+    "Build",
+    "--required",
+    "true",
+    "--status",
+    "Not executed",
+    "--expected",
+    "The Astro production build succeeds; every consumed asset has authoritative mapping/provenance/use evidence; the foundation introduces no unsupported metadata, dependency, client runtime, tracking, or data behavior; shared document/focus/reduced-motion defaults remain accessible and static.",
+    "--command",
+    "pnpm --dir frontend build",
+    "--environment",
+    "repository root and rendered foundation inspection",
+    "--reason",
+    "Stage 10 implementation has not started.",
+    "--references",
+    "PLAN-001"
   ]
 }
