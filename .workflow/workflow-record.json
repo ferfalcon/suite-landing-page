@@ -642,7 +642,22 @@
       ],
       "output": null,
       "blocker": null,
-      "validation": []
+      "validation": [
+        {
+          "name": "Lower-page acceptance",
+          "kind": "Accessibility",
+          "required": true,
+          "status": "Not executed",
+          "expected": "The build succeeds and Testimonial/Footer match approved content and responsive relationships; social anchors are exactly href=# with accessible Facebook, Twitter, and Instagram names; testimonial imagery follows approved semantics; focus/target/reflow behavior passes; no page overflow or orphaned starter UI/assets remain and upper-page behavior is not materially regressed.",
+          "command": "pnpm --dir frontend build",
+          "environment": "repository root plus rendered browser accessibility and responsive inspection",
+          "evidence": [],
+          "reason": "Stage 10 implementation has not started.",
+          "references": [
+            "PLAN-003"
+          ]
+        }
+      ]
     },
     {
       "id": "P03-T01",
