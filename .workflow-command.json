@@ -1,7 +1,7 @@
 {
-  "id": "inspect-stage-7-context-2026-08-14",
+  "id": "advance-to-stage-7-plan-2026-08-14",
   "argv": [
-    "context",
-    "--json"
+    "stage",
+    "advance"
   ]
 }
